@@ -1,6 +1,58 @@
-.SideBarContainer {
-    width: 20vw;
-    background-color: #333; /* Optional: Add a background color for visibility */
-    color: #e9acac; /* Optional: Set text color for visibility */
-    border: 1px solid black;
-  }
+
+
+/* html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+#root {
+  height: 95%;
+  margin: 0;
+  padding: 0;
+} */
+
+#AppContainer {
+  display: flex;
+  height: 98vh;
+  width: 98vw;
+}
+
+#SideBarContainer {
+  flex: .2;
+  height: 100%; 
+  color: #020000; 
+  border: 2px solid black;
+  border-radius: 10px;
+  padding: 5px;
+}
+
+#NodeMapContainer {
+  flex: .9;
+  height: 100%; 
+  border: 2px solid black;
+  border-radius: 20px;
+  padding: 5px;
+}
+
+#nodeMap {
+  flex: 1;
+  height: 100px;
+  background-color: rgba(255, 99, 71, 0.7);
+  border: 2px solid black;
+  border-radius: 10px;
+}
+
+#ClusterConnect {
+  width: 100px;
+  height: 100px;
+  background-color: rgba(154, 205, 50, 0.7);
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 2px;
+}
+
+#asclepius {
+font-weight: bold; 
+font-size: 24px;
+}

@@ -1,9 +1,10 @@
 import React from "react";
 
+
 function ClusterConnect() {
     return (
-        <div>
-            Hello world!
+        <div id="ClusterConnect">
+            Enter K8s cluster here
         </div>
     )
 }

@@ -3,7 +3,7 @@ import React from "react";
 function NodeMap() {
 
     return(
-        <div>
+        <div id="nodeMap">
             This is the NodeMap wowee!
         </div>
     )

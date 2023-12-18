@@ -13,32 +13,32 @@
 } */
 
 #AppContainer {
-  display: inline-flex;
+  display: flex;
   height: 98vh;
-  width: 100%;
+  width: 98vw;
 }
 
 #SideBarContainer {
   flex: .2;
   height: 100%; 
-  color: #020000; /* Optional: Set text color for visibility */
+  color: #020000; 
   border: 2px solid black;
   border-radius: 10px;
   padding: 5px;
 }
 
 #NodeMapContainer {
-  flex: 1;
+  flex: .9;
   height: 100%; 
-  border: 5px solid black;
-  border-radius: 10px;
+  border: 2px solid black;
+  border-radius: 20px;
   padding: 5px;
 }
 
 #nodeMap {
-  width: 100px;
+  flex: 1;
   height: 100px;
-  background-color: tomato;
+  background-color: rgba(255, 99, 71, 0.7);
   border: 2px solid black;
   border-radius: 10px;
 }
@@ -46,7 +46,7 @@
 #ClusterConnect {
   width: 100px;
   height: 100px;
-  background-color: yellowgreen;
+  background-color: rgba(154, 205, 50, 0.7);
   border: 1px solid black;
   border-radius: 10px;
   padding: 2px;

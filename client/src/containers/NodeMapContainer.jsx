@@ -4,7 +4,7 @@ import NodeMap from '../components/NodeMap.jsx';
 function NodeMapContainer() {
 
     return (
-        <div className="NodeMapContainer">
+        <div id="NodeMapContainer">
             <NodeMap />
         </div>
     )   

@@ -32,7 +32,6 @@ const azController = {
     return next();
   },
   azLogin: (req, res, next) => {
-    console.log("hi");
     const result = spawnSync("az", ["login"], {
       encoding: "utf-8",
       shell: true,

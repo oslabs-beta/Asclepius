@@ -9,7 +9,7 @@ azRouter.get(
   azController.azLogin,
   (req, res) => {
     //prompt user for resource group and cluster name
-    res.send(res.locals.azInstalled);
+    res.send("send them to the form for name and resourcegroup");
   }
 );
 //should come with req.body {name: demoAKS resource-group: aksRG}

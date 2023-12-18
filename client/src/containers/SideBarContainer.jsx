@@ -4,7 +4,8 @@ import ClusterConnect from "../components/ClusterConnect.jsx";
 function SideBarContainer() {
     
     return (
-        <div className='SideBarContainer'>
+        <div id='SideBarContainer'>
+            <div id="asclepius">Asclepius</div>
             <ClusterConnect />
         </div>
     )

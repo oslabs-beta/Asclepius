@@ -6,7 +6,8 @@ const dataController = {
       shell: true,
     });
     console.log("version:", version);
-    if (version.stderr) {
+    const client = version.output[1].split(" ");
+    if (client[0] !== "Client") {
       res.locals.kubeInstalled = false;
       return next();
     } else return next();

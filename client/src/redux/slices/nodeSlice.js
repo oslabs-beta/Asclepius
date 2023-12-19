@@ -8,6 +8,7 @@ export const nodeSlice = createSlice({
   },
   reducers: {
     setData: (state, action) => {
+      console.log("we shouldn't be here");
       state = action.payload;
       return state;
     },

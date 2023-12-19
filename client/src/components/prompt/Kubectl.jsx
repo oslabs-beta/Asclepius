@@ -12,8 +12,8 @@ function Kubectl() {
   return (
     <div>
       <h1>
-        It seems like you don't have kubectl installed. Here is some more info
-        regarding setup: link
+        It seems like you don't have kubectl installed. Please install kubectl
+        and try again.
       </h1>
       <button onClick={() => dispatch(kubectlSet)}>
         I've installed kubectl- Reconnect Cluster

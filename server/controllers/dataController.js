@@ -6,6 +6,11 @@ const dataController = {
     const name = spawnSync("kubectl", ["config", "current-context"], {
       encoding: "utf-8",
     });
+    //zsh: command not found: kubectl
+    if (name.stderr) {
+      res.redirect("/sayhi");
+    }
+
     data.clusterName = name.stdout.split("\n")[0];
     res.locals.data = data;
     return next();

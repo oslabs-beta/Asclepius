@@ -16,9 +16,9 @@ app.use("/", express.static(path.join(__dirname, "../client")));
 app.get("/", function (req, res) {
   res.sendFile(path.resolve(__dirname, "../client/index.html"));
 });
-// app.get("/sayhi", (req, res) => {
-//   res.send("Hello!!");
-// });
+app.get("/sayhi", (req, res) => {
+  res.send("Hello!!");
+});
 app.use("/getData", dataRouter);
 
 app.use("/azlogin", azRouter);

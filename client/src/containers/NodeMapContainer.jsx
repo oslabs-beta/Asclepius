@@ -22,7 +22,6 @@ function NodeMapContainer() {
 
     return (
         <div id="NodeMapContainer">
-            Here lies a nodeMap.
             <NodeMap/>
         </div>
     )   

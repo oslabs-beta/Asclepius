@@ -4,9 +4,30 @@ export const nodeSlice = createSlice({
     name: 'nodeName',
 
     initialState: {
-        nodeName: 'Node1',
-        kuberenetesAPI: null,
-        kubeletAPI: null,
+        clusterName: 'demoAKS',
+        nodes: [
+            { 
+                name: "node 1",
+                cpuPercentage: "10%",
+                memPercentage: "51%",
+                color: "yellow",
+                id: 1
+            },
+            { 
+                name: "node 2",
+                cpuPercentage: "10%",
+                memPercentage: "51%",
+                color: "green",
+                id: 2
+            },
+            { 
+                name: "node 3",
+                cpuPercentage: "10%",
+                memPercentage: "51%",
+                color: "green",
+                id: 3
+            }
+           ]
     },
     reducers: {
         

@@ -12,6 +12,8 @@
   padding: 0;
 } */
 
+
+
 #AppContainer {
   display: flex;
   height: 98vh;
@@ -35,10 +37,9 @@
   padding: 5px;
 }
 
-#nodeMap {
-  flex: 1;
-  height: 100px;
-  background-color: rgba(255, 99, 71, 0.7);
+#NodeMap {
+  flex: 10;
+  height: 99%;
   border: 2px solid black;
   border-radius: 10px;
 }
@@ -55,4 +56,14 @@
 #asclepius {
 font-weight: bold; 
 font-size: 24px;
+}
+
+.node {
+  fill: #3498db;
+  stroke: #2980b9;
+  stroke-width: 2px;
+}
+.link {
+  stroke: #7f8c8d;
+  stroke-width: 2px;
 }

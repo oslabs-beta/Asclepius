@@ -13,6 +13,8 @@ app.get('/', function (req, res){
     res.sendFile(path.resolve(__dirname, '../client/index.html'))
 });
 
+app.use(express.static('public', { 'extensions': ['css']}));
+
 // app.get('/', function (req, res) {
 //     res.send(path.resolve(__dirname, '../client/src/app.jsx'));
 // })

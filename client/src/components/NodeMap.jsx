@@ -19,6 +19,7 @@ function NodeMap() {
     useEffect(() => {
     //     d3.select(svgRef.current).selectAll("*").remove();
         const svg = d3.select(svgRef.current).attr('height', height).attr('width', width);
+        const group = svg.append("g").attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
         
         const scale = Math.min(40, 300 / nodes.length)
 
@@ -28,13 +29,13 @@ function NodeMap() {
             .force("center", d3.forceCenter(height, width / 2))
             .on("tick", ticked);
 
-        const link = svg.selectAll(".link")
+        const link = group.selectAll(".link")
             .data(links)
             .enter().append("line")
             .attr("class", "link");
 
         // Create nodes
-        const node = svg.selectAll(".node")
+        const node = group.selectAll(".node")
             .data(nodes)
             .enter().append("circle")
             .attr("class", "node")
@@ -44,7 +45,7 @@ function NodeMap() {
             //     else return 20;
             // })
             .attr("fill", d => d.color)
-            const label = svg.selectAll(".label")
+            const label = group.selectAll(".label")
             .data(nodes)
             .enter().append("text")
             .attr("class", "label")
@@ -70,7 +71,9 @@ function NodeMap() {
     }, [nodes, links]);
 
     return (
+        <div id="NodeMapContainer">
         <svg ref={svgRef} id="NodeMap"></svg>
+        </div>
     );
 };
 

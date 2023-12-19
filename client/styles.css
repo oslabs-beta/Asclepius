@@ -16,7 +16,7 @@
 
 #AppContainer {
   display: flex;
-  height: 98vh;
+  height: 96vh;
   width: 98vw;
 }
 
@@ -27,35 +27,52 @@
   border: 2px solid black;
   border-radius: 10px;
   padding: 5px;
+  background-color: #62b1e6;
 }
+
+
 
 #NodeMapContainer {
   flex: .9;
   height: 100%; 
-  border: 2px solid black;
-  border-radius: 20px;
-  padding: 5px;
+  border: 2px solid rgb(0, 0, 0);
+  border-radius: 0px;
+  padding: 0px;
+  background-image: url('https://images.rawpixel.com/image_social_landscape/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIyLTA1L3B4MTM2NjcxMC1pbWFnZS1rd3Z4eGVxcC5qcGc.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: rgba(255, 255, 255, 0.5);
+  background-position: center;
+  justify-content: center;
+  align-items: center;
+  display: flex;
 }
 
 #NodeMap {
-  flex: 10;
-  height: 99%;
-  border: 2px solid black;
-  border-radius: 10px;
+  height: 100%;
+  width: 100%;
+  border: 2px solid rgb(0, 0, 0);
+  border-radius: 0px;
+  align-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 #ClusterConnect {
-  width: 100px;
-  height: 100px;
+  /*width: 100px;*/
+  //height: 100px; 
   background-color: rgba(154, 205, 50, 0.7);
   border: 1px solid black;
   border-radius: 10px;
   padding: 2px;
+  align-items: center;
 }
 
 #asclepius {
 font-weight: bold; 
 font-size: 24px;
+color: rgb(68, 134, 68);
+text-align: center;
 }
 
 .node {

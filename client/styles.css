@@ -59,7 +59,7 @@ font-size: 24px;
 }
 
 .node {
-  fill: #3498db;
+  /* fill: #3498db; */
   stroke: #2980b9;
   stroke-width: 2px;
 }

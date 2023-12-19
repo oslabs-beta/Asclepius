@@ -19,10 +19,13 @@ function NodeMap() {
     useEffect(() => {
     //     d3.select(svgRef.current).selectAll("*").remove();
         const svg = d3.select(svgRef.current).attr('height', height).attr('width', width);
+        
+        const scale = Math.min(40, 300 / nodes.length)
+
         const simulation = d3.forceSimulation(nodes)
-            .force("link", d3.forceLink(links).id(d => d.id).distance(100))
-            .force("charge", d3.forceManyBody())
-            .force("center", d3.forceCenter(width / 2, height / 2))
+            .force("link", d3.forceLink(links).id(d => d.id).distance(150))
+            .force("charge", d3.forceManyBody().strength(-100))
+            .force("center", d3.forceCenter(height, width / 2))
             .on("tick", ticked);
 
         const link = svg.selectAll(".link")
@@ -35,7 +38,12 @@ function NodeMap() {
             .data(nodes)
             .enter().append("circle")
             .attr("class", "node")
-            .attr("r", 20);
+            .attr("r", scale)
+            // .attr("r", d => {
+            //     if (d.length < 5) return 30;
+            //     else return 20;
+            // })
+            .attr("fill", d => d.color)
             const label = svg.selectAll(".label")
             .data(nodes)
             .enter().append("text")
@@ -46,18 +54,18 @@ function NodeMap() {
 
         function ticked() {
             link
-                .attr("x1", d => d.source.x)
-                .attr("y1", d => d.source.y)
-                .attr("x2", d => d.target.x)
-                .attr("y2", d => d.target.y)
+                .attr("x1", d => d.source.y)
+                .attr("y1", d => d.source.x)
+                .attr("x2", d => d.target.y)
+                .attr("y2", d => d.target.x)
 
             node
-                .attr("cx", d => d.x)
-                .attr("cy", d => d.y);
+                .attr("cx", d => d.y)
+                .attr("cy", d => d.x);
 
             label
-                .attr("x", d => d.x)
-                .attr("y", d => d.y);
+                .attr("x", d => d.y)
+                .attr("y", d => d.x);
         }
     }, [nodes, links]);
 

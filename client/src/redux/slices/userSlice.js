@@ -5,6 +5,9 @@ export const userSlice = createSlice({
   initialState: {
     kubectl: true,
     dontShowPrompt: true,
+    cloudInfo: false,
+    localInfo: false,
+    aksForm: false,
   },
   reducers: {
     kubectlSet: (state) => {
@@ -18,11 +21,29 @@ export const userSlice = createSlice({
       return state;
     },
     dontShowPrompt: (state) => {
-      state.dontShowPrompt = false;
+      if (state.dontShowPrompt === true) {
+        state.dontShowPrompt = false;
+      } else state.dontShowPrompt = true;
+    },
+    cloudInfo: (state) => {
+      if (state.cloudInfo === true) {
+        state.cloudInfo = false;
+      } else state.cloudInfo = true;
+    },
+    localInfo: (state) => {
+      if (state.localInfo === true) {
+        state.localInfo = false;
+      } else state.localInfo = true;
+    },
+    aksForm: (state) => {
+      if (state.aksForm === true) {
+        state.aksForm = false;
+      } else state.aksForm = true;
     },
   },
 });
 
-export const { kubectlSet, dontShowPrompt } = userSlice.actions;
+export const { kubectlSet, dontShowPrompt, cloudInfo, localInfo, aksForm } =
+  userSlice.actions;
 
 export default userSlice.reducer;

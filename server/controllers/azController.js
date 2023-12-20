@@ -40,15 +40,16 @@ const azController = {
     return next();
   },
   azCredentials: (req, res, next) => {
-    const { name, resource_group } = req.body;
+    const { clusterName, resourceGroup } = req.body;
+    console.log("body", req.body);
     //az aks get-credentials --name ${name} --resource-group ${resource-group}
     const result = spawnSync(
       "az",
       [
         "aks",
         "get-credentials",
-        `--name ${name}`,
-        `--resource-group ${resource_group}`,
+        `--name ${clusterName}`,
+        `--resource-group ${resourceGroup}`,
       ],
       {
         encoding: "utf-8",

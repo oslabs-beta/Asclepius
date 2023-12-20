@@ -14,7 +14,7 @@ azRouter.get(
 );
 //should come with req.body {name: demoAKS resource-group: aksRG}
 azRouter.post("/", azController.azCredentials, (req, res) => {
-  res.redirect("/getData");
+  res.status(200).send("success");
 });
 // dataController.getName,
 module.exports = azRouter;

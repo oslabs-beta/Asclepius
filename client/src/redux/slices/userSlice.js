@@ -8,14 +8,16 @@ export const userSlice = createSlice({
     cloudInfo: false,
     localInfo: false,
     aksForm: false,
+    aksInfo: {
+      clusterName: "",
+      resourceGroup: "",
+    },
   },
   reducers: {
     kubectlSet: (state) => {
       if (!state.kubectl) {
         state.kubectl = true;
-        console.log("this is current state:", state.kubectl);
       } else {
-        console.log("current kubectl:", state.kubectl);
         state.kubectl = false;
       }
       return state;
@@ -40,10 +42,21 @@ export const userSlice = createSlice({
         state.aksForm = false;
       } else state.aksForm = true;
     },
+    aksInput: (state, action) => {
+      state.aksInfo.clusterName = action.payload.clusterName;
+      state.aksInfo.resourceGroup = action.payload.resourceGroup;
+      console.log("set aks info");
+    },
   },
 });
 
-export const { kubectlSet, dontShowPrompt, cloudInfo, localInfo, aksForm } =
-  userSlice.actions;
+export const {
+  kubectlSet,
+  dontShowPrompt,
+  cloudInfo,
+  localInfo,
+  aksForm,
+  aksInput,
+} = userSlice.actions;
 
 export default userSlice.reducer;

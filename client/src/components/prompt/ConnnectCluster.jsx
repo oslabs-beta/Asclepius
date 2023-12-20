@@ -3,15 +3,17 @@ import { useDispatch, useSelector } from "react-redux";
 import { setData } from "../../redux/slices/nodeSlice.js";
 import { kubectlSet } from "../../redux/slices/userSlice.js";
 import { dontShowPrompt } from "../../redux/slices/userSlice.js";
+import { cloudInfo } from "../../redux/slices/userSlice.js";
+import { localInfo } from "../../redux/slices/userSlice.js";
+import { aksForm } from "../../redux/slices/userSlice.js";
 
 function ConnectCluster() {
   const dispatch = useDispatch();
   const show = useSelector((state) => state.user.dontShowPrompt);
   console.log("dont show prompt", dontShowPrompt);
-  let cloudInfo = false;
-  let localInfo = false;
-  let aksForm = false;
-
+  const cloud = useSelector((state) => state.user.cloudInfo);
+  const local = useSelector((state) => state.user.localInfo);
+  const aks = useSelector((state) => state.user.aksForm);
   const getData = () => {
     fetch(`http://localhost:3000/getData`)
       .then((data) => data.json())
@@ -30,9 +32,9 @@ function ConnectCluster() {
 
   const AKSfetch = () => {
     fetch("http://localhost:3000/azlogin").then((response) => {
-      if (response === "success") {
-        aksForm = true;
-        console.log("aksForm result:", aksForm);
+      if (response.status === 200) {
+        console.log("we did it!!!!");
+        dispatch(aksForm());
       }
     });
   };
@@ -43,25 +45,27 @@ function ConnectCluster() {
         <span>
           <button
             onClick={() => {
-              cloudInfo = true;
+              dispatch(cloudInfo());
+              dispatch(dontShowPrompt());
             }}
           >
             Connect to Cloud Cluster
           </button>
           <button
             onClick={() => {
-              localInfo = true;
+              dispatch(localInfo());
+              dispatch(dontShowPrompt());
             }}
           >
             Connect to Local Cluster
           </button>
         </span>
       )}
-      {cloudInfo ? (
+      {cloud ? (
         <div>
           <button
             onClick={() => {
-              cloudInfo = false;
+              dispatch(cloudInfo());
               AKSfetch();
             }}
           >
@@ -69,7 +73,7 @@ function ConnectCluster() {
           </button>
         </div>
       ) : null}
-      {localInfo ? (
+      {local ? (
         <div>
           <h1>
             Connection to local cluster failed. Please make sure your kubectl
@@ -77,7 +81,7 @@ function ConnectCluster() {
           </h1>
         </div>
       ) : null}
-      {aksForm ? <div>FORM</div> : null}
+      {aks ? <div>FORM</div> : null}
       <button onClick={() => getData()}>Render Node Map</button>
     </div>
   );

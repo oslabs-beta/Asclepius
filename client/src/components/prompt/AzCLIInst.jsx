@@ -34,7 +34,7 @@ const AzCLIInst = () => {
           </pre>
         </li>
       </ol>
-      <button onClick={() => dispatch(aksCLIInfo())}>Azure CLI Installed</button>
+      <button className="newButton" role="button" onClick={() => dispatch(aksCLIInfo())}>Azure CLI Installed</button>
     </div>
   );
 };

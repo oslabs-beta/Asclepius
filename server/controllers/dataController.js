@@ -57,8 +57,8 @@ const dataController = {
       if (mem > 70 || cpu > 70) {
         color = "red";
       } else if (mem > 50 || cpu > 50) {
-        color = "yellow";
-      } else color = "green";
+        color = "rgb(252, 245, 95)";
+      } else color = "rgb(144, 238, 144)";
       const nodeData = {
         name: resultArray[0],
         cpuPercentage: resultArray[2],

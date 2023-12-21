@@ -15,7 +15,7 @@ function Kubectl() {
         It seems like you don't have kubectl installed. Please install kubectl
         and try again.
       </h1>
-      <button onClick={() => dispatch(kubectlSet)}>
+      <button className="newButton" role="button" onClick={() => dispatch(kubectlSet)}>
         I've installed kubectl- Reconnect Cluster
       </button>
     </div>

@@ -10,7 +10,8 @@ azRouter.get(
   (req, res) => {
     console.log('this is res.locals in azcontroller', res.locals)
     //prompt user for resource group and cluster name
-    if (res.locals.isAzureCliInstalled) {
+    console.log('This is res.locals.isAzureCliInstalled: ', res.locals.azInstalled)
+    if (res.locals.azInstalled) {
       res.status(200).send("success")
     } else {
       res.status(404).send("failure")

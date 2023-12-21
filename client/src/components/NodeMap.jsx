@@ -1,8 +1,28 @@
 import React, { useRef, useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import * as d3 from "d3";
+import {setData} from "../redux/slices/nodeSlice.js"
 
 function NodeMap() {
+  const dispatch = useDispatch()
+  const nodeData = useSelector((state) => state.node.clusterName)
+
+  useEffect(() => {
+    setInterval(() => {
+      console.log("firing fetch in setTimeout");
+  
+      fetch(`http://localhost:3000/getData`)
+        .then((data) => data.json())
+        .then((data) => {
+          console.log("this is the data I need: ", data);
+          dispatch(setData(data));
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }, 5000); // The delay is set to 0, meaning it will be executed in the next event loop cycle
+  }, [nodeData]);
+
   //creates a link to the DOM
   const svgRef = useRef();
 
@@ -24,7 +44,7 @@ function NodeMap() {
   const height = 300;
 
   useEffect(() => {
-    //     d3.select(svgRef.current).selectAll("*").remove();
+    d3.select(svgRef.current).selectAll("*").remove();
 
     const svg = d3
       .select(svgRef.current)

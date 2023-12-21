@@ -46,6 +46,7 @@ function ConnectCluster() {
   const AKSfetch = () => {
     fetch("http://localhost:3000/azlogin")
     .then((response) => {
+      console.log('this is response in AKS FETCH:', response.status)
       if (response.status === 200) {
         console.log("we did it!!!!");
         dispatch(aksCLIInfo())
@@ -110,6 +111,7 @@ function ConnectCluster() {
         <div>
           {aksCLI ? <AzCLIInst/> : null}
           <button
+          className="newButton" role="button"
             onClick={() => {
               dispatch(cloudInfo());
               AKSfetch();
@@ -145,7 +147,7 @@ function ConnectCluster() {
         </div>
       ) : null}
 
-      <button onClick={() => getData()}>Render Node Map</button>
+      <button id="renderButton" className="newButton" onClick={() => getData()}>Render Node Map</button>
 
     </div>
   );

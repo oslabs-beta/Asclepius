@@ -14,7 +14,6 @@
   display: flex;
   height: 96vh;
   width: 98vw;
-  border-radius: 10px;
 }
 
 #SideBarContainer {
@@ -24,14 +23,14 @@
   border: 2px solid black;
   border-radius: 10px;
   padding: 5px;
-  background-color: #62b1e6;
+  background-color: #8d8c8c;
 }
 
 #NodeMapContainer {
   flex: 0.9;
   height: 100%;
-  border: 2px solid rgb(0, 0, 0);
-  border-radius: 0px;
+  /* border: 2px solid rgb(0, 0, 0); */
+  border-radius: 10px;
   padding: 0px;
   /* background-image: url('https://images.rawpixel.com/image_social_landscape/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIyLTA1L3B4MTM2NjcxMC1pbWFnZS1rd3Z4eGVxcC5qcGc.jpg'); */
   background-size: cover;
@@ -46,16 +45,20 @@
 #NodeMap {
   height: 100%;
   width: 100%;
-  border: 2px solid rgb(0, 0, 0);
+  /* border: 2px solid rgb(0, 0, 0); */
   border-radius: 0px;
   align-content: center;
   display: flex;
   justify-content: center;
 }
-#SidebarSection1{
-height: 100px;
-background-color: lightslategray;
-align-items: center;
+
+#Sidebarsection{
+  height: 100px;
+  background-color: slategray;
+  align-self: center;
+  padding: 2px;
+  border: 1px #000000;
+  
 }
 
 #ClusterConnect {
@@ -149,6 +152,8 @@ align-items: center;
 #renderButton {
   border: 2px solid #007FFF;
   color: #007FFF;
+  display: block;
+  justify-content: auto;
 }
 
 #renderButton:hover {
@@ -158,6 +163,18 @@ align-items: center;
 
 #buttonSpan {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   gap: 30px;
+}
+
+#logocontainer {
+  width: 100%;
+/* height: 50px; */
+display: flex;
+justify-content: center;
+align-items: center;
+}
+#asclepiusLogo {
+width: 108%;
+height: 108%;
 }

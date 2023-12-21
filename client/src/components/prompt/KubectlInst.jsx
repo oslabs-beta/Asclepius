@@ -23,7 +23,7 @@ const KubectlInst = () => {
           Once you've installed kubectl, please click Reconnect Cluster.
         </code>
       </pre>
-      <button onClick={() => dispatch(kubectlSet())}>
+      <button className="newButton" role="button" onClick={() => dispatch(kubectlSet())}>
         Reconnect Cluster
       </button>
     </div>

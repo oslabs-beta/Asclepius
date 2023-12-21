@@ -20,10 +20,12 @@
   flex: 0.2;
   height: 100%;
   color: #020000;
-  border: 2px solid black;
+  border: 2px solid #6082B6;
   border-radius: 10px;
   padding: 5px;
-  background-color: #8d8c8c;
+  padding-top: 15px;
+  /* background-color: #5f5c5c; */
+  background: linear-gradient(to top, #6082B6, white);
 }
 
 #NodeMapContainer {
@@ -150,15 +152,17 @@
 }
 
 #renderButton {
-  border: 2px solid #007FFF;
-  color: #007FFF;
+  border: 2px solid #6082B6;
+  color: #6082B6;
   display: block;
   justify-content: auto;
+  margin-top: 20px;
+  margin-left: 70px;
 }
 
 #renderButton:hover {
   color: #fff;
-  background-color: #007FFF;
+  background-color: #6082B6;
 }
 
 #buttonSpan {
@@ -175,6 +179,20 @@ justify-content: center;
 align-items: center;
 }
 #asclepiusLogo {
-width: 108%;
-height: 108%;
+width: 103%;
+height: 103%;
+background-color: transparent;
+border: none;
+}
+
+.inputBox {
+  margin-right: 10px;
+}
+
+#aksButton {
+  margin-left: 70px;
+}
+
+#localButton {
+  margin-left: 70px;
 }

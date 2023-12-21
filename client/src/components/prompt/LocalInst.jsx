@@ -37,7 +37,7 @@ const LocalInst = () => {
       <p>Adjust the context name, cluster name, and user name according to your local cluster configuration. 
         These instructions assume you've already installed kubectl.
 </p>
-    <button className="newButton" role="button" onClick={() => dispatch(localInfo())}>Local Cluster Setup Complete</button>
+    <button id="localButton" className="newButton" role="button" onClick={() => dispatch(localInfo())}>Local Cluster Setup Complete</button>
     </div>
   );
 };

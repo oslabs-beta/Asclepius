@@ -111,6 +111,7 @@ function ConnectCluster() {
         <div>
           {aksCLI ? <AzCLIInst/> : null}
           <button
+          id="aksButton"
           className="newButton" role="button"
             onClick={() => {
               dispatch(cloudInfo());
@@ -132,9 +133,9 @@ function ConnectCluster() {
         <div>
           <form onSubmit={aksSubmit}>
             <label>Cluster Name:</label>
-            <input type="text" name="clusterName" />
+            <input type="text" name="clusterName" className="inputBox" />
             <label>Resource Group Name:</label>
-            <input type="text" name="resourceGroup" />
+            <input type="text" name="resourceGroup" className="inputBox"/>
             <button type="submit">Save Cluster Info</button>
             <hr />
           </form>

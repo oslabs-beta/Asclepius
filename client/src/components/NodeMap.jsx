@@ -35,7 +35,8 @@ function NodeMap() {
     name: node.name,
     color: node.color,
   }));
-  nodes.unshift({ id: 0, name: "Master Node", color: "Green" });
+  console.log(nodes)
+  nodes.unshift({ id: 0, name: "Master Node", color: "limegreen" });
 
   const links = nodes.slice(1).map((node) => ({ source: 0, target: node.id }));
   // console.log("This is links:", links);

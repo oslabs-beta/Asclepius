@@ -84,24 +84,26 @@ function ConnectCluster() {
     <div>
 
       {show ? (
-        <span>
-          <button
-            onClick={() => {
-              dispatch(cloudInfo());
-              dispatch(showPrompt());
-            }}
-          >
-            Connect to Cloud Cluster
-          </button>
-          <button
-            onClick={() => {
-              dispatch(localInfo());
-              dispatch(showPrompt());
-            }}
-          >
-            Connect to Local Cluster
-          </button>
-        </span>
+        <span id="buttonSpan">
+        <button
+        className="newButton" role="button"
+          onClick={() => {
+            dispatch(cloudInfo());
+            dispatch(dontShowPrompt());
+          }}
+        >
+          Connect to Cloud Cluster
+        </button>
+        <button
+        className="newButton" role="button"
+          onClick={() => {
+            dispatch(localInfo());
+            dispatch(dontShowPrompt());
+          }}
+        >
+          Connect to Local Cluster
+        </button>
+      </span>
       ) : null}
 
       {cloud ? (

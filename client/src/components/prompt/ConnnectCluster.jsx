@@ -89,7 +89,7 @@ function ConnectCluster() {
         className="newButton" role="button"
           onClick={() => {
             dispatch(cloudInfo());
-            dispatch(dontShowPrompt());
+            dispatch(showPrompt());
           }}
         >
           Connect to Cloud Cluster
@@ -98,7 +98,7 @@ function ConnectCluster() {
         className="newButton" role="button"
           onClick={() => {
             dispatch(localInfo());
-            dispatch(dontShowPrompt());
+            dispatch(showPrompt());
           }}
         >
           Connect to Local Cluster

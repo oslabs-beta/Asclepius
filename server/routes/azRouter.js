@@ -8,10 +8,16 @@ azRouter.get(
   // azController.installAzureCli,
   azController.azLogin,
   (req, res) => {
+    console.log('this is res.locals in azcontroller', res.locals)
     //prompt user for resource group and cluster name
-    res.send("success");
+    if (res.locals.isAzureCliInstalled) {
+      res.status(200).send("success")
+    } else {
+      res.status(404).send("failure")
+    }
   }
 );
+
 //should come with req.body {name: demoAKS resource-group: aksRG}
 azRouter.post("/", azController.azCredentials, (req, res) => {
   res.status(200).send("success");

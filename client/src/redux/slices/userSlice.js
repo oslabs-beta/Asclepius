@@ -4,7 +4,7 @@ export const userSlice = createSlice({
   name: "user",
   //intial states should be what?
   initialState: {
-    kubectl: false,
+    kubectl: true,
     showPrompt: false,
     cloudInfo: false,
     localInfo: false,
@@ -13,6 +13,7 @@ export const userSlice = createSlice({
       clusterName: "",
       resourceGroup: "",
     },
+    aksCLI: false
   },
 
   reducers: {
@@ -49,6 +50,11 @@ export const userSlice = createSlice({
       state.aksInfo.resourceGroup = action.payload.resourceGroup;
       console.log("set aks info");
     },
+    aksCLIInfo: (state) => {
+      if (state.aksCLI === true) {
+        state.aksCLI = false;
+      } else state.aksCLI = true;
+    },
   },
 });
 
@@ -59,6 +65,7 @@ export const {
   localInfo,
   aksForm,
   aksInput,
+  aksCLIInfo
 } = userSlice.actions;
 
 export default userSlice.reducer;

@@ -1,6 +1,9 @@
 import React from 'react';
+import {useDispatch} from 'react-redux'
+import {localInfo} from "../../redux/slices/userSlice.js"
 
 const LocalInst = () => {
+  const dispatch = useDispatch()
   return (
     <div>
       <h2>Set Up Local Kubernetes Cluster and kubeconfig File:</h2>
@@ -34,6 +37,7 @@ const LocalInst = () => {
       <p>Adjust the context name, cluster name, and user name according to your local cluster configuration. 
         These instructions assume you've already installed kubectl.
 </p>
+    <button onClick={() => dispatch(localInfo())}>Local Cluster Setup Complete</button>
     </div>
   );
 };

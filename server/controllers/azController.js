@@ -12,7 +12,7 @@ const azController = {
     return next();
   },
 
-  // Function to install Azure CLI
+  //Function to install Azure CLI
   //need to test
   installAzureCli: (req, res, next) => {
 
@@ -74,14 +74,19 @@ const azController = {
       encoding: "utf-8",
       shell: true,
     });
-    console.log(result);
+    console.log('this is result in azLogin middleware', result);
     if (result.stderr) {
-      return next({
-        log: `azLogin has caught an error with the result of "az login", ${result.stderr}`,
-        status: 500,
-        message: { err: 'An error occured'},
-      })
+      stderrresult = result.stderr.split('')
+    //check if the first letter in output for stderr is capital E for Error
+      if (result[0] === 'E') {
+        return next({
+          log: `azLogin has caught an error with the result of "az login", ${result.stderr}`,
+          status: 500,
+          message: { err: 'An error occured'},
+        })
+      }
     }
+    console.log('right before next() in azLogin')
     return next();
   },
 

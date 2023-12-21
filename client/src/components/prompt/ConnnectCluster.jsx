@@ -8,8 +8,10 @@ import {
   localInfo,
   aksForm,
   aksInput,
+  aksCLIInfo,
 } from "../../redux/slices/userSlice.js";
 import LocalInst from "./LocalInst.jsx"
+import AzCLIInst from "./AzCLIInst.jsx"
 
 function ConnectCluster() {
   const dispatch = useDispatch();
@@ -20,6 +22,7 @@ function ConnectCluster() {
   const local = useSelector((state) => state.user.localInfo);
   const aks = useSelector((state) => state.user.aksForm);
   const aksInfo = useSelector((state) => state.user.aksInfo.clusterName);
+  const aksCLI = useSelector((state) => state.user.aksCLI)
 
   const getData = () => {
     fetch(`http://localhost:3000/getData`)
@@ -41,12 +44,19 @@ function ConnectCluster() {
   };
 
   const AKSfetch = () => {
-    fetch("http://localhost:3000/azlogin").then((response) => {
+    fetch("http://localhost:3000/azlogin")
+    .then((response) => {
       if (response.status === 200) {
         console.log("we did it!!!!");
+        dispatch(aksCLIInfo())
         dispatch(aksForm());
+      } else if (response.status === 404) {
+        dispatch(aksCLIInfo());
       }
-    });
+      })
+    .catch((err) => {
+      console.log(`This is error in AKS fetch: ${err}`)
+    })
   };
 
   //Handles submitting of aks info form
@@ -72,6 +82,7 @@ function ConnectCluster() {
 
   return (
     <div>
+
       {show ? (
         <span>
           <button
@@ -92,8 +103,10 @@ function ConnectCluster() {
           </button>
         </span>
       ) : null}
+
       {cloud ? (
         <div>
+          {aksCLI ? <AzCLIInst/> : null}
           <button
             onClick={() => {
               dispatch(cloudInfo());
@@ -104,11 +117,13 @@ function ConnectCluster() {
           </button>
         </div>
       ) : null}
+
       {local ? (
         <div>
           <LocalInst/>
         </div>
       ) : null}
+
       {aks ? (
         <div>
           <form onSubmit={aksSubmit}>
@@ -127,10 +142,11 @@ function ConnectCluster() {
           ) : null}
         </div>
       ) : null}
+
       <button onClick={() => getData()}>Render Node Map</button>
+
     </div>
   );
 }
-
 
 export default ConnectCluster;

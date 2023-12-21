@@ -10,11 +10,7 @@ const PORT = 3000;
 app.use(express.json());
 
 //Accept requests from any domain - to be updated
-app.use(
-  cors({
-    origin: "*",
-  })
-);
+app.use(cors({origin: "*",}));
 
 //serve static files and the index.html file
 app.use("/", express.static(path.join(__dirname, "../client")));
@@ -23,9 +19,9 @@ app.get("/", function (req, res) {
 });
 
 //Test route for server responses
-app.get("/sayhi", (req, res) => {
-  res.send("Hello!!");
-});
+// app.get("/sayhi", (req, res) => {
+//   res.send("Hello!!");
+// });
 
 //Routers
 app.use("/getData", dataRouter);

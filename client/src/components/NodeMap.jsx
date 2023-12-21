@@ -66,10 +66,6 @@ function NodeMap() {
       .append("circle")
       .attr("class", "node")
       .attr("r", scale)
-      // .attr("r", d => {
-      //     if (d.length < 5) return 30;
-      //     else return 20;
-      // })
       .attr("fill", (d) => d.color);
     const label = group
       .selectAll(".label")

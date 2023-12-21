@@ -5,7 +5,7 @@ const azController = require("../controllers/azController.js");
 azRouter.get(
   "/",
   azController.isAzureCliInstalled,
-  azController.installAzureCli,
+  // azController.installAzureCli,
   azController.azLogin,
   (req, res) => {
     //prompt user for resource group and cluster name

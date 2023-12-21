@@ -1,5 +1,6 @@
 import React from "react"
 import {useDispatch} from "react-redux"
+import {kubectlSet} from "../../redux/slices/userSlice.js"
 
 const KubectlInst = () => {
   const dispatch = useDispatch()
@@ -22,7 +23,7 @@ const KubectlInst = () => {
           Once you've installed kubectl, please click Reconnect Cluster.
         </code>
       </pre>
-      <button onClick={() => dispatch(kubectlSet)}>
+      <button onClick={() => dispatch(kubectlSet())}>
         Reconnect Cluster
       </button>
     </div>

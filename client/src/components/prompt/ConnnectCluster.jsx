@@ -9,6 +9,7 @@ import {
   aksForm,
   aksInput,
 } from "../../redux/slices/userSlice.js";
+import LocalInst from "./LocalInst.jsx"
 
 function ConnectCluster() {
   const dispatch = useDispatch();
@@ -105,10 +106,7 @@ function ConnectCluster() {
       ) : null}
       {local ? (
         <div>
-          <h1>
-            Connection to local cluster failed. Please make sure your kubectl
-            config file is in place.
-          </h1>
+          <LocalInst/>
         </div>
       ) : null}
       {aks ? (

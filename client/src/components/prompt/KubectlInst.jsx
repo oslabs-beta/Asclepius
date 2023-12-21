@@ -1,6 +1,8 @@
-const React = require('react')
+import React from "react"
+import {useDispatch} from "react-redux"
 
 const KubectlInst = () => {
+  const dispatch = useDispatch()
   return (
     <div>
       <h2>Install kubectl:</h2>
@@ -9,18 +11,22 @@ const KubectlInst = () => {
       </p>
       <pre>
         <code>
-          {/* Linux */}
-          sudo apt-get update && sudo apt-get install -y kubectl
+        <strong>Linux:</strong><br />
+          sudo apt-get update && sudo apt-get install -y kubectl<br /><br />
 
-          {/* macOS */}
-          brew install kubectl
+          <strong>MacOS:</strong><br />
+          brew install kubectl<br /><br />
 
-          {/* Windows */}
-          Download the kubectl executable from <a href="https://kubernetes.io/docs/tasks/tools/install-kubectl-windows/#install-kubectl-binary-using-curl">here</a> and add it to your system's PATH.
+          <strong>Windows:</strong><br />
+          Download the kubectl executable from <a href="https://kubernetes.io/docs/tasks/tools/install-kubectl-windows/#install-kubectl-binary-using-curl">here</a> and add it to your system's PATH.<br />
+          Once you've installed kubectl, please click Reconnect Cluster.
         </code>
       </pre>
+      <button onClick={() => dispatch(kubectlSet)}>
+        Reconnect Cluster
+      </button>
     </div>
-  );
+  ); 
 };
 
 export default KubectlInst;

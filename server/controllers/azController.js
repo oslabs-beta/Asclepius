@@ -75,13 +75,15 @@ const azController = {
       shell: true,
     });
     console.log(result);
+    if (result.stderr) {
+      return next({
+        log: `azLogin has caught an error with the result of "az login", ${result.stderr}`,
+        status: 500,
+        message: { err: 'An error occured'},
+      })
+    }
     return next();
   },
-
-
-
-
-
 
 
   azCredentials: (req, res, next) => {

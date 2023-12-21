@@ -4,7 +4,7 @@ export const userSlice = createSlice({
   name: "user",
   //intial states should be what?
   initialState: {
-    kubectl: true,
+    kubectl: false,
     showPrompt: false,
     cloudInfo: false,
     localInfo: false,

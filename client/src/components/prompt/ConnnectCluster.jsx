@@ -8,7 +8,10 @@ import {
   localInfo,
   aksForm,
   aksInput,
+  aksCLIInfo,
 } from "../../redux/slices/userSlice.js";
+import LocalInst from "./LocalInst.jsx"
+import AzCLIInst from "./AzCLIInst.jsx"
 
 function ConnectCluster() {
   const dispatch = useDispatch();
@@ -19,6 +22,7 @@ function ConnectCluster() {
   const local = useSelector((state) => state.user.localInfo);
   const aks = useSelector((state) => state.user.aksForm);
   const aksInfo = useSelector((state) => state.user.aksInfo.clusterName);
+  const aksCLI = useSelector((state) => state.user.aksCLI)
 
   const getData = () => {
     fetch(`http://localhost:3000/getData`)
@@ -40,12 +44,20 @@ function ConnectCluster() {
   };
 
   const AKSfetch = () => {
-    fetch("http://localhost:3000/azlogin").then((response) => {
+    fetch("http://localhost:3000/azlogin")
+    .then((response) => {
+      console.log('this is response in AKS FETCH:', response.status)
       if (response.status === 200) {
         console.log("we did it!!!!");
+        dispatch(aksCLIInfo())
         dispatch(aksForm());
+      } else if (response.status === 404) {
+        dispatch(aksCLIInfo());
       }
-    });
+      })
+    .catch((err) => {
+      console.log(`This is error in AKS fetch: ${err}`)
+    })
   };
 
   //Handles submitting of aks info form
@@ -71,29 +83,36 @@ function ConnectCluster() {
 
   return (
     <div>
+
       {show ? (
-        <span>
-          <button
-            onClick={() => {
-              dispatch(cloudInfo());
-              dispatch(showPrompt());
-            }}
-          >
-            Connect to Cloud Cluster
-          </button>
-          <button
-            onClick={() => {
-              dispatch(localInfo());
-              dispatch(showPrompt());
-            }}
-          >
-            Connect to Local Cluster
-          </button>
-        </span>
+        <span id="buttonSpan">
+        <button
+        className="newButton" role="button"
+          onClick={() => {
+            dispatch(cloudInfo());
+            dispatch(showPrompt());
+          }}
+        >
+          Connect to Cloud Cluster
+        </button>
+        <button
+        className="newButton" role="button"
+          onClick={() => {
+            dispatch(localInfo());
+            dispatch(showPrompt());
+          }}
+        >
+          Connect to Local Cluster
+        </button>
+      </span>
       ) : null}
+
       {cloud ? (
         <div>
+          {aksCLI ? <AzCLIInst/> : null}
           <button
+          id="aksButton"
+          className="newButton" role="button"
             onClick={() => {
               dispatch(cloudInfo());
               AKSfetch();
@@ -103,21 +122,20 @@ function ConnectCluster() {
           </button>
         </div>
       ) : null}
+
       {local ? (
         <div>
-          <h1>
-            Connection to local cluster failed. Please make sure your kubectl
-            config file is in place.
-          </h1>
+          <LocalInst/>
         </div>
       ) : null}
+
       {aks ? (
         <div>
           <form onSubmit={aksSubmit}>
             <label>Cluster Name:</label>
-            <input type="text" name="clusterName" />
+            <input type="text" name="clusterName" className="inputBox" />
             <label>Resource Group Name:</label>
-            <input type="text" name="resourceGroup" />
+            <input type="text" name="resourceGroup" className="inputBox"/>
             <button type="submit">Save Cluster Info</button>
             <hr />
           </form>
@@ -129,10 +147,11 @@ function ConnectCluster() {
           ) : null}
         </div>
       ) : null}
-      <button onClick={() => getData()}>Render Node Map</button>
+
+      <button id="renderButton" className="newButton" onClick={() => getData()}>Render Node Map</button>
+
     </div>
   );
 }
-
 
 export default ConnectCluster;

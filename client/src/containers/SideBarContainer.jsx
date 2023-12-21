@@ -1,14 +1,15 @@
 import React from "react";
-import ClusterConnect from "../components/ClusterConnect.jsx";
+import AsclepiusLogo from "./AsclepiusLogo.png";
 
 function SideBarContainer() {
-    
-    return (
-        <div id='SideBarContainer'>
-            <div id="asclepius">Asclepius</div>
-            <ClusterConnect />
-        </div>
-    )
+  return (
+    <div id='SideBarContainer'>
+     
+      <div id="logocontainer">
+      <img id="asclepiusLogo" src={AsclepiusLogo} alt="Asclepius logo" />
+      </div>
+    </div>
+  );
 }
 
 export default SideBarContainer;

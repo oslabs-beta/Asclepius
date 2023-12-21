@@ -2,9 +2,10 @@ import { createSlice } from "@reduxjs/toolkit";
 
 export const userSlice = createSlice({
   name: "user",
+  //intial states should be what?
   initialState: {
     kubectl: true,
-    dontShowPrompt: true,
+    showPrompt: false,
     cloudInfo: false,
     localInfo: false,
     aksForm: false,
@@ -13,6 +14,7 @@ export const userSlice = createSlice({
       resourceGroup: "",
     },
   },
+
   reducers: {
     kubectlSet: (state) => {
       if (!state.kubectl) {
@@ -22,10 +24,10 @@ export const userSlice = createSlice({
       }
       return state;
     },
-    dontShowPrompt: (state) => {
-      if (state.dontShowPrompt === true) {
-        state.dontShowPrompt = false;
-      } else state.dontShowPrompt = true;
+    showPrompt: (state) => {
+      if (state.showPrompt === true) {
+        state.showPrompt = false;
+      } else state.showPrompt = true;
     },
     cloudInfo: (state) => {
       if (state.cloudInfo === true) {
@@ -52,7 +54,7 @@ export const userSlice = createSlice({
 
 export const {
   kubectlSet,
-  dontShowPrompt,
+  showPrompt,
   cloudInfo,
   localInfo,
   aksForm,

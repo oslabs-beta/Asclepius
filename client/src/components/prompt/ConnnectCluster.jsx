@@ -1,23 +1,25 @@
 import React, { useRef, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setData } from "../../redux/slices/nodeSlice.js";
-import { kubectlSet } from "../../redux/slices/userSlice.js";
-import { dontShowPrompt } from "../../redux/slices/userSlice.js";
-import { cloudInfo } from "../../redux/slices/userSlice.js";
-import { localInfo } from "../../redux/slices/userSlice.js";
-import { aksForm } from "../../redux/slices/userSlice.js";
-import { aksInput } from "../../redux/slices/userSlice.js";
+import {
+  kubectlSet,
+  showPrompt,
+  cloudInfo,
+  localInfo,
+  aksForm,
+  aksInput,
+} from "../../redux/slices/userSlice.js";
 
 function ConnectCluster() {
   const dispatch = useDispatch();
-  const show = useSelector((state) => state.user.dontShowPrompt);
-  console.log("dont show prompt", dontShowPrompt);
+  const show = useSelector((state) => state.user.showPrompt);
 
   //Booleans from state to conditionally render elements in the return statement
   const cloud = useSelector((state) => state.user.cloudInfo);
   const local = useSelector((state) => state.user.localInfo);
   const aks = useSelector((state) => state.user.aksForm);
   const aksInfo = useSelector((state) => state.user.aksInfo.clusterName);
+
   const getData = () => {
     fetch(`http://localhost:3000/getData`)
       .then((data) => data.json())
@@ -26,7 +28,7 @@ function ConnectCluster() {
         if (data === false) {
           dispatch(kubectlSet());
         } else if (data.clusterName === "") {
-          dispatch(dontShowPrompt());
+          dispatch(showPrompt());
         } else {
           console.log("correctly sending back data");
           dispatch(setData(data));
@@ -69,12 +71,12 @@ function ConnectCluster() {
 
   return (
     <div>
-      {show ? null : (
+      {show ? (
         <span>
           <button
             onClick={() => {
               dispatch(cloudInfo());
-              dispatch(dontShowPrompt());
+              dispatch(showPrompt());
             }}
           >
             Connect to Cloud Cluster
@@ -82,13 +84,13 @@ function ConnectCluster() {
           <button
             onClick={() => {
               dispatch(localInfo());
-              dispatch(dontShowPrompt());
+              dispatch(showPrompt());
             }}
           >
             Connect to Local Cluster
           </button>
         </span>
-      )}
+      ) : null}
       {cloud ? (
         <div>
           <button

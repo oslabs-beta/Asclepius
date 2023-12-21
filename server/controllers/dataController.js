@@ -1,6 +1,8 @@
 const { spawn, spawnSync } = require("child_process");
+const os = require("os");
 const dataController = {
   kubectlInstall: (req, res, next) => {
+    console.log("os arch", os.arch());
     const version = spawnSync("kubectl", ["version"], {
       encoding: "utf-8",
       shell: true,

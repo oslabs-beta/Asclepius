@@ -9,11 +9,8 @@ export const userSlice = createSlice({
     cloudInfo: false,
     localInfo: false,
     aksForm: false,
-    aksInfo: {
-      clusterName: "",
-      resourceGroup: "",
-    },
-    aksCLI: false
+    aksResult: null,
+    aksCLI: false,
   },
 
   reducers: {
@@ -46,9 +43,8 @@ export const userSlice = createSlice({
       } else state.aksForm = true;
     },
     aksInput: (state, action) => {
-      state.aksInfo.clusterName = action.payload.clusterName;
-      state.aksInfo.resourceGroup = action.payload.resourceGroup;
-      console.log("set aks info");
+      console.log(action.payload);
+      state.aksResult = action.payload;
     },
     aksCLIInfo: (state) => {
       if (state.aksCLI === true) {
@@ -65,7 +61,7 @@ export const {
   localInfo,
   aksForm,
   aksInput,
-  aksCLIInfo
+  aksCLIInfo,
 } = userSlice.actions;
 
 export default userSlice.reducer;

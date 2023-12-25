@@ -10,8 +10,8 @@ import {
   aksInput,
   aksCLIInfo,
 } from "../../redux/slices/userSlice.js";
-import LocalInst from "./LocalInst.jsx"
-import AzCLIInst from "./AzCLIInst.jsx"
+import LocalInst from "./LocalInst.jsx";
+import AzCLIInst from "./AzCLIInst.jsx";
 
 function ConnectCluster() {
   const dispatch = useDispatch();
@@ -21,8 +21,8 @@ function ConnectCluster() {
   const cloud = useSelector((state) => state.user.cloudInfo);
   const local = useSelector((state) => state.user.localInfo);
   const aks = useSelector((state) => state.user.aksForm);
-  const aksInfo = useSelector((state) => state.user.aksInfo.clusterName);
-  const aksCLI = useSelector((state) => state.user.aksCLI)
+  const result = useSelector((state) => state.user.aksResult);
+  const aksCLI = useSelector((state) => state.user.aksCLI);
 
   const getData = () => {
     fetch(`http://localhost:3000/getData`)
@@ -45,19 +45,19 @@ function ConnectCluster() {
 
   const AKSfetch = () => {
     fetch("http://localhost:3000/azlogin")
-    .then((response) => {
-      console.log('this is response in AKS FETCH:', response.status)
-      if (response.status === 200) {
-        console.log("we did it!!!!");
-        dispatch(aksCLIInfo())
-        dispatch(aksForm());
-      } else if (response.status === 404) {
-        dispatch(aksCLIInfo());
-      }
+      .then((response) => {
+        console.log("this is response in AKS FETCH:", response.status);
+        if (response.status === 200) {
+          console.log("we did it!!!!");
+          dispatch(cloudInfo());
+          dispatch(aksForm());
+        } else if (response.status === 404) {
+          dispatch(aksCLIInfo());
+        }
       })
-    .catch((err) => {
-      console.log(`This is error in AKS fetch: ${err}`)
-    })
+      .catch((err) => {
+        console.log(`This is error in AKS fetch: ${err}`);
+      });
   };
 
   //Handles submitting of aks info form
@@ -72,49 +72,49 @@ function ConnectCluster() {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
-    })
-      .then((response) => response.json())
-      .then((response) => {
-        if (response === "success") {
-        }
-      });
-    dispatch(aksInput(data));
+    }).then((response) => {
+      console.log(response);
+      if (response.status === 200) {
+        dispatch(aksInput(true));
+      } else dispatch(aksInput(false));
+    });
   };
 
   return (
     <div>
-
       {show ? (
         <span id="buttonSpan">
-        <button
-        className="newButton" role="button"
-          onClick={() => {
-            dispatch(cloudInfo());
-            dispatch(showPrompt());
-          }}
-        >
-          Connect to Cloud Cluster
-        </button>
-        <button
-        className="newButton" role="button"
-          onClick={() => {
-            dispatch(localInfo());
-            dispatch(showPrompt());
-          }}
-        >
-          Connect to Local Cluster
-        </button>
-      </span>
+          <button
+            className="newButton"
+            role="button"
+            onClick={() => {
+              dispatch(cloudInfo());
+              dispatch(showPrompt());
+            }}
+          >
+            Connect to Cloud Cluster
+          </button>
+          <button
+            className="newButton"
+            role="button"
+            onClick={() => {
+              dispatch(localInfo());
+              dispatch(showPrompt());
+            }}
+          >
+            Connect to Local Cluster
+          </button>
+        </span>
       ) : null}
 
       {cloud ? (
         <div>
-          {aksCLI ? <AzCLIInst/> : null}
+          {aksCLI ? <AzCLIInst /> : null}
           <button
-          id="aksButton"
-          className="newButton" role="button"
+            id="aksButton"
+            className="newButton"
+            role="button"
             onClick={() => {
-              dispatch(cloudInfo());
               AKSfetch();
             }}
           >
@@ -125,7 +125,7 @@ function ConnectCluster() {
 
       {local ? (
         <div>
-          <LocalInst/>
+          <LocalInst />
         </div>
       ) : null}
 
@@ -135,21 +135,40 @@ function ConnectCluster() {
             <label>Cluster Name:</label>
             <input type="text" name="clusterName" className="inputBox" />
             <label>Resource Group Name:</label>
-            <input type="text" name="resourceGroup" className="inputBox"/>
+            <input type="text" name="resourceGroup" className="inputBox" />
             <button type="submit">Save Cluster Info</button>
-            <hr />
           </form>
-          {aksInfo !== "" ? (
+          {result === true ? (
             <div>
               Successfully added a Kube config file, please try to Render Node
               Map!
+              <button
+                id="aksButton"
+                className="newButton"
+                onClick={() => {
+                  dispatch(aksForm());
+                  // dispatch(showPrompt());
+                }}
+              >
+                Done!
+              </button>
             </div>
+          ) : null}
+          {result === false ? (
+            <div>Failed to add a Kube config file, please try again!</div>
           ) : null}
         </div>
       ) : null}
 
-      <button id="renderButton" className="newButton" onClick={() => getData()}>Render Node Map</button>
-
+      {aksCLI || aks || show || local || cloud ? null : (
+        <button
+          id="renderButton"
+          className="newButton"
+          onClick={() => getData()}
+        >
+          Render Node Map
+        </button>
+      )}
     </div>
   );
 }

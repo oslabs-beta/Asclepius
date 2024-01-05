@@ -9,9 +9,11 @@ import {
   aksForm,
   aksInput,
   aksCLIInfo,
+  aws,
 } from "../../redux/slices/userSlice.js";
 import LocalInst from "./LocalInst.jsx";
 import AzCLIInst from "./AzCLIInst.jsx";
+import AwsForm from "./AwsForm.jsx";
 
 function ConnectCluster() {
   const dispatch = useDispatch();
@@ -23,6 +25,7 @@ function ConnectCluster() {
   const aks = useSelector((state) => state.user.aksForm);
   const result = useSelector((state) => state.user.aksResult);
   const aksCLI = useSelector((state) => state.user.aksCLI);
+  const awsForm = useSelector((state) => state.user.awsForm);
 
   const getData = () => {
     fetch(`http://localhost:3000/getData`)
@@ -109,20 +112,37 @@ function ConnectCluster() {
 
       {cloud ? (
         <div>
-          {aksCLI ? <AzCLIInst /> : null}
-          <button
-            id="aksButton"
-            className="newButton"
-            role="button"
-            onClick={() => {
-              AKSfetch();
-            }}
-          >
-            Connect to AKS-hosted Cluster
-          </button>
+          <div>
+            {aksCLI ? <AzCLIInst /> : null}
+            <button
+              id="aksButton"
+              className="newButton"
+              role="button"
+              onClick={() => {
+                AKSfetch();
+              }}
+            >
+              Connect to AKS-hosted Cluster
+            </button>
+          </div>
+          <div>
+            {/* {awsCLI ? <AwsCLIInst /> : null} */}
+
+            <button
+              id="awsButton"
+              className="newButton"
+              role="button"
+              onClick={() => {
+                dispatch(aws());
+                dispatch(cloudInfo());
+              }}
+            >
+              Connect to AWS-hosted Cluster
+            </button>
+          </div>
         </div>
       ) : null}
-
+      {awsForm ? <AwsForm /> : null}
       {local ? (
         <div>
           <LocalInst />
@@ -160,7 +180,7 @@ function ConnectCluster() {
         </div>
       ) : null}
 
-      {aksCLI || aks || show || local || cloud ? null : (
+      {aksCLI || aks || show || local || cloud || awsForm ? null : (
         <button
           id="renderButton"
           className="newButton"

@@ -120,6 +120,7 @@
   font-weight: 600;
   line-height: normal;
   margin: 0;
+  margin-bottom: 20px;
   min-height: 60px;
   min-width: 0;
   outline: none;
@@ -187,7 +188,8 @@
 label {
   color: #6082b6;
 }
-input[type="text"] {
+input[type="text"],
+input[type="password"] {
   border: 2px solid black;
   color: #6082b6;
   display: block;
@@ -212,9 +214,9 @@ button[type="submit"] {
   background-color: #6082b6;
 }
 
-#aksButton {
+/* #aksButton {
   margin-left: 70px;
-}
+} */
 
 #localButton {
   margin-left: 70px;

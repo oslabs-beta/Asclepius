@@ -12,56 +12,6 @@ const azController = {
     return next();
   },
 
-  //Function to install Azure CLI
-  //need to test
-  installAzureCli: (req, res, next) => {
-    //return to install info page for MVP
-
-    if (res.locals.azInstalled === true) {
-      return next();
-    } else console.log("Azure CLI is not installed. Installing...");
-    // const result = spawnSync(
-    //   "curl",
-    //   ["-sL", "https://aka.ms/InstallAzureCLIDeb | sudo bash"],
-    //   { encoding: "utf-8", shell: true }
-    // );
-
-    //PC AZ CLI INSTALL
-
-    // const result = spawnSync(
-    //   'powershell.exe',
-    //   [
-    //     '-Command',
-    //     'Invoke-WebRequest -Uri https://aka.ms/InstallAzureCliWindows -OutFile azure_installer.ps1; ./azure_installer.ps1',
-    //   ],
-    //   { encoding: 'utf-8', shell: true }
-    // )
-    // if (result.status === 0) {
-    //   console.log('Azure CLI has been successfully installed.');
-    // } else {
-    //   console.error('Error installing Azure CLI:', result.error || result.stderr);
-    // }
-    // console.log("azCLI result:", result)
-
-    // if (result.stderr) {
-    //   console.error("Failed to install Azure CLI:", result.stderr);
-
-    //INSTALL azure-cli with brew for MAC OR LINUX
-    //   const result = spawnSync(
-    //     'brew',
-    //     ['install', 'azure-cli'],
-    //     { encoding: 'utf-8', shell: true }
-    //   );
-
-    //   if (result.status === 0) {
-    //     console.log('Azure CLI has been successfully installed.');
-    //   } else {
-    //     console.error('Error installing Azure CLI:', result.error || result.stderr);
-    //   }
-    // }
-    return next();
-  },
-
   azLogin: (req, res, next) => {
     if (res.locals.azInstalled === false) {
       return next();

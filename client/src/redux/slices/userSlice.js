@@ -11,6 +11,7 @@ export const userSlice = createSlice({
     aksForm: false,
     aksResult: null,
     aksCLI: false,
+    awsForm: false,
   },
 
   reducers: {
@@ -51,6 +52,11 @@ export const userSlice = createSlice({
         state.aksCLI = false;
       } else state.aksCLI = true;
     },
+    aws: (state) => {
+      if (state.awsForm === true) {
+        state.awsForm = false;
+      } else state.awsForm = true;
+    },
   },
 });
 
@@ -62,6 +68,7 @@ export const {
   aksForm,
   aksInput,
   aksCLIInfo,
+  aws,
 } = userSlice.actions;
 
 export default userSlice.reducer;

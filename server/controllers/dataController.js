@@ -26,6 +26,7 @@ const dataController = {
     res.locals.data = data;
     return next();
   },
+  
   getNodeData: (req, res, next) => {
     if (res.locals.data.clusterName === "") {
       return next();

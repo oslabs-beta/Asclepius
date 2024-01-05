@@ -116,7 +116,7 @@ const azController = {
       console.log(
         "Error: Cluster name or resource group is incorrect. Please try again."
       );
-    } else if (code[0] === "W") {
+    } else {
       return next();
     }
   },

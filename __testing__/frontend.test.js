@@ -1,16 +1,7 @@
 import userSliceSubject from '../client/src/redux/slices/userSlice';
-// import nodeSliceSubject from '../client/src/redux/slices/nodeSlice'
+import { kubectlSet, showPrompt }  from '../client/src/redux/slices/userSlice';
+import store from '../client/src/redux/store';
 
-function add(a, b) {
-    return a + b;
-}
-
-describe('5 + 6', () => {
-    it('should return the answer of 11', () => {
-        const result = add(5, 6)
-        expect(result).toEqual(11)
-    })
-})
 
 describe('Test Redux Reducers', () => {
     let state;
@@ -31,10 +22,32 @@ describe('Test Redux Reducers', () => {
     })
 
 
-    describe('default state', () => {
+    describe('default state action not defined', () => {
       it('should return default state if nothing is passed in', () => {
         expect(userSliceSubject(undefined, {type: undefined})).toEqual(state);
       });
     });
-    
+
+    describe('unrecognized action types', () => {
+      it('should return the original with no duplicates', () => {
+        const action = {type: 'kolaandhugh'};
+        expect(userSliceSubject(state, action)).toBe(state);
+      })
+    })
+
+    describe('showPrompt action', () => {
+      it ('should return the showPrompt property in state as changed', () => {
+        const action = {type: showPrompt};
+        expect(userSliceSubject(state, action)).not.toBe(state);
+      })
+    })
+
+    describe('kubectl action alpha', () => {
+      it ('should return the kubectl property in state as changed', () => {
+        const action = {type: kubectlSet};
+        const newState = userSliceSubject(state, action)
+        expect(newState).not.toEqual(state);
+      })
+    })
+
 })

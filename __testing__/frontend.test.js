@@ -42,12 +42,11 @@ describe('Test Redux Reducers', () => {
       })
     })
 
-    describe('kubectl action alpha', () => {
+    describe('kubectl action', () => {
       it ('should return the kubectl property in state as changed', () => {
         const action = {type: kubectlSet};
         const newState = userSliceSubject(state, action)
         expect(newState).not.toEqual(state);
       })
     })
-
 })

@@ -44,6 +44,6 @@ app.use((err, req, res, next) => {
 })
 
 //listen for port
-app.listen(PORT) //, () => console.log(`Server listening on port: ${PORT}`));
+app.listen(PORT, () => console.log(`Server listening on port: ${PORT}`));
 
 export default app;

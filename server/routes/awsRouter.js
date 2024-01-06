@@ -7,6 +7,7 @@ awsRouter.post(
   "/",
   awsController.isAWSCLIInstalled,
   awsController.awsConfigure,
+  awsController.awsMetrics,
   (req, res) => {
     if (res.locals.awsInstalled === true) {
       console.log("hello");

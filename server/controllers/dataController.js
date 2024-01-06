@@ -2,7 +2,7 @@ const { spawn, spawnSync } = require("child_process");
 const os = require("os");
 const dataController = {
   kubectlInstall: (req, res, next) => {
-    console.log("os arch", os.arch());
+    // console.log("os arch", os.arch());
     const version = spawnSync("kubectl", ["version"], {
       encoding: "utf-8",
       shell: true,
@@ -26,6 +26,7 @@ const dataController = {
     res.locals.data = data;
     return next();
   },
+  
   getNodeData: (req, res, next) => {
     if (res.locals.data.clusterName === "") {
       return next();
@@ -44,7 +45,7 @@ const dataController = {
 
       // Extract matches using the regular expression
       const matches = el.match(regex);
-
+      console.log("matches", matches)
       // Create an array with the 5 captured strings
 
       const resultArray = matches ? matches.slice(1) : [];

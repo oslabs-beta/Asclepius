@@ -1,4 +1,4 @@
-module.exports = {
-  testEnvironment: 'node',
-  forceExit: true,
-}
+// module.exports = {
+//   testEnvironment: 'node',
+//   forceExit: true,
+// }

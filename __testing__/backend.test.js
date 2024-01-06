@@ -18,4 +18,14 @@ describe('Server Route Testing', () => {
         })
     })
 
-})
+    describe('Get Data Route', () => {
+        
+        describe('GET request to /getdata', () => {
+            it('Should return false for no kubectl installed', async () => {
+                const res = await request(app).get('/getdata');
+                expect(res.statusCode).toBe(200);
+                expect(res.body).toBe(false);
+            });
+        });
+    });
+});

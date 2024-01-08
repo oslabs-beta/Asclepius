@@ -28,10 +28,12 @@ const AwsForm = () => {
       if (response.status === 200) {
         setForm(false);
         setAuth(true);
+        setMessage(null);
       } else if (response.status === 404) {
         console.log("done");
         setForm(false);
         setInstall(true);
+        setMessage(null);
         console.log(Install);
       } else
         setMessage("Configure failed: Please verify form inputs and try again");
@@ -81,7 +83,6 @@ const AwsForm = () => {
         <button
           onClick={() => {
             setInstall(false);
-            setAuth(true);
           }}
         >
           AWS CLI Installed

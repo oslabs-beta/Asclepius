@@ -8,9 +8,9 @@ export const nodeSlice = createSlice({
   },
   reducers: {
     setData: (state, action) => {
-      console.log("we shouldn't be here");
-      state = action.payload;
-      return state;
+      // state = action.payload;
+      // return state;
+      return {...state, clusterName:action.payload.clusterName, nodes: action.payload.nodes}
     },
   },
 });

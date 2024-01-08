@@ -16,12 +16,19 @@ export const userSlice = createSlice({
 
   reducers: {
     kubectlSet: (state) => {
-      if (!state.kubectl) {
-        state.kubectl = true;
-      } else {
-        state.kubectl = false;
-      }
-      return state;
+      // if (!state.kubectl) {
+      //   state.kubectl = true;
+      // } else {
+      //   state.kubectl = false;
+      // }
+      // return state;
+
+      const newState = { ...state };
+
+      // Toggle the value of kubectl
+      newState.kubectl = !newState.kubectl;
+  
+      return newState;
     },
     showPrompt: (state) => {
       if (state.showPrompt === true) {

@@ -54,7 +54,7 @@ function NodeMap() {
 
     const group = svg
       .append("g")
-      .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+      .attr("transform", "translate(" + width / 1.65 + "," + height / 2 + ")");
 
     const simulation = d3
       .forceSimulation(nodes)

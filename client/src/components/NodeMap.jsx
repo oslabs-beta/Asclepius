@@ -1,16 +1,16 @@
 import React, { useRef, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import * as d3 from "d3";
-import {setData} from "../redux/slices/nodeSlice.js"
+import { setData } from "../redux/slices/nodeSlice.js";
 
 function NodeMap() {
-  const dispatch = useDispatch()
-  const nodeData = useSelector((state) => state.node.clusterName)
+  const dispatch = useDispatch();
+  const nodeData = useSelector((state) => state.node.clusterName);
 
   useEffect(() => {
     setInterval(() => {
       console.log("firing fetch in setTimeout");
-  
+
       fetch(`http://localhost:3000/getData`)
         .then((data) => data.json())
         .then((data) => {
@@ -35,7 +35,7 @@ function NodeMap() {
     name: node.name,
     color: node.color,
   }));
-  console.log(nodes)
+  console.log(nodes);
   nodes.unshift({ id: 0, name: "Master Node", color: "limegreen" });
 
   const links = nodes.slice(1).map((node) => ({ source: 0, target: node.id }));

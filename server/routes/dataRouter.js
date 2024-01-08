@@ -12,6 +12,7 @@ dataRouter.get(
   "/nodes",
   dataController.getName,
   dataController.getNodeData,
+  dataController.getPodData,
   (req, res) => {
     console.log("final form data", res.locals.data);
     res.json(res.locals.data);

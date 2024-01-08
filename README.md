@@ -38,7 +38,6 @@
     <p>Asclepius was designed to make the user experience of visualizing node health as seamless and abstracted as possible. We accomplish this by guiding you through a series of prompts to successfully add a Kubernetes config file to your local machine. Asclepius currently supports Local and Cloud-hosted Kubernetes deployments. If you are using a cloud platform not supported by Asclepius, please research the necessary steps to get a config file on your system. After this is accomplished, you should be able to visualize your cluster health using the <strong>"Render Node Map"</strong> button.</p>
     <br>
     <p>Asclepius interacts with your local terminal through a <strong>Node.js</strong> method called <strong>"spawnSync"</strong>. As the user works through the series of prompts and checks on the client side, we call spawnSync for a variety of functionality including: Version checks, Login authentication, Configuration and Kubectl metric retrieval commands.</p>
-    <p>
     </div>
   </div>
 </div>

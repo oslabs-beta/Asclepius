@@ -8,20 +8,25 @@ azRouter.get(
   // azController.installAzureCli,
   azController.azLogin,
   (req, res) => {
-    console.log('this is res.locals in azcontroller', res.locals)
+    console.log("this is res.locals in azcontroller", res.locals);
     //prompt user for resource group and cluster name
-    console.log('This is res.locals.isAzureCliInstalled: ', res.locals.azInstalled)
+    console.log(
+      "This is res.locals.isAzureCliInstalled: ",
+      res.locals.azInstalled
+    );
     if (res.locals.azInstalled) {
-      res.status(200).send("success")
+      res.status(200).send("success");
     } else {
-      res.status(404).send("failure")
+      res.status(404).send("failure");
     }
   }
 );
 
 //should come with req.body {name: demoAKS resource-group: aksRG}
 azRouter.post("/", azController.azCredentials, (req, res) => {
-  res.status(200).send("success");
+  if (res.locals.formsuccess === false) {
+    res.status(404).send("failure");
+  } else res.status(200).send("success");
 });
 // dataController.getName,
 module.exports = azRouter;

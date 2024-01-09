@@ -27,7 +27,7 @@ const dataController = {
     console.log("should be name", res.locals.data);
     return next();
   },
-  
+
   getNodeData: (req, res, next) => {
     if (res.locals.data.clusterName === "") {
       return next();
@@ -46,7 +46,7 @@ const dataController = {
 
       // Extract matches using the regular expression
       const matches = el.match(regex);
-      console.log("matches", matches)
+      console.log("matches", matches);
       // Create an array with the 5 captured strings
 
       const resultArray = matches ? matches.slice(1) : [];
@@ -81,6 +81,7 @@ const dataController = {
       return next();
     }
     const nodeData = res.locals.data.nodes;
+    console.log("nodeData array", nodeData);
     console.log("getting pods");
     nodeData.forEach((el) => {
       const nodeName = el.name;
@@ -91,17 +92,17 @@ const dataController = {
           encoding: "utf-8",
         }
       );
-      console.log(podsData);
+      console.log("terminal output", podsData);
       //Regex to extract the node names from output string
-      const podNames = podsData.stdout.match(/^\S+/gm);
-      console.log(podNames);
-      podNames.shift();
+      let podNames = podsData.stdout.match(/^\S+/gm);
+      if (podNames) podNames.shift();
       el.pods = podNames || [];
-      console.log(el.pods);
+      console.log("each node", el);
     });
     //Update res.locals with new Node Data that includes a "pods" key for each node
     console.log(nodeData);
     res.locals.data.nodes = nodeData;
+    console.log(res.locals.data.nodes);
     return next();
   },
 };

@@ -20,6 +20,8 @@ awsRouter.post(
 );
 
 //should come with req.body {name: demoAKS resource-group: aksRG}
-awsRouter.post("/auth", awsController.awsAuthenticate, (req, res) => {});
+awsRouter.post("/auth", awsController.awsAuthenticate, (req, res) => {
+  res.status(200).send("success");
+});
 // dataController.getName,
 module.exports = awsRouter;

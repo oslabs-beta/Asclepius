@@ -3,9 +3,10 @@ import { useSelector, useDispatch } from "react-redux";
 import * as d3 from "d3";
 import {setData, setSidebarData} from "../redux/slices/nodeSlice.js"
 
+
 function NodeMap() {
-  const dispatch = useDispatch()
-  const nodeData = useSelector((state) => state.node.clusterName)
+  const dispatch = useDispatch();
+  const nodeData = useSelector((state) => state.node.clusterName);
 
   const data = useSelector((state) => state.node.nodes)
   const sidebarData = useSelector((state) => state.node.sidebarData)
@@ -34,7 +35,7 @@ function NodeMap() {
   useEffect(() => {
     setInterval(() => {
       console.log("firing fetch in setTimeout");
-  
+
       fetch(`http://localhost:3000/getData`)
         .then((data) => data.json())
         .then((data) => {
@@ -59,7 +60,7 @@ function NodeMap() {
     name: node.name,
     color: node.color,
   }));
-  console.log(nodes)
+  console.log(nodes);
   nodes.unshift({ id: 0, name: "Master Node", color: "limegreen" });
 
   const links = nodes.slice(1).map((node) => ({ source: 0, target: node.id }));

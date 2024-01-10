@@ -30,24 +30,21 @@
     </div>
     <br>
     <div>
+    <h3>Introduction:</h3>
+    <p style="margin-bottom: 0">Asclepius is an open-source K8s node health monitoring service for local or cloud-deployed K8s clusters. Asclepius delivers a simplified dashboard of each K8s node’s health at a glance, with the option to select nodes and display the contained pod list with kubelet supplied data metrics. The Asclepius dashboard updates in near real time to ensure that as soon as any nodes show signs of going down, you and your team can respond accordingly.</p>
     <h3>How to use Asclepius:</h3>
     <h4>Downloading the Source Code:</h4>
-    <p>To get started with Asclepius, first fork the Github repository. Once you have a copy of the repository, clone it onto your machine. After you've cloned the repository into the folder of your choice, open the folder in your code editor and start a new terminal. Make sure that you are cd-d into the root of the project folder and then run "npm install". This might take a while, as all the dependencies needed for Asclepius to run will be downloaded and installed in a new folder called "node_modules".</p>
-    <p>After installing the required dependencies, you should be able to run the command "npm start". This command will spin up the app and open a new page in your default browser; accessing "localhost:8080", where you should now see the Asclepius home page!</p>
-    <p>Once Asclepius is running in your browser, you have access to a button: "Render Node Map". However this button will only populate a map if your Kubernetes cluster is linked to your local machine. You can check this by navigating to the ".kube" folder in your file explorer. Default install location varies by platform.</p>
-    <div style="color: black; background-color: lightgrey; padding: 5px; margin: 0px">
-    <p><strong>Linux:</strong> $HOME/.kube or ~/.kube
-    
-<strong>MacOS:</strong> $HOME/.kube or ~/.kube
-
-<strong>Windows:</strong> C:\Users\<username>\.kube</p>
-
-</div>
-    <p>If this folder doesn't exist, it's likely that you haven't installed "Kubectl". This is a CLI used with Kubernetes to configure, manage, and query Kubernetes clusters.</p>
-    <p>Luckily, Asclepius makes it easy to navigate through this setup process. Please follow the prompts in Asclepius to properly install required CLIs and apply necessary configurations.</p>
-<div style="background-color: lightgrey; padding: 5px; margin: 0px">
-  <h3 style=" margin: 0px; color: black">If you run into any issues or hangups during the configuration process, please try spinning down your instance and restarting the code editor entirely! Asclepius is still in development and some edge cases might not be fully tested yet.</h3>
-</div>
+    <p style="margin-bottom: 0">To get started with Asclepius, clone it onto your machine. After you've cloned the repository into the folder of your choice run:</p>
+    <code>
+    npm install
+    </code>
+    <p style="margin-bottom: 0">After installing the required dependencies, you should be able to run the command:</p>
+    <code>
+    npm start
+    </code>
+    <p>This command will spin up the app and open a new page in your default browser; accessing "localhost:8080", where you should now see the Asclepius home page!</p>
+    <p>Once Asclepius is running in your browser, you have access to a button: "Render Node Map". From here, Asclepius makes it easy to connect either your local or cloud hosted cluster. Please follow the prompts and Asclepius will properly install required CLIs and apply any necessary configurations for you.
+    </p>
 <br>
 <h3>Engineering Philosophy:</h3>
 <p>Asclepius was created to make the user experience of visualizing node health as seamless and abstracted as possible. We accomplish this by guiding you through a series of prompts designed to successfully add a Kubernetes config file to your local machine. Asclepius currently supports local and cloud-hosted Kubernetes deployments. If you are using a cloud platform not supported by Asclepius, please research the necessary steps to get a config file on your system. After this is accomplished, you should also be able to visualize your cluster health using the <strong>"Render Node Map"</strong> button.</p>
@@ -56,6 +53,15 @@
 <p></p>
 </div>
 <br>
+<h3>How to Contribute</h3>
+<p>
+<h4>Branch management</h4>
+Please submit any pull requests to the dev branch. All changes will be reviewed by the team before merging.
+
+<h4>Bugs and suggestions</h4>
+For help with existing issues, please read our GitHub issues page. If you cannot find a relevant topic in the issues page, please file a new issue.
+We welcome all suggestions and feedback!
+</p>
 <h3>Meet the Team</h3>
 <p>Asclepius was created by a development team under the OS-Labs open source tech accelerator.</p>
 <div>

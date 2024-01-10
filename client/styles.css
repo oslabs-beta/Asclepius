@@ -12,8 +12,9 @@
 
 #AppContainer {
   display: flex;
-  height: 96vh;
-  width: 98vw;
+  height: 100vh;
+  width: 100vw;
+  background-color: #7f8c8d;
 }
 #NodeQuickInfo{
   width: 100%;
@@ -45,7 +46,7 @@
   /* background-image: url('https://images.rawpixel.com/image_social_landscape/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIyLTA1L3B4MTM2NjcxMC1pbWFnZS1rd3Z4eGVxcC5qcGc.jpg'); */
   background-size: cover;
   background-repeat: no-repeat;
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: #7f8c8d;
   background-position: center;
   justify-content: center;
   align-items: center;

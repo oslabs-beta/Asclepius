@@ -35,9 +35,9 @@
     <h3>How to use Asclepius:</h3>
     <h4>Downloading the Source Code:</h4>
     <p style="margin-bottom: 0">To get started with Asclepius, clone it onto your machine. After you've cloned the repository into the folder of your choice run:</p>
-    <code>
+    ```sh
     npm install
-    </code>
+    ```
     <p style="margin-bottom: 0">After installing the required dependencies, you should be able to run the command:</p>
     <code>
     npm start

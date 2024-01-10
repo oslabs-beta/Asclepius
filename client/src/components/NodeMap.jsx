@@ -77,7 +77,7 @@ function NodeMap() {
       .attr("class", "link");
 
     //changes the radius of nodes depending on number of nodes rendered
-    const scale = Math.min(40, 400 / nodes.length);
+    const scale = Math.min(70, 280 / nodes.length);
 
     // Create nodes
     const node = group

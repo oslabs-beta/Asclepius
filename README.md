@@ -32,9 +32,9 @@
     <div>
     <h3>How to use Asclepius:</h3>
     <h4>Downloading the Source Code:</h4>
-    <p>To get started with Asclepius, first fork the Github Repository. Once you have a copy of the reposityory, clone it onto your machine. After you've cloned the repository into the folder of your choice, open the folder in your code editor and start a new terminal. Make sure that you are cd'd into the root of the project folder and then run "npm install". This might take a while, as all the dependencies needed for Asclepius to run will be downloaded and installed in a new folder called "node_modules".</p>
-    <p>After installing the required dependencies, you should be able to run the command "npm start". This command will spin up the app and open a new page in your default browser accessing "localhost:8080", where you should now see the Asclepius home page!</p>
-    <p>Once Asclepius is running in your browser, you have access to a button "Render Node Map". However this button will only populate a map if your Kubernetes cluster is linked to your local machine. You can check this by navigating to the ".kube" folder in your file explorer. Default install location varies by platform.</p>
+    <p>To get started with Asclepius, first fork the Github repository. Once you have a copy of the repository, clone it onto your machine. After you've cloned the repository into the folder of your choice, open the folder in your code editor and start a new terminal. Make sure that you are cd-d into the root of the project folder and then run "npm install". This might take a while, as all the dependencies needed for Asclepius to run will be downloaded and installed in a new folder called "node_modules".</p>
+    <p>After installing the required dependencies, you should be able to run the command "npm start". This command will spin up the app and open a new page in your default browser; accessing "localhost:8080", where you should now see the Asclepius home page!</p>
+    <p>Once Asclepius is running in your browser, you have access to a button: "Render Node Map". However this button will only populate a map if your Kubernetes cluster is linked to your local machine. You can check this by navigating to the ".kube" folder in your file explorer. Default install location varies by platform.</p>
     <div style="color: black; background-color: lightgrey; padding: 5px; margin: 0px">
     <p><strong>Linux:</strong> $HOME/.kube or ~/.kube
     
@@ -50,9 +50,9 @@
 </div>
 <br>
 <h3>Engineering Philosophy:</h3>
-<p>Asclepius was created to make the user experience of visualizing node health as seamless and abstracted as possible. We accomplish this by guiding you through a series of prompts designed to successfully add a Kubernetes config file to your local machine. Asclepius currently supports Local and Cloud-hosted Kubernetes deployments. If you are using a cloud platform not supported by Asclepius, please research the necessary steps to get a config file on your system. After this is accomplished, you should still be able to visualize your cluster health using the <strong>"Render Node Map"</strong> button.</p>
+<p>Asclepius was created to make the user experience of visualizing node health as seamless and abstracted as possible. We accomplish this by guiding you through a series of prompts designed to successfully add a Kubernetes config file to your local machine. Asclepius currently supports local and cloud-hosted Kubernetes deployments. If you are using a cloud platform not supported by Asclepius, please research the necessary steps to get a config file on your system. After this is accomplished, you should also be able to visualize your cluster health using the <strong>"Render Node Map"</strong> button.</p>
 <br>
-<p>Asclepius interacts with your local terminal through a <strong>Node.js</strong> method called <strong>"spawnSync"</strong>. As the user works through the series of prompts and checks on the client side, we call spawnSync for a variety of functionality including: Version checks, Login authentication, Configuration and Kubectl metric retrieval commands.</p>
+<p>Asclepius interacts with your local terminal through a <strong>Node.js</strong> method called <strong>"spawnSync"</strong>. As the user works through the series of prompts and checks on the client side, we call spawnSync for a variety of functionality including: version checks, login authentication, configuration and kubectl metric retrieval queries.</p>
 <p></p>
 </div>
 <br>

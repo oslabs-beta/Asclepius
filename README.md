@@ -61,10 +61,6 @@
 <div>
 <h4 style="display: inline-block; margin-right: 20px;">Kola Bamgbose
 </h4>
-<h4 style="display: inline-block; margin-right: 20px;">Cameron Blair
-</h4>
-<h4 style="display: inline-block; margin-right: 20px;">John Norlin</h4>
-</div>
 <div style="display: inline-block; margin-right: 40px;">
 <a href="https://www.linkedin.com/in/kola-b-023383171/">
 <img src="client\src\assets\LinkedIn_icon.svg.png" style="width: 40px"/>
@@ -73,6 +69,8 @@
 <img src="client\src\assets\Github_icon.png" style="background-color: white; width: 36px; padding: 2px"/>
 <a>
 </div>
+<h4 style="display: inline-block; margin-right: 20px;">Cameron Blair
+</h4>
 <div style="display: inline-block; margin-right: 20px;">
 <a href="https://www.linkedin.com/in/cameron-blair-a2aa60259/">
 <img src="client\src\assets\LinkedIn_icon.svg.png" style="width: 40px"/>
@@ -81,6 +79,7 @@
 <img src="client\src\assets\Github_icon.png" style="background-color: white; width: 36px; padding: 2px"/>
 <a>
 </div>
+<h4 style="display: inline-block; margin-right: 20px;">John Norlin</h4>
 <div style="display: inline-block; margin-right: 20px;">
 <a href="https://www.linkedin.com/in/johnwsnorlin/">
 <img src="client\src\assets\LinkedIn_icon.svg.png" style="width: 40px"/>
@@ -89,10 +88,9 @@
 <img src="client\src\assets\Github_icon.png" style="background-color: white; width: 36px; padding: 2px"/>
 <a>
 </div>
+</div>
 <div>
 <h4 style="display: inline-block; margin-right: 20px;">Hugh Stapleton</h4>
-<h4 style="display: inline-block; margin-right: 20px;">Nick Vanderlinden</h4>
-</div>
 <div style="display: inline-block; margin-right: 40px;">
 <a href="https://www.linkedin.com/in/hugh-stapleton-92b44558/">
 <img src="client\src\assets\LinkedIn_icon.svg.png" style="width: 40px"/>
@@ -101,6 +99,7 @@
 <img src="client\src\assets\Github_icon.png" style="background-color: white; width: 36px; padding: 2px"/>
 <a>
 </div>
+<h4 style="display: inline-block; margin-right: 20px;">Nick Vanderlinden</h4>
 <div style="display: inline-block; margin-right: 20px;">
 <a href="https://www.linkedin.com/in/nick-vanderlinden-36329b14a/">
 <img src="client\src\assets\LinkedIn_icon.svg.png" style="width: 40px"/>
@@ -108,6 +107,7 @@
 <a href="https://github.com/nick-vanderlinden">
 <img src="client\src\assets\Github_icon.png" style="background-color: white; width: 36px; padding: 2px"/>
 <a>
+</div>
 </div>
 <br>
 <h2>Current Version</h2>

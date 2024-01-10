@@ -35,13 +35,9 @@
     <h3>How to use Asclepius:</h3>
     <h4>Downloading the Source Code:</h4>
     <p style="margin-bottom: 0">To get started with Asclepius, clone it onto your machine. After you've cloned the repository into the folder of your choice run:</p>
-    ```sh
-    npm install
-    ```
+    <code>npm install</code>
     <p style="margin-bottom: 0">After installing the required dependencies, you should be able to run the command:</p>
-    <code>
-    npm start
-    </code>
+    <code>npm start</code>
     <p>This command will spin up the app and open a new page in your default browser; accessing "localhost:8080", where you should now see the Asclepius home page!</p>
     <p>Once Asclepius is running in your browser, you have access to a button: "Render Node Map". From here, Asclepius makes it easy to connect either your local or cloud hosted cluster. Please follow the prompts and Asclepius will properly install required CLIs and apply any necessary configurations for you.
     </p>

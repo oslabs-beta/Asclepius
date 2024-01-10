@@ -51,8 +51,14 @@ function NodeMapContainer() {
 
   return (
     <div id='NodeMapContainer'>
-      <NodeMapHeader />
-      {stateData === '' ? <Prompt /> : <NodeMap />}
+      {stateData === '' ? (
+        <Prompt />
+      ) : (
+        <>
+          <NodeMapHeader />
+          <NodeMap />
+        </>
+      )}
     </div>
   );
 }

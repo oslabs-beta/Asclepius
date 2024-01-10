@@ -5,6 +5,7 @@ export const nodeSlice = createSlice({
   initialState: {
     clusterName: "",
     nodes: [],
+    sidebarData: {}
   },
   reducers: {
     setData: (state, action) => {
@@ -12,9 +13,14 @@ export const nodeSlice = createSlice({
       // return state;
       return {...state, clusterName:action.payload.clusterName, nodes: action.payload.nodes}
     },
+    setSidebarData: (state, action) => {
+      console.log("action payload", action.payload)
+      state.sidebarData = action.payload;
+      console.log("after dispatch sbData", state.sidebarData)
+    },
   },
 });
 
-export const { setData } = nodeSlice.actions;
+export const { setData, setSidebarData } = nodeSlice.actions;
 
 export default nodeSlice.reducer;

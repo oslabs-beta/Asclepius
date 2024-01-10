@@ -9,21 +9,26 @@ export const userSlice = createSlice({
     cloudInfo: false,
     localInfo: false,
     aksForm: false,
-    aksInfo: {
-      clusterName: "",
-      resourceGroup: "",
-    },
-    aksCLI: false
+    aksResult: null,
+    aksCLI: false,
+    awsForm: false,
   },
 
   reducers: {
     kubectlSet: (state) => {
-      if (!state.kubectl) {
-        state.kubectl = true;
-      } else {
-        state.kubectl = false;
-      }
-      return state;
+      // if (!state.kubectl) {
+      //   state.kubectl = true;
+      // } else {
+      //   state.kubectl = false;
+      // }
+      // return state;
+
+      const newState = { ...state };
+
+      // Toggle the value of kubectl
+      newState.kubectl = !newState.kubectl;
+  
+      return newState;
     },
     showPrompt: (state) => {
       if (state.showPrompt === true) {
@@ -46,14 +51,18 @@ export const userSlice = createSlice({
       } else state.aksForm = true;
     },
     aksInput: (state, action) => {
-      state.aksInfo.clusterName = action.payload.clusterName;
-      state.aksInfo.resourceGroup = action.payload.resourceGroup;
-      console.log("set aks info");
+      console.log(action.payload);
+      state.aksResult = action.payload;
     },
     aksCLIInfo: (state) => {
       if (state.aksCLI === true) {
         state.aksCLI = false;
       } else state.aksCLI = true;
+    },
+    aws: (state) => {
+      if (state.awsForm === true) {
+        state.awsForm = false;
+      } else state.awsForm = true;
     },
   },
 });
@@ -65,7 +74,8 @@ export const {
   localInfo,
   aksForm,
   aksInput,
-  aksCLIInfo
+  aksCLIInfo,
+  aws,
 } = userSlice.actions;
 
 export default userSlice.reducer;

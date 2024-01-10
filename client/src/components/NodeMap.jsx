@@ -1,16 +1,40 @@
 import React, { useRef, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import * as d3 from "d3";
-import {setData} from "../redux/slices/nodeSlice.js"
+import { setData, setSidebarData } from "../redux/slices/nodeSlice.js";
 
 function NodeMap() {
-  const dispatch = useDispatch()
-  const nodeData = useSelector((state) => state.node.clusterName)
+  const dispatch = useDispatch();
+  const nodeData = useSelector((state) => state.node.clusterName);
+
+  const data = useSelector((state) => state.node.nodes);
+  const sidebarData = useSelector((state) => state.node.sidebarData);
+  //shape of data:
+  // const nodeData = {
+  //   name: resultArray[0],
+  //   cpuCores: resultArray[1],
+  //   memBytes: resultArray[3],
+  //   cpuPercentage: resultArray[2],
+  //   memPercentage: resultArray[4],
+  //   color: color,
+  //   pods: ["name", "name"]
+  // };
+
+  //healper function takes in node name that was clicked
+  const setSidebar = (name) => {
+    if (name === sidebarData.name || name === "Master Node") {
+      dispatch(setSidebarData({}));
+    } else {
+      const sbData = data.find((el) => el.name === name);
+      console.log("pre-dispatch sbData", sbData);
+      dispatch(setSidebarData(sbData));
+    }
+  };
 
   useEffect(() => {
     setInterval(() => {
       console.log("firing fetch in setTimeout");
-  
+
       fetch(`http://localhost:3000/getData`)
         .then((data) => data.json())
         .then((data) => {
@@ -35,11 +59,12 @@ function NodeMap() {
     name: node.name,
     color: node.color,
   }));
-  console.log(nodes)
-  nodes.unshift({ id: 0, name: "Master Node", color: "limegreen" });
+  console.log(nodes);
+  nodes.unshift({ id: "master", name: "Master Node", color: "limegreen" });
 
-  const links = nodes.slice(1).map((node) => ({ source: 0, target: node.id }));
-  // console.log("This is links:", links);
+  const links = nodes
+    .slice(1)
+    .map((node) => ({ source: nodes[0], target: node }));
 
   const width = 600;
   const height = 300;
@@ -54,7 +79,40 @@ function NodeMap() {
 
     const group = svg
       .append("g")
-      .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+      .attr("transform", "translate(" + width / 1.65 + "," + height / 2 + ")");
+
+    const centerX = width / 2.5;
+    const centerY = height / 5;
+
+    const offset = 100;
+
+    const masterNode = group
+      .append("circle")
+      .attr("class", "node")
+      .attr("r", 70) // Set radius
+      .attr("cx", centerX) // Set X position at the center
+      .attr("cy", centerY) // Set Y position at the center
+      .attr("fill", "limegreen");
+
+    // Create a label for the "Master Node"
+    const masterLabel = group
+      .append("text")
+      .attr("class", "label")
+      .attr("dy", 4)
+      .attr("text-anchor", "middle")
+      .attr("x", centerX) // Set X position at the center
+      .attr("y", centerY) // Set Y position at the center
+      .text("Master Node");
+
+    // const workerNodes = nodes.slice(1);
+    // const numWorkers = workerNodes.length;
+    // const workerSpacing = 2 * offset;
+    // const workerStartX = centerX - ((numWorkers - 1) * workerSpacing) / 2;
+
+    // workerNodes.forEach((worker, index) => {
+    //   worker.x = workerStartX + index * workerSpacing;
+    //   worker.y = centerY + offset;
+    // });
 
     const simulation = d3
       .forceSimulation(nodes)
@@ -63,7 +121,7 @@ function NodeMap() {
         d3
           .forceLink(links)
           .id((d) => d.id)
-          .distance(150)
+          .distance(300)
       )
       .force("charge", d3.forceManyBody().strength(-200))
       .force("center", d3.forceCenter(height, width / 2))
@@ -74,7 +132,9 @@ function NodeMap() {
       .data(links)
       .enter()
       .append("line")
-      .attr("class", "link");
+      .attr("class", "link")
+      .attr("stroke-width", 20)
+      .attr("stroke", "black");
 
     //changes the radius of nodes depending on number of nodes rendered
     const scale = Math.min(70, 280 / nodes.length);
@@ -87,7 +147,13 @@ function NodeMap() {
       .append("circle")
       .attr("class", "node")
       .attr("r", scale)
-      .attr("fill", (d) => d.color);
+      .attr("fill", (d) => d.color)
+      .on("click", function (event, d) {
+        //call helper function
+        //d.id should be a string node name
+        setSidebar(d.name);
+        // console.log("nodewas clicked", d.name)
+      });
     const label = group
       .selectAll(".label")
       .data(nodes)
@@ -100,16 +166,16 @@ function NodeMap() {
 
     function ticked() {
       link
-        .attr("x1", (d) => d.source.y)
-        .attr("y1", (d) => d.source.x)
-        .attr("x2", (d) => d.target.y)
-        .attr("y2", (d) => d.target.x);
+        .attr("x1", (d) => (d.source === nodes[0] ? centerX : d.source.x))
+        .attr("y1", (d) => (d.source === nodes[0] ? centerY : d.source.y))
+        .attr("x2", (d) => (d.target === nodes[0] ? centerX : d.target.x))
+        .attr("y2", (d) => (d.target === nodes[0] ? centerY : d.target.y));
 
-      node.attr("cx", (d) => d.y).attr("cy", (d) => d.x);
+      node.attr("cx", (d) => d.x).attr("cy", (d) => d.y);
 
-      label.attr("x", (d) => d.y).attr("y", (d) => d.x);
+      label.attr("x", (d) => d.x).attr("y", (d) => d.y);
     }
-  }, [nodes, links]);
+  }, [nodes, links, dispatch]);
 
   return (
     <div id="NodeMapContainer">

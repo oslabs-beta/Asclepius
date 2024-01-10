@@ -3,8 +3,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import * as d3 from 'd3';
 import { setData, setSidebarData } from '../redux/slices/nodeSlice.js';
 
-
-
 function NodeMap() {
   const dispatch = useDispatch()
   const nodeData = useSelector((state) => state.node.clusterName)
@@ -12,7 +10,9 @@ function NodeMap() {
   const data = useSelector((state) => state.node.nodes);
   const sidebarData = useSelector((state) => state.node.sidebarData);
   //shape of data:
-
+=======
+   //shape of data:
+>>>>>>> ea9007bc837686f06b370f4b2c7c14a421baca22
   // const nodeData = {
   //   name: resultArray[0],
   //   cpuCores: resultArray[1],
@@ -37,7 +37,7 @@ function NodeMap() {
   useEffect(() => {
     setInterval(() => {
       console.log('firing fetch in setTimeout');
-  
+
       fetch(`http://localhost:3000/getData`)
         .then((data) => data.json())
         .then((data) => {
@@ -62,15 +62,18 @@ function NodeMap() {
     name: node.name,
     color: node.color,
   }));
-
   console.log(nodes);
   nodes.unshift({ id: 0, name: 'Master Node', color: 'grey' });
 
   const links = nodes
     .slice(1)
     .map((node) => ({ source: nodes[0], target: node.id }));
+=======
+  console.log(nodes)
+  nodes.unshift({ id: 0, name: "Master Node", color: "grey" });
 
-
+  const links = nodes.slice(1).map((node) => ({ source: nodes[0], target: node.id }));
+>>>>>>> ea9007bc837686f06b370f4b2c7c14a421baca22
   // console.log("This is links:", links);
 
   const width = 200;
@@ -90,7 +93,10 @@ function NodeMap() {
         'transform',
         'translate(' + width / 1.25 + ',' + 500 + ')rotate(-70)'
       );
-
+=======
+      .append("g")
+      .attr("transform", "translate(" + width / 1.65 + "," + height / 2 + ")");
+>>>>>>> ea9007bc837686f06b370f4b2c7c14a421baca22
 
     const simulation = d3
       .forceSimulation(nodes)
@@ -109,12 +115,16 @@ function NodeMap() {
       .selectAll('.link')
       .data(links)
       .enter()
-
       .append('line')
       .attr('class', 'link')
       .style('stroke', 'black')
       .attr('opacity', 1);
-
+=======
+      .append("line")
+      .attr("class", "link") 
+      .style("stroke", "black")
+      .attr("opacity", 1);
+>>>>>>> ea9007bc837686f06b370f4b2c7c14a421baca22
 
     //changes the radius of nodes depending on number of nodes rendered
     const scale = Math.min(70, 280 / nodes.length);

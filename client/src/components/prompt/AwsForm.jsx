@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import AwsCLIInst from "./AwsCLIInst.jsx";
+import { dispatch } from "d3";
+import { aws } from "../../redux/slices/userSlice.js";
 
 const AwsForm = () => {
   const [IDVisible, setIDVisible] = useState(false);
@@ -53,6 +55,8 @@ const AwsForm = () => {
     }).then((response) => {
       console.log(response);
       if (response.status === 200) {
+        console.log("hi");
+        dispatch(aws());
       } else {
       }
     });

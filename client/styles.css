@@ -9,7 +9,9 @@
   margin: 0;
   padding: 0;
 } */
-
+#link{
+  color: black;
+}
 #AppContainer {
   display: flex;
   height: 100vh;

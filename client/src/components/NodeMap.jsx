@@ -1,13 +1,8 @@
-
 import React, { useRef, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import * as d3 from 'd3';
 import { setData, setSidebarData } from '../redux/slices/nodeSlice.js';
-=======
-import React, { useRef, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import * as d3 from "d3";
-import { setData, setSidebarData } from "../redux/slices/nodeSlice.js"
+
 
 
 function NodeMap() {
@@ -16,11 +11,7 @@ function NodeMap() {
 
   const data = useSelector((state) => state.node.nodes);
   const sidebarData = useSelector((state) => state.node.sidebarData);
-
-
   //shape of data:
-
-   //shape of data:
 
   // const nodeData = {
   //   name: resultArray[0],
@@ -32,7 +23,7 @@ function NodeMap() {
   //   pods: ["name", "name"]
   // };
 
-  //healper function takes in node name that was clicked
+  //helper function takes in node name that was clicked
   const setSidebar = (name) => {
     if (name === sidebarData.name || name === 'Master Node') {
       dispatch(setSidebarData({}));
@@ -46,8 +37,6 @@ function NodeMap() {
   useEffect(() => {
     setInterval(() => {
       console.log('firing fetch in setTimeout');
-
-      console.log("firing fetch in setTimeout");
   
       fetch(`http://localhost:3000/getData`)
         .then((data) => data.json())
@@ -81,10 +70,6 @@ function NodeMap() {
     .slice(1)
     .map((node) => ({ source: nodes[0], target: node.id }));
 
-  console.log(nodes)
-  nodes.unshift({ id: 0, name: "Master Node", color: "grey" });
-
-  const links = nodes.slice(1).map((node) => ({ source: nodes[0], target: node.id }));
 
   // console.log("This is links:", links);
 
@@ -100,15 +85,12 @@ function NodeMap() {
       .attr('width', width);
 
     const group = svg
-
       .append('g')
       .attr(
         'transform',
-        'translate(' + width / 1.75 + ',' + 500 + ')rotate(-45)'
+        'translate(' + width / 1.25 + ',' + 500 + ')rotate(-70)'
       );
 
-      .append("g")
-      .attr("transform", "translate(" + width / 1.65 + "," + height / 2 + ") rotate (360)");
 
     const simulation = d3
       .forceSimulation(nodes)
@@ -133,15 +115,10 @@ function NodeMap() {
       .style('stroke', 'black')
       .attr('opacity', 1);
 
-      .append("line")
-      .attr("class", "link") 
-      .style("stroke", "black")
-      .attr("opacity", 1);
-
 
     //changes the radius of nodes depending on number of nodes rendered
     const scale = Math.min(70, 280 / nodes.length);
-
+    const maxFontSize = scale * 0.8;
     // Create nodes
     const node = group
       .selectAll('.node')
@@ -165,8 +142,12 @@ function NodeMap() {
       .attr('class', 'label')
       .attr('dy', 4)
       .attr('text-anchor', 'middle')
-      .attr('transform', 'rotate(45)')
       .text((d) => d.name);
+
+//       nodes.forEach((d, i) => {
+//   const labelNode = label.nodes([i]);
+//   d.label = labelNode; 
+// });
 
     function ticked() {
       link
@@ -175,14 +156,13 @@ function NodeMap() {
         .attr('x2', (d) => d.target.x)
         .attr('y2', (d) => d.target.y);
 
-        .attr("x1", (d) => d.source.x)
-        .attr("y1", (d) => d.source.y)
-        .attr("x2", (d) => d.target.x)
-        .attr("y2", (d) => d.target.y);
-
       node.attr('cx', (d) => d.x).attr('cy', (d) => d.y);
 
       label.attr('x', (d) => d.x).attr('y', (d) => d.y);
+      label.attr('transform', (d) => `rotate(70, ${d.x}, ${d.y})`)
+      label.style('font-size', () => {
+        return Math.min(maxFontSize, 10);
+      })
     }
   }, [nodes, links, dispatch]);
 

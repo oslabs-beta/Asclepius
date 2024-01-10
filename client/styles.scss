@@ -1,78 +1,102 @@
-/* html, body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-}
-
-#root {
-  height: 95%;
-  margin: 0;
-  padding: 0;
-} */
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=Play:wght@400;700&display=swap');
 
 #AppContainer {
   display: flex;
   height: 100vh;
   width: 100vw;
-  background-color: #058790;
-}
-#NodeQuickInfo{
-  width: 100%;
-  /* height: 50px; */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: black;
+  overflow: auto;
 }
 
 #SideBarContainer {
   flex: 0.2;
   height: 100%;
   color: #020000;
-  border: 2px solid #6082b6;
+  border: 5px solid #000000;
   border-radius: 10px;
-  padding: 5px;
-  padding-top: 15px;
-  /* background-color: #5f5c5c; */
-  background: rgb(35, 162, 162);
+  background: #6082b6;
+  #asclepiusText {
+    font-family: 'Comfortaa', sans-serif;
+    font-size: 40px;
+    font-weight: 700;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  #Sidebarsection {
+    height: 100px;
+    color: white;
+    background-color: #5575a4;
+    align-self: center;
+    padding: 2px;
+    border: 1px #000000;
+    #sidebarName {
+      background-color: rgb(165, 202, 239);
+      border: 3px solid black;
+      color: black;
+      border-radius: 10px;
+      padding: 10px;
+    }
+    #metrics {
+      padding-top: 5px;
+      padding-bottom: 5px;
+      border: 2px solid black;
+      border-radius: 10px;
+      display: flex;
+      table {
+        width: 100%;
+        table-layout: fixed;
+      }
+      th {
+        width: 50%;
+        text-align: left;
+      }
+    }
+  }
 }
 
 #NodeMapContainer {
   flex: 0.9;
   height: 100%;
-  /* border: 2px solid rgb(0, 0, 0); */
+  border: 5px solid #000000;
   border-radius: 10px;
   padding: 0px;
   /* background-image: url('https://images.rawpixel.com/image_social_landscape/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIyLTA1L3B4MTM2NjcxMC1pbWFnZS1rd3Z4eGVxcC5qcGc.jpg'); */
   background-size: cover;
   background-repeat: no-repeat;
-  background-color: #70a6ab;
+  background-color: #dddddd;
   background-position: center;
   justify-content: center;
-  align-items: center;
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 3px;
 }
-
-#NodeMap {
+#innerNodeMapContainer {
+  flex: 0.9;
   height: 100%;
-  width: 100%;
-  /* border: 2px solid rgb(0, 0, 0); */
-  border-radius: 0px;
-  align-content: center;
+  border: none;
+  border-radius: 10px;
+  padding: 0px;
+  /* background-image: url('https://images.rawpixel.com/image_social_landscape/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIyLTA1L3B4MTM2NjcxMC1pbWFnZS1rd3Z4eGVxcC5qcGc.jpg'); */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: #dddddd;
+  background-position: center;
   display: flex;
   justify-content: center;
-}
-
-#Sidebarsection {
-  height: 100px;
-  background-color: slategray;
-  align-self: center;
-  padding: 2px;
-  border: 1px #000000;
+  align-items: center;
+  #NodeMap {
+    border: 0px;
+    height: 100%;
+    width: 100%;
+    align-content: center;
+    display: flex;
+    justify-content: center;
+  }
 }
 
 #ClusterConnect {
-  /*width: 100px;*/
   height: 100px;
   background-color: rgba(154, 205, 50, 0.7);
   border: 1px solid black;
@@ -89,7 +113,6 @@
 }
 
 .node {
-  /* fill: #3498db; */
   stroke: #2980b9;
   stroke-width: 2px;
 }
@@ -123,8 +146,8 @@
   color: #3b3b3b;
   cursor: pointer;
   display: inline-block;
-  font-family: Roobert, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica,
-    Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-family: Roobert, -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica,
+    Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
   font-size: 16px;
   font-weight: 600;
   line-height: normal;
@@ -142,22 +165,19 @@
   touch-action: manipulation;
   width: 75%;
   will-change: transform;
-}
-
-.newButton:disabled {
-  pointer-events: none;
-}
-
-.newButton:hover {
-  color: #fff;
-  background-color: #1a1a1a;
-  box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
-  transform: translateY(-2px);
-}
-
-.newButton:active {
-  box-shadow: none;
-  transform: translateY(0);
+  .newButton:disabled {
+    pointer-events: none;
+  }
+  .newButton:hover {
+    color: #fff;
+    background-color: #1a1a1a;
+    box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+    transform: translateY(-2px);
+  }
+  .newButton:active {
+    box-shadow: none;
+    transform: translateY(0);
+  }
 }
 
 #renderButton {
@@ -167,11 +187,10 @@
   justify-content: auto;
   margin-top: 20px;
   margin-left: 70px;
-}
-
-#renderButton:hover {
-  color: #fff;
-  background-color: #6082b6;
+  #renderButton:hover {
+    color: #fff;
+    background-color: #6082b6;
+  }
 }
 
 #buttonSpan {
@@ -182,23 +201,23 @@
 
 #logocontainer {
   width: 100%;
-  /* height: 50px; */
   display: flex;
   justify-content: center;
   align-items: center;
-}
-#asclepiusLogo {
-  width: 103%;
-  height: 103%;
-  background-color: transparent;
-  border: none;
+  #asclepiusLogo {
+    width: 103%;
+    height: 103%;
+    background-color: transparent;
+    border: none;
+  }
 }
 
 label {
   color: #6082b6;
 }
-input[type="text"],
-input[type="password"] {
+
+input[type='text'],
+input[type='password'] {
   border: 2px solid black;
   color: #6082b6;
   display: block;
@@ -208,7 +227,7 @@ input[type="password"] {
   margin-left: 70px;
 }
 
-button[type="submit"] {
+button[type='submit'] {
   border: 2px solid #6082b6;
   color: #6082b6;
   display: block;
@@ -216,16 +235,11 @@ button[type="submit"] {
   margin-top: 20px;
   margin-bottom: 20px;
   margin-left: 70px;
+  #button[type='submit']:hover {
+    color: #fff;
+    background-color: #6082b6;
+  }
 }
-
-#button[type="submit"]:hover {
-  color: #fff;
-  background-color: #6082b6;
-}
-
-/* #aksButton {
-  margin-left: 70px;
-} */
 
 #localButton {
   margin-left: 70px;

@@ -1,12 +1,15 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React from 'react';
+import { useSelector } from 'react-redux';
 
 function Sidebarsection() {
   const data = useSelector((state) => state.node.sidebarData);
   return (
-    <div id="Sidebarsection">
-      <div>
-        <h2>{data.name}</h2>
+    <div id='Sidebarsection'>
+      <div id='sidebarName'>
+        <h2>Cluster Name:</h2>
+        <h4>{data.name}</h4>
+      </div>
+      <div className='metrics'>
         <table>
           <thead>
             <tr>
@@ -21,7 +24,8 @@ function Sidebarsection() {
             </tr>
           </tbody>
         </table>
-
+      </div>
+      <div className='metrics'>
         <table>
           <thead>
             <tr>
@@ -36,14 +40,13 @@ function Sidebarsection() {
             </tr>
           </tbody>
         </table>
-
-        <h3>Pods:</h3>
-        <ul>
-          {data.pods.map((pod, index) => (
-            <li key={index}>{pod}</li>
-          ))}
-        </ul>
       </div>
+      <h3>Pods:</h3>
+      <ul>
+        {data.pods.map((pod, index) => (
+          <li key={index}>{pod}</li>
+        ))}
+      </ul>
     </div>
   );
 }

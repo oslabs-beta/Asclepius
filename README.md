@@ -58,11 +58,57 @@
 <br>
 <h3>Meet the Team</h3>
 <p>Asclepius was created by a development team under the OS-Labs open source tech accelerator.</p>
-<h4>Kola Bamgbose</h4>
-<h4>Cameron Blair</h4>
-<h4>John Norlin</h4>
-<h4>Hugh Stapleton</h4>
-<h4>Nick Vanderlinden</h4>
+<div>
+<h4 style="display: inline-block; margin-right: 20px;">Kola Bamgbose
+</h4>
+<h4 style="display: inline-block; margin-right: 20px;">Cameron Blair
+</h4>
+<h4 style="display: inline-block; margin-right: 20px;">John Norlin</h4>
+</div>
+<div style="display: inline-block; margin-right: 40px;">
+<a href="https://www.linkedin.com/in/kola-b-023383171/">
+<img src="client\src\assets\LinkedIn_icon.svg.png" style="width: 40px"/>
+<a>
+<a href="https://github.com/kbamgbosee">
+<img src="client\src\assets\Github_icon.png" style="background-color: white; width: 36px; padding: 2px"/>
+<a>
+</div>
+<div style="display: inline-block; margin-right: 20px;">
+<a href="https://www.linkedin.com/in/cameron-blair-a2aa60259/">
+<img src="client\src\assets\LinkedIn_icon.svg.png" style="width: 40px"/>
+<a>
+<a href="https://github.com/CamB975">
+<img src="client\src\assets\Github_icon.png" style="background-color: white; width: 36px; padding: 2px"/>
+<a>
+</div>
+<div style="display: inline-block; margin-right: 20px;">
+<a href="https://www.linkedin.com/in/johnwsnorlin/">
+<img src="client\src\assets\LinkedIn_icon.svg.png" style="width: 40px"/>
+<a>
+<a href="https://github.com/johnnorlin">
+<img src="client\src\assets\Github_icon.png" style="background-color: white; width: 36px; padding: 2px"/>
+<a>
+</div>
+<div>
+<h4 style="display: inline-block; margin-right: 20px;">Hugh Stapleton</h4>
+<h4 style="display: inline-block; margin-right: 20px;">Nick Vanderlinden</h4>
+</div>
+<div style="display: inline-block; margin-right: 40px;">
+<a href="https://www.linkedin.com/in/hugh-stapleton-92b44558/">
+<img src="client\src\assets\LinkedIn_icon.svg.png" style="width: 40px"/>
+<a>
+<a href="https://github.com/tackleshaft">
+<img src="client\src\assets\Github_icon.png" style="background-color: white; width: 36px; padding: 2px"/>
+<a>
+</div>
+<div style="display: inline-block; margin-right: 20px;">
+<a href="https://www.linkedin.com/in/nick-vanderlinden-36329b14a/">
+<img src="client\src\assets\LinkedIn_icon.svg.png" style="width: 40px"/>
+<a>
+<a href="https://github.com/nick-vanderlinden">
+<img src="client\src\assets\Github_icon.png" style="background-color: white; width: 36px; padding: 2px"/>
+<a>
+</div>
 <br>
 <h2>Current Version</h2>
 <h3>Alpha: v0.1.0</h3>

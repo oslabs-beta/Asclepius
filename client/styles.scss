@@ -26,23 +26,31 @@
   #Sidebarsection {
     height: 100px;
     color: white;
-    background-color: #5575a4;
+    background-color: #6082b6;
     align-self: center;
     padding: 2px;
     border: 1px #000000;
+    font-family: 'Play', sans-serif;
     #sidebarName {
-      background-color: rgb(165, 202, 239);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 5px;
+      margin-top: 5px;
+      background-color: #6082b6;
       border: 3px solid black;
-      color: black;
       border-radius: 10px;
-      padding: 10px;
     }
-    #metrics {
+    .metrics {
       padding-top: 5px;
       padding-bottom: 5px;
       border: 2px solid black;
       border-radius: 10px;
       display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 5px;
       table {
         width: 100%;
         table-layout: fixed;
@@ -72,6 +80,23 @@
   align-items: center;
   margin-left: 3px;
 }
+#NodeMapHeaderDiv {
+  justify-self: flex-start;
+  max-height: 200px;
+  width: 100%;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-family: 'Play', sans-serif;
+  font-size: 30px;
+  font-weight: 550;
+}
+#underline {
+  text-decoration: underline;
+  margin-bottom: 5px;
+}
+
 #innerNodeMapContainer {
   flex: 0.9;
   height: 100%;
@@ -110,6 +135,7 @@
   font-size: 24px;
   color: rgb(68, 134, 68);
   text-align: center;
+  margin-bottom: 10px;
 }
 
 .node {

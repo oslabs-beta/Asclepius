@@ -10,7 +10,7 @@ function SideBarContainer() {
   console.log('should be false', sidebarData);
   return (
     <div id='SideBarContainer'>
-      <div id='logocontainer'>
+      <div id='logocontainer' style={{ display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
         <img id='asclepiusLogo' src={AsclepiusLogo} alt='Asclepius logo' />
       </div>
       <div id='asclepiusText'>Asclepius</div>

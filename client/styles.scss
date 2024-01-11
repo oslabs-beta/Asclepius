@@ -14,6 +14,7 @@
   border: 5px solid #000000;
   border-radius: 10px;
   background: #6082b6;
+  overflow: scroll;
   #asclepiusText {
     font-family: "Comfortaa", sans-serif;
     font-size: 40px;
@@ -64,7 +65,7 @@
 }
 
 #NodeMapContainer {
-  flex: 0.9;
+  flex: 0.79;
   height: 100%;
   border: 5px solid #000000;
   border-radius: 10px;

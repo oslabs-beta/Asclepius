@@ -3,7 +3,7 @@
 <h3>Kubernetes Cluster health monitoring tool</h3>
 
 <a href="link to splash page" >
-  <img alt="html5" src="client\src\assets\AsclepiusLogoOld.png" style="width: 150px" />
+  <img alt="html5" src="client\src\assets\FullhorizontalAsclepius.png" style="padding-left: 5px; height: 32px; background-color: whitesmoke; padding-right: 5px; padding-bottom: 5px;" />
 </a>
 <a href="https://medium.com/@osasclepius/fbe705188af0" >
   <img alt="html5" src="https://miro.medium.com/v2/resize:fit:8978/1*s986xIGqhfsN8U--09_AdA.png" style="width: 150px; background-color: whitesmoke" />
@@ -63,6 +63,7 @@ We welcome all suggestions and feedback!
 <div>
 <h4 style="display: inline-block; margin-right: 20px;">Kola Bamgbose
 </h4>
+<img src="client\src\assets\headshots\kola.png" style="width: 75px;">
 <div style="display: inline-block; margin-right: 40px;">
 <a href="https://www.linkedin.com/in/kola-b-023383171/" target="_blank">
 <img src="client\src\assets\LinkedIn_icon.svg.png" style="width: 40px"/>
@@ -73,6 +74,7 @@ We welcome all suggestions and feedback!
 </div>
 <h4 style="display: inline-block; margin-right: 20px;">Cameron Blair
 </h4>
+<img src="client\src\assets\headshots\cam.png" style="width: 75px;">
 <div style="display: inline-block; margin-right: 20px;">
 <a href="https://www.linkedin.com/in/cameron-blair-a2aa60259/" target="_blank">
 <img src="client\src\assets\LinkedIn_icon.svg.png" style="width: 40px"/>
@@ -82,6 +84,7 @@ We welcome all suggestions and feedback!
 <a>
 </div>
 <h4 style="display: inline-block; margin-right: 20px;">John Norlin</h4>
+<img src="client\src\assets\headshots\john.png" style="width: 75px;">
 <div style="display: inline-block; margin-right: 20px;">
 <a href="https://www.linkedin.com/in/johnwsnorlin/" target="_blank">
 <img src="client\src\assets\LinkedIn_icon.svg.png" style="width: 40px"/>
@@ -93,6 +96,7 @@ We welcome all suggestions and feedback!
 </div>
 <div>
 <h4 style="display: inline-block; margin-right: 20px;">Hugh Stapleton</h4>
+<img src="client\src\assets\headshots\hugh.png" style="width: 75px;">
 <div style="display: inline-block; margin-right: 40px;">
 <a href="https://www.linkedin.com/in/hugh-stapleton-92b44558/" target="_blank">
 <img src="client\src\assets\LinkedIn_icon.svg.png" style="width: 40px"/>
@@ -102,6 +106,7 @@ We welcome all suggestions and feedback!
 <a>
 </div>
 <h4 style="display: inline-block; margin-right: 20px;">Nick Vanderlinden</h4>
+<img src="client\src\assets\headshots\nick.png" style="width: 75px;">
 <div style="display: inline-block; margin-right: 20px;">
 <a href="https://www.linkedin.com/in/nick-vanderlinden-36329b14a/" target="_blank">
 <img src="client\src\assets\LinkedIn_icon.svg.png" style="width: 40px"/>

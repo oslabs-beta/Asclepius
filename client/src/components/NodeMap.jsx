@@ -2,6 +2,7 @@ import React, { useRef, useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import * as d3 from 'd3';
 import { setData, setSidebarData } from '../redux/slices/nodeSlice.js';
+import NodeMapHeader from './NodeMapHeader.jsx';
 
 
 function NodeMap() {

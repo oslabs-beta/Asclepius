@@ -6,7 +6,7 @@ function Sidebarsection() {
   return (
     <div id='Sidebarsection'>
       <div id='sidebarName'>
-        <h2>Cluster Name:</h2>
+        <h2>Node Name:</h2>
         <h4>{data.name}</h4>
       </div>
       <div className='metrics'>

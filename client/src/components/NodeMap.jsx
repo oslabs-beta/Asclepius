@@ -14,6 +14,15 @@ function NodeMap() {
   //const [nodePositions, setNodePositions] = useState(nodes.map(node => ({ x: node.x, y: node.y })));
   //shape of data:
   // const nodeData = {
+  //   name: 'aks-agentpool-29810547-vmss000002',
+  //          cpuCores: '161m',
+  //          memBytes: '1439Mi',
+  //          cpuPercentage: '8%',
+  //          memPercentage: '31%',
+  //          color: 'rgb(144, 238, 144)',
+  //          pods: [ 'prometheus-prometheus-node-exporter-77b64' ]
+  //         };
+  // const nodeData = {
   //   name: resultArray[0],
   //   cpuCores: resultArray[1],
   //   memBytes: resultArray[3],
@@ -70,7 +79,7 @@ function NodeMap() {
   //   .map((node) => ({ source: nodes[0], target: node.id }));
 
   const nodes = [
-    { id: 0, name: 'Node 0'},
+    { id: 0, name: 'Master Node'},
     { id: 1, name: 'Node 1' },
     { id: 2, name: 'Node 2' },
     { id: 3, name: 'Node 3' },
@@ -84,9 +93,9 @@ function NodeMap() {
     { id: 11, name: 'Node 11' },
     { id: 12, name: 'Node 12' }, 
     { id: 13, name: 'Node 13' },
-    { id: 14, name: 'Node 14' },
-    { id: 15, name: 'Node 15' },
-    { id: 16, name: 'Node 16' },
+    // { id: 14, name: 'Node 14' },
+    // { id: 15, name: 'Node 15' },
+    // { id: 16, name: 'Node 16' },
 ];
 
 const links = [
@@ -103,12 +112,12 @@ const links = [
     { source: 0, target: 11 },
     { source: 0, target: 12 },
     { source: 0, target: 13 },
-    { source: 0, target: 14 },
-    { source: 0, target: 15 },
-    { source: 0, target: 16 },
+    // { source: 0, target: 14 },
+    // { source: 0, target: 15 },
+    // { source: 0, target: 16 },
 ];
 
-  const width = 200;
+  const width = 350;
   const height = 200;
 
   useEffect(() => {
@@ -123,7 +132,7 @@ const links = [
       .append('g')
       .attr(
         'transform',
-        'translate(' + width / 1.25 + ',' + 500 + ')rotate(-70)'
+        'translate(' + width + ',' + 500 + ')rotate(-70)'
       );
 
 
@@ -191,12 +200,14 @@ const links = [
         switch (nodeId) {
           case 3:
             return 'yellow';
-            case 10:
+            case 9:
             return 'yellow';
-            case 15:
+            case 6:
             return 'yellow';
-          case 16:
+          case 5:
             return 'red';
+          case 0:
+            return 'gray'
           // Add more cases as needed
           default:
             return 'green';

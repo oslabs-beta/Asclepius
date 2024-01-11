@@ -27,7 +27,7 @@ export const userSlice = createSlice({
 
       // Toggle the value of kubectl
       newState.kubectl = !newState.kubectl;
-  
+
       return newState;
     },
     showPrompt: (state) => {
@@ -60,6 +60,7 @@ export const userSlice = createSlice({
       } else state.aksCLI = true;
     },
     aws: (state) => {
+      console.log("auth hits state");
       if (state.awsForm === true) {
         state.awsForm = false;
       } else state.awsForm = true;

@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import AwsCLIInst from "./AwsCLIInst.jsx";
-import { dispatch } from "d3";
 import { aws } from "../../redux/slices/userSlice.js";
+import passwordImage from "../../assets/password-visible-1.png";
 
 const AwsForm = () => {
+  const dispatch = useDispatch();
   const [IDVisible, setIDVisible] = useState(false);
   const [KeyVisible, setKeyVisible] = useState(false);
   const [chooseForm, setForm] = useState(true);
@@ -53,9 +54,11 @@ const AwsForm = () => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
     }).then((response) => {
+      console.log("hi");
+      // dispatch(aws());
       console.log(response);
       if (response.status === 200) {
-        console.log("hi");
+        console.log("auth hits frontend");
         dispatch(aws());
       } else {
       }
@@ -105,8 +108,8 @@ const AwsForm = () => {
           <input type="text" name="profileName" className="inputBox" />
           <label>Region:</label>
           <input type="text" name="region" className="inputBox" />
-          <span>
-            <label>Access Key Id:</label>
+          <label>Access Key Id:</label>
+          <span style={{ display: "flex", alignItems: "center" }}>
             <input
               type={IDVisible ? "text" : "password"}
               name="accessID"
@@ -115,12 +118,23 @@ const AwsForm = () => {
             <button
               type="button"
               onClick={() => togglePasswordVisibility("accessID")}
+              style={{
+                marginLeft: "5px",
+                width: "30px",
+                height: "30px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                border: "none",
+                background: "none",
+                padding: 0,
+              }}
             >
-              Show
+              <img src={passwordImage} style={{ width: "20px" }} alt="Show" />
             </button>
           </span>
-          <span>
-            <label>Secret Access Key:</label>
+          <label>Secret Access Key:</label>
+          <span style={{ display: "flex", alignItems: "center" }}>
             <input
               type={KeyVisible ? "text" : "password"}
               name="accessKey"
@@ -129,8 +143,19 @@ const AwsForm = () => {
             <button
               type="button"
               onClick={() => togglePasswordVisibility("accessKey")}
+              style={{
+                marginLeft: "5px",
+                width: "30px",
+                height: "30px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                border: "none",
+                background: "none",
+                padding: 0,
+              }}
             >
-              Show
+              <img src={passwordImage} style={{ width: "20px" }} alt="Show" />
             </button>
           </span>
           <button type="submit">Configure AWS CLI</button>

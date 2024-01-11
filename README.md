@@ -1,3 +1,5 @@
+
+
 <h1>Asclepius</h1>
 
 <h3>Kubernetes Cluster health monitoring tool</h3>
@@ -41,7 +43,7 @@
     <p>This command will spin up the app and open a new page in your default browser; accessing "localhost:8080", where you should now see the Asclepius home page!</p>
     <p>Once Asclepius is running in your browser, you have access to a button: "Render Node Map". From here, Asclepius makes it easy to connect either your local or cloud hosted cluster. Please follow the prompts and Asclepius will properly install required CLIs and apply any necessary configurations for you.
     </p>
-    <img src="/client/src/assets/Asclepius-11January2024-ezgif.com-video-to-gif-converter.gif.gif" alt="Asclepius GIF" style="width: 100%;">
+    <img src="/client/src/assets/Asclepius-11January2024-ezgif.com-video-to-gif-converter.gif" alt="Asclepius GIF">
 <br>
 <h3>Engineering Philosophy:</h3>
 <p>Asclepius was created to make the user experience of visualizing node health as seamless and abstracted as possible. We accomplish this by guiding you through a series of prompts designed to successfully add a Kubernetes config file to your local machine. Asclepius currently supports local and cloud-hosted Kubernetes deployments. If you are using a cloud platform not supported by Asclepius, please research the necessary steps to get a config file on your system. After this is accomplished, you should also be able to visualize your cluster health using the <strong>"Render Node Map"</strong> button.</p>

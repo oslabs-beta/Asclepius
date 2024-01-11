@@ -1,13 +1,11 @@
-
-
 <h1>Asclepius</h1>
 
 <h3>Kubernetes Cluster health monitoring tool</h3>
 
-<a href="link to splash page" >
+<a href="https://asclepius-io-56712865811b.herokuapp.com/" >
   <img alt="html5" src="client\src\assets\FullhorizontalAsclepius.png" style="padding-left: 5px; height: 32px; background-color: whitesmoke; padding-right: 5px; padding-bottom: 5px;" />
 </a>
-<a href="https://medium.com/@osasclepius/fbe705188af0" >
+<a href="https://medium.com/@osasclepius/introducing-asclepius-fbe705188af0">
   <img alt="html5" src="https://miro.medium.com/v2/resize:fit:8978/1*s986xIGqhfsN8U--09_AdA.png" style="width: 150px; background-color: whitesmoke" />
 </a>
 <hr>

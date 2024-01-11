@@ -14,7 +14,7 @@ export const nodeSlice = createSlice({
     //   color: 'red',
     //   pods: ['pod_1','pod_2','pod_3',]
     //   }],
-    nodes: [],
+    // nodes: [],
     sidebarData: {},
   },
   //make a bunch of copies: each with a new name, and

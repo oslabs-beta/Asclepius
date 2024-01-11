@@ -56,56 +56,56 @@ function NodeMap() {
   const stateData = useSelector((state) => state.node);
 
   //iterating through stateData to define nodes and links
-  const nodes = stateData.nodes.map((node, ix) => ({
-    id: ix + 1,
-    name: node.name,
-    color: node.color,
-  }));
-  console.log(nodes);
-  nodes.unshift({ id: 0, name: 'Master Node', color: 'grey' });
+  // const nodes = stateData.nodes.map((node, ix) => ({
+  //   id: ix + 1,
+  //   name: node.name,
+  //   color: node.color,
+  // }));
+  // console.log(nodes);
+  // nodes.unshift({ id: 0, name: 'Master Node', color: 'grey' });
 
-  const links = nodes
-    .slice(1)
-    .map((node) => ({ source: nodes[0], target: node.id }));
+  // const links = nodes
+  //   .slice(1)
+  //   .map((node) => ({ source: nodes[0], target: node.id }));
 
-//   const nodes = [
-//     { id: 0, name: 'Node 0'},
-//     { id: 1, name: 'Node 1' },
-//     { id: 2, name: 'Node 2' },
-//     { id: 3, name: 'Node 3' },
-//     { id: 4, name: 'Node 4' },
-//     { id: 5, name: 'Node 5' },
-//     { id: 6, name: 'Node 6' },
-//     { id: 7, name: 'Node 7' },
-//     { id: 8, name: 'Node 8' },
-//     { id: 9, name: 'Node 9' },
-//     { id: 10, name: 'Node 10' },
-//     { id: 11, name: 'Node 11' },
-//     { id: 12, name: 'Node 12' }, 
-//     { id: 13, name: 'Node 13' },
-//     { id: 14, name: 'Node 14' },
-//     { id: 15, name: 'Node 15' },
-//     { id: 16, name: 'Node 16' },
-// ];
+  const nodes = [
+    { id: 0, name: 'Node 0'},
+    { id: 1, name: 'Node 1' },
+    { id: 2, name: 'Node 2' },
+    { id: 3, name: 'Node 3' },
+    { id: 4, name: 'Node 4' },
+    { id: 5, name: 'Node 5' },
+    { id: 6, name: 'Node 6' },
+    { id: 7, name: 'Node 7' },
+    { id: 8, name: 'Node 8' },
+    { id: 9, name: 'Node 9' },
+    { id: 10, name: 'Node 10' },
+    { id: 11, name: 'Node 11' },
+    { id: 12, name: 'Node 12' }, 
+    { id: 13, name: 'Node 13' },
+    { id: 14, name: 'Node 14' },
+    { id: 15, name: 'Node 15' },
+    { id: 16, name: 'Node 16' },
+];
 
-// const links = [
-//     { source: 0, target: 1 },
-//     { source: 0, target: 2 },
-//     { source: 0, target: 3 },
-//     { source: 0, target: 4 },
-//     { source: 0, target: 5 },
-//     { source: 0, target: 6 },
-//     { source: 0, target: 7 },
-//     { source: 0, target: 8 },
-//     { source: 0, target: 9 },
-//     { source: 0, target: 10 },
-//     { source: 0, target: 11 },
-//     { source: 0, target: 12 },
-//     { source: 0, target: 13 },
-//     { source: 0, target: 14 },
-//     { source: 0, target: 15 },
-//     { source: 0, target: 16 },
-// ];
+const links = [
+    { source: 0, target: 1 },
+    { source: 0, target: 2 },
+    { source: 0, target: 3 },
+    { source: 0, target: 4 },
+    { source: 0, target: 5 },
+    { source: 0, target: 6 },
+    { source: 0, target: 7 },
+    { source: 0, target: 8 },
+    { source: 0, target: 9 },
+    { source: 0, target: 10 },
+    { source: 0, target: 11 },
+    { source: 0, target: 12 },
+    { source: 0, target: 13 },
+    { source: 0, target: 14 },
+    { source: 0, target: 15 },
+    { source: 0, target: 16 },
+];
 
   const width = 200;
   const height = 200;
@@ -150,7 +150,7 @@ function NodeMap() {
 
 
     //changes the radius of nodes depending on number of nodes rendered
-    const scale = Math.min(70, 7000 / nodes.length);
+    const scale = Math.min(70, 490 / nodes.length);
     const maxFontSize = scale * 0.6;
     // Create nodes
     const node = group
@@ -161,7 +161,8 @@ function NodeMap() {
       .attr('class', 'node')
       .attr('r', scale)
       .style('stroke', 'black')
-      .attr('fill', (d) => d.color)
+      .attr('fill', (d) => getColorBasedOnNodeId(d.id)) 
+      //.attr('fill', (d) => d.color)
       .on('click', function (event, d) {
         //call helper function
         //d.id should be a string node name
@@ -181,6 +182,25 @@ function NodeMap() {
         return Math.min(maxFontSize, 10);
       })
       .text((d) => d.name);
+
+      function getColorBasedOnNodeId(nodeId) {
+        // Add your logic to determine the color based on the node ID
+        // For example, you can use a switch statement or an if-else block
+        // Return the color for the specified node ID
+        switch (nodeId) {
+          case 3:
+            return 'yellow';
+            case 10:
+            return 'yellow';
+            case 15:
+            return 'yellow';
+          case 16:
+            return 'red';
+          // Add more cases as needed
+          default:
+            return 'green';
+        }
+      }
 
 //       nodes.forEach((d, i) => {
 //   const labelNode = label.nodes([i]);

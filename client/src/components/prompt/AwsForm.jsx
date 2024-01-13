@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import AwsCLIInst from "./AwsCLIInst.jsx";
-import { aws } from "../../redux/slices/userSlice.js";
+import { booleanSet } from "../../redux/slices/userSlice.js";
 import passwordImage from "../../assets/password-visible-1.png";
 
 const AwsForm = () => {
@@ -59,7 +59,7 @@ const AwsForm = () => {
       console.log(response);
       if (response.status === 200) {
         console.log("auth hits frontend");
-        dispatch(aws());
+        dispatch(booleanSet("aws"));
       } else {
       }
     });

@@ -13,70 +13,19 @@ export const userSlice = createSlice({
     aksCLI: false,
     awsForm: false,
   },
-
   reducers: {
-    kubectlSet: (state) => {
-      // if (!state.kubectl) {
-      //   state.kubectl = true;
-      // } else {
-      //   state.kubectl = false;
-      // }
-      // return state;
-
-      const newState = { ...state };
-
-      // Toggle the value of kubectl
-      newState.kubectl = !newState.kubectl;
-
-      return newState;
-    },
-    showPrompt: (state) => {
-      if (state.showPrompt === true) {
-        state.showPrompt = false;
-      } else state.showPrompt = true;
-    },
-    cloudInfo: (state) => {
-      if (state.cloudInfo === true) {
-        state.cloudInfo = false;
-      } else state.cloudInfo = true;
-    },
-    localInfo: (state) => {
-      if (state.localInfo === true) {
-        state.localInfo = false;
-      } else state.localInfo = true;
-    },
-    aksForm: (state) => {
-      if (state.aksForm === true) {
-        state.aksForm = false;
-      } else state.aksForm = true;
+    //dispatch(booleanSet(cloudInfo))
+    booleanSet: (state, action) => {
+      let bool = action.payload;
+      state[bool] = !state[bool];
     },
     aksInput: (state, action) => {
       console.log(action.payload);
       state.aksResult = action.payload;
     },
-    aksCLIInfo: (state) => {
-      if (state.aksCLI === true) {
-        state.aksCLI = false;
-      } else state.aksCLI = true;
-    },
-    aws: (state) => {
-      console.log("auth hits state");
-      if (state.awsForm === true) {
-        state.awsForm = false;
-      } else state.awsForm = true;
-    },
   },
 });
 
-export const {
-  kubectlSet,
-  showPrompt,
-  cloudInfo,
-  localInfo,
-  aksForm,
-  aksInput,
-  aksCLIInfo,
-  aws,
-} = userSlice.actions;
+export const { aksInput, booleanSet } = userSlice.actions;
 
 export default userSlice.reducer;

@@ -1,32 +1,18 @@
 import React, { useRef, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setData } from "../../redux/slices/nodeSlice.js";
-import {
-  kubectlSet,
-  showPrompt,
-  cloudInfo,
-  localInfo,
-  aksForm,
-  aksInput,
-  aksCLIInfo,
-  aws,
-} from "../../redux/slices/userSlice.js";
+import { booleanSet, aksInput } from "../../redux/slices/userSlice.js";
 import LocalInst from "./LocalInst.jsx";
 import AzCLIInst from "./AzCLIInst.jsx";
 import AwsForm from "./AwsForm.jsx";
-
 
 function ConnectCluster() {
   const dispatch = useDispatch();
   const show = useSelector((state) => state.user.showPrompt);
 
   //Booleans from state to conditionally render elements in the return statement
-  const cloud = useSelector((state) => state.user.cloudInfo);
-  const local = useSelector((state) => state.user.localInfo);
-  const aks = useSelector((state) => state.user.aksForm);
-  const result = useSelector((state) => state.user.aksResult);
-  const aksCLI = useSelector((state) => state.user.aksCLI);
-  const awsForm = useSelector((state) => state.user.awsForm);
+  const { cloudInfo, localInfo, aksForm, aksResult, aksCLI, awsForm } =
+    useSelector((state) => state.user);
 
   const getData = () => {
     fetch(`http://localhost:3000/getData`)
@@ -34,9 +20,9 @@ function ConnectCluster() {
       .then((data) => {
         console.log("this is the data I need: ", data);
         if (data === false) {
-          dispatch(kubectlSet());
+          dispatch(booleanSet("kubectlSet"));
         } else if (data.clusterName === "") {
-          dispatch(showPrompt());
+          dispatch(booleanSet("showPrompt"));
         } else {
           console.log("correctly sending back data");
           dispatch(setData(data));
@@ -53,10 +39,10 @@ function ConnectCluster() {
         console.log("this is response in AKS FETCH:", response.status);
         if (response.status === 200) {
           console.log("we did it!!!!");
-          dispatch(cloudInfo());
-          dispatch(aksForm());
+          dispatch(booleanSet("cloudInfo"));
+          dispatch(booleanSet("aksForm"));
         } else if (response.status === 404) {
-          dispatch(aksCLIInfo());
+          dispatch(booleanSet("aksCLIInfo"));
         }
       })
       .catch((err) => {
@@ -92,8 +78,8 @@ function ConnectCluster() {
             className="newButton"
             role="button"
             onClick={() => {
-              dispatch(cloudInfo());
-              dispatch(showPrompt());
+              dispatch(booleanSet("cloudInfo"));
+              dispatch(booleanSet("showPrompt"));
             }}
           >
             Connect to Cloud Cluster
@@ -102,8 +88,8 @@ function ConnectCluster() {
             className="newButton"
             role="button"
             onClick={() => {
-              dispatch(localInfo());
-              dispatch(showPrompt());
+              dispatch(booleanSet("localInfo"));
+              dispatch(booleanSet("showPrompt"));
             }}
           >
             Connect to Local Cluster
@@ -111,7 +97,7 @@ function ConnectCluster() {
         </span>
       ) : null}
 
-      {cloud ? (
+      {cloudInfo ? (
         <div>
           <div>
             {aksCLI ? <AzCLIInst /> : null}
@@ -134,8 +120,8 @@ function ConnectCluster() {
               className="newButton"
               role="button"
               onClick={() => {
-                dispatch(aws());
-                dispatch(cloudInfo());
+                dispatch(booleanSet("awsForm"));
+                dispatch(booleanSet("cloudInfo"));
               }}
             >
               Connect to AWS-hosted Cluster
@@ -144,13 +130,13 @@ function ConnectCluster() {
         </div>
       ) : null}
       {awsForm ? <AwsForm /> : null}
-      {local ? (
+      {localInfo ? (
         <div>
           <LocalInst />
         </div>
       ) : null}
 
-      {aks ? (
+      {aksForm ? (
         <div>
           <form onSubmit={aksSubmit}>
             <label>Cluster Name:</label>
@@ -159,7 +145,7 @@ function ConnectCluster() {
             <input type="text" name="resourceGroup" className="inputBox" />
             <button type="submit">Save Cluster Info</button>
           </form>
-          {result === true ? (
+          {aksResult === true ? (
             <div>
               Successfully added a Kube config file, please try to Render Node
               Map!
@@ -167,7 +153,7 @@ function ConnectCluster() {
                 id="aksButton"
                 className="newButton"
                 onClick={() => {
-                  dispatch(aksForm());
+                  dispatch(booleanSet("aksForm"));
                   // dispatch(showPrompt());
                 }}
               >
@@ -175,13 +161,13 @@ function ConnectCluster() {
               </button>
             </div>
           ) : null}
-          {result === false ? (
+          {aksResult === false ? (
             <div>Failed to add a Kube config file, please try again!</div>
           ) : null}
         </div>
       ) : null}
 
-      {aksCLI || aks || show || local || cloud || awsForm ? null : (
+      {aksCLI || aksForm || show || localInfo || cloudInfo || awsForm ? null : (
         <button
           id="renderButton"
           className="newButton"

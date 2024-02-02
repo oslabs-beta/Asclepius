@@ -1,7 +1,11 @@
-@import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=Play:wght@400;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=Play:wght@400;700&display=swap');
+body {
+  margin: 0px;
+}
 
 #AppContainer {
   display: flex;
+  justify-content: flex-end;
   height: 100vh;
   width: 100vw;
   overflow: auto;
@@ -11,17 +15,21 @@
   flex: 0.2;
   height: 100%;
   color: #020000;
-  border: 5px solid #000000;
   border-radius: 10px;
   background: #6082b6;
+  position: fixed;
+  left: 0;
+  top: 0;
   #asclepiusText {
-    font-family: "Comfortaa", sans-serif;
-    font-size: 40px;
+    font-family: 'Comfortaa', sans-serif;
+    font-size: 2.2rem;
     font-weight: 700;
     color: white;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: space-between;
+    align-items: space-between;
+    margin-top: 20px;
+    margin-right: 13px;
   }
   #Sidebarsection {
     height: 100px;
@@ -30,7 +38,7 @@
     align-self: center;
     padding: 2px;
     border: 1px #000000;
-    font-family: "Play", sans-serif;
+    font-family: 'Play', sans-serif;
     #sidebarName {
       display: flex;
       flex-direction: column;
@@ -64,33 +72,29 @@
 }
 
 #NodeMapContainer {
-  flex: 0.9;
-  height: 100%;
-  border: 5px solid #000000;
-  border-radius: 10px;
-  padding: 0px;
-  /* background-image: url('https://images.rawpixel.com/image_social_landscape/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIyLTA1L3B4MTM2NjcxMC1pbWFnZS1rd3Z4eGVxcC5qcGc.jpg'); */
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-color: #dddddd;
-  background-position: center;
-  justify-content: center;
+  flex: 0.8;
   display: flex;
+  justify-self: flex-end;
+  justify-content: flex-end;
   flex-direction: column;
   align-items: center;
-  margin-left: 3px;
 }
 #NodeMapHeaderDiv {
+  top: 0;
+  position: fixed;
+  right: 0;
   justify-self: flex-start;
   max-height: 200px;
-  width: 100%;
+  width: 80.4%;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  font-family: "Play", sans-serif;
+  font-family: 'Play', sans-serif;
   font-size: 30px;
   font-weight: 550;
+  color: #fff;
+  background: #6082b6;
 }
 #underline {
   text-decoration: underline;
@@ -103,7 +107,7 @@
   width: 100%;
   border: none;
   border-radius: 10px;
-  padding: 0px;
+  justify-self: flex-end;
   /* background-image: url('https://images.rawpixel.com/image_social_landscape/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIyLTA1L3B4MTM2NjcxMC1pbWFnZS1rd3Z4eGVxcC5qcGc.jpg'); */
   background-size: cover;
   background-repeat: no-repeat;
@@ -173,8 +177,8 @@
   color: #3b3b3b;
   cursor: pointer;
   display: inline-block;
-  font-family: Roobert, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica,
-    Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-family: Roobert, -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica,
+    Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
   font-size: 16px;
   font-weight: 600;
   line-height: normal;
@@ -229,15 +233,15 @@
 #logocontainer {
   width: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
   #asclepiusLogo {
-    width: 103%;
-    height: 103%;
+    width: 4rem;
+    height: 4rem;
     background-color: transparent;
     border: none;
-    margin-left: 22px;
-    margin-top: 10px;
+    margin-left: 5px;
+    margin-top: 5px;
   }
 }
 
@@ -245,8 +249,8 @@ label {
   color: #6082b6;
 }
 
-input[type="text"],
-input[type="password"] {
+input[type='text'],
+input[type='password'] {
   border: 2px solid black;
   color: #6082b6;
   display: block;
@@ -256,7 +260,7 @@ input[type="password"] {
   margin-left: 70px;
 }
 
-button[type="submit"] {
+button[type='submit'] {
   border: 2px solid #6082b6;
   color: #6082b6;
   display: block;
@@ -264,7 +268,7 @@ button[type="submit"] {
   margin-top: 20px;
   margin-bottom: 20px;
   margin-left: 70px;
-  #button[type="submit"]:hover {
+  #button[type='submit']:hover {
     color: #fff;
     background-color: #6082b6;
   }

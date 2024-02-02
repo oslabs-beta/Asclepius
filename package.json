@@ -4,7 +4,7 @@
   "description": "Kubernetes cluster health monitoring tool",
   "main": "index.js",
   "scripts": {
-    "start": "concurrently \"nodemon ./server/server.js\" \"webpack-dev-server --mode development --open --hot\"",
+    "start": "concurrently \"nodemon ./server/server.ts\" \"webpack-dev-server --mode development --open --hot\"",
     "build": "webpack --mode production",
     "test": "jest --verbose"
   },
@@ -46,6 +46,7 @@
     "jest": "^29.7.0",
     "jest-environment-jsdom": "^29.7.0",
     "regenerator-runtime": "^0.14.0",
+    "typescript": "^5.3.3",
     "webpack": "^5.89.0",
     "webpack-cli": "^5.1.4",
     "webpack-dev-server": "^4.15.1"

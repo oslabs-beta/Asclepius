@@ -1,4 +1,12 @@
-const { spawn, spawnSync } = require("child_process");
+import { spawn, spawnSync } from "child_process";
+import { Request, Response, NextFunction } from "express";
+
+interface AzController {
+  isAzureCliInstalled: (req: Request, res: Response, next: NextFunction) => void;
+  azLogin: (req: Request, res: Response, next: NextFunction) => void;
+  azCredentials: (req: Request, res: Response, next: NextFunction) => void;
+}
+
 const azController = {
   isAzureCliInstalled: (req, res, next) => {
     const result = spawnSync("az", ["--version"], {
@@ -22,7 +30,7 @@ const azController = {
     });
     console.log("this is result in azLogin middleware", result);
     if (result.stderr) {
-      stderrresult = result.stderr.split("");
+      let stderrresult = result.stderr.split("");
       //check if the first letter in output for stderr is capital E for Error
       if (result[0] === "E") {
         return next({
@@ -55,7 +63,7 @@ const azController = {
     );
     console.log(result);
     //result.output[2] should be warning not error
-    const code = result.output[2].slice(" ");
+    const code = result.output[2].split(" ");
     console.log("should be status", code[0]);
     if (code[0] === "E") {
       console.log(
@@ -71,4 +79,4 @@ const azController = {
   },
 };
 
-module.exports = azController;
+export = azController;

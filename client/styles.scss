@@ -1,25 +1,76 @@
 @import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=Play:wght@400;700&display=swap");
 body {
-  margin: 0px;
+  margin: 0;
 }
-
 #AppContainer {
-  display: flex;
-  justify-content: flex-end;
+  display: grid;
+  grid-template-columns: auto 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-areas:
+    "sidebar header header header"
+    "sidebar main main main"
+    "sidebar main main main"
+    "sidebar main main main"
+    "sidebar main main main"
+    "sidebar main main main"
+    "sidebar main main main"
+    "sidebar main main main";
   height: 100vh;
   width: 100vw;
-  overflow: auto;
+}
+
+#HeaderContainer {
+  grid-area: header;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  grid-template-areas: "map charts cost";
+  background: #6082b6;
+  #map {
+    grid-area: map;
+    background: inherit;
+    border-radius: 10px;
+  }
+  #charts {
+    grid-area: charts;
+    background: inherit;
+    border-radius: 10px;
+  }
+  #cost {
+    grid-area: cost;
+    background: inherit;
+    border-radius: 10px;
+  }
 }
 
 #SideBarContainer {
-  flex: 0.2;
-  height: 100%;
-  color: #020000;
-  border-radius: 10px;
+  grid-area: sidebar;
   background: #6082b6;
-  position: fixed;
-  left: 0;
-  top: 0;
+  border-style: solid;
+  border-width: 10px;
+  border-left: 0px;
+  border-top: 0px;
+  border-bottom: 10px;
+  border-image: linear-gradient(90deg, rgb(123, 145, 197), #6082b6) 1; /*what is this?? dive in to gradient direction*/
+  #logocontainer {
+    margin: 5px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    border-bottom: 2px solid white;
+    border-right: 2px solid white;
+    border-radius: 10px;
+    padding-bottom: 25px;
+    box-shadow: 2px 2px 4px white;
+    #asclepiusLogo {
+      width: 4rem;
+      height: 4rem;
+      background-color: transparent;
+      border: none;
+      margin-left: 5px;
+      margin-top: 5px;
+    }
+  }
   #asclepiusText {
     font-family: "Comfortaa", sans-serif;
     font-size: 2.2rem;
@@ -31,100 +82,64 @@ body {
     margin-top: 20px;
     margin-right: 13px;
   }
-  #Sidebarsection {
-    height: 100px;
-    color: white;
-    background-color: #6082b6;
-    align-self: center;
-    padding: 2px;
-    border: 1px #000000;
-    font-family: "Play", sans-serif;
-    #sidebarName {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: 5px;
-      margin-top: 5px;
-      background-color: #6082b6;
-      border: 3px solid black;
-      border-radius: 10px;
-    }
-    .metrics {
-      padding-top: 5px;
-      padding-bottom: 5px;
-      border: 2px solid black;
-      border-radius: 10px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-top: 5px;
-      table {
-        width: 100%;
-        table-layout: fixed;
-      }
-      th {
-        width: 50%;
-        text-align: left;
-      }
-    }
-  }
 }
 
 #NodeMapContainer {
-  flex: 0.8;
+  grid-area: main;
   display: flex;
-  justify-self: flex-end;
-  justify-content: flex-end;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  justify-content: center;
-}
-#NodeMapHeaderDiv {
-  top: 0;
-  position: fixed;
-  right: 0;
-  justify-self: flex-start;
-  max-height: 200px;
-  width: 80.4%;
-  border-radius: 10px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  font-family: "Play", sans-serif;
-  font-size: 30px;
-  font-weight: 550;
-  color: #fff;
-  background: #6082b6;
+  background: rgb(123, 145, 197);
+  #NodeMapHeaderDiv {
+    justify-self: flex-start;
+    max-height: 200px;
+    width: 80.4%;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-family: "Play", sans-serif;
+    font-size: 30px;
+    font-weight: 550;
+    color: #fff;
+    background: #6082b6;
+  }
+  #innerNodeMapContainer {
+    flex: 0.9;
+    height: 100%;
+    width: 100%;
+    border: none;
+    border-radius: 10px;
+    justify-self: flex-end;
+    /* background-image: url('https://images.rawpixel.com/image_social_landscape/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIyLTA1L3B4MTM2NjcxMC1pbWFnZS1rd3Z4eGVxcC5qcGc.jpg'); */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: #dddddd;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    #NodeMap {
+      border: 0px;
+      height: 90%;
+      width: 90%;
+      align-content: center;
+      display: flex;
+      justify-content: center;
+      .node {
+        stroke: #2980b9;
+        stroke-width: 2px;
+      }
+      .link {
+        stroke: #7f8c8d;
+        stroke-width: 2px;
+      }
+    }
+  }
 }
 #underline {
   text-decoration: underline;
   margin-bottom: 5px;
-}
-
-#innerNodeMapContainer {
-  flex: 0.9;
-  height: 100%;
-  width: 100%;
-  border: none;
-  border-radius: 10px;
-  justify-self: flex-end;
-  /* background-image: url('https://images.rawpixel.com/image_social_landscape/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIyLTA1L3B4MTM2NjcxMC1pbWFnZS1rd3Z4eGVxcC5qcGc.jpg'); */
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-color: #dddddd;
-  background-position: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  #NodeMap {
-    border: 0px;
-    height: 90%;
-    width: 90%;
-    align-content: center;
-    display: flex;
-    justify-content: center;
-  }
 }
 
 #ClusterConnect {
@@ -142,15 +157,6 @@ body {
   color: rgb(68, 134, 68);
   text-align: center;
   margin-bottom: 10px;
-}
-
-.node {
-  stroke: #2980b9;
-  stroke-width: 2px;
-}
-.link {
-  stroke: #7f8c8d;
-  stroke-width: 2px;
 }
 
 #button {
@@ -212,9 +218,15 @@ body {
   }
 }
 
+.renderButton {
+  border: 2px solid white;
+  color: white;
+  margin: 30px;
+}
+
 #renderButton {
-  border: 2px solid #6082b6;
-  color: #6082b6;
+  border: 2px solid white;
+  color: white;
   display: block;
   justify-content: auto;
   margin-top: 20px;
@@ -229,21 +241,6 @@ body {
   display: flex;
   justify-content: space-between;
   gap: 30px;
-}
-
-#logocontainer {
-  width: 100%;
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  #asclepiusLogo {
-    width: 4rem;
-    height: 4rem;
-    background-color: transparent;
-    border: none;
-    margin-left: 5px;
-    margin-top: 5px;
-  }
 }
 
 label {
@@ -278,3 +275,40 @@ button[type="submit"] {
 #localButton {
   margin-left: 70px;
 }
+
+/*#Sidebarsection {
+    color: white;
+    background-color: #6082b6;
+    padding: 2px;
+    border: 1px #000000;
+    font-family: "Play", sans-serif;
+    #sidebarName {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 5px;
+      margin-top: 5px;
+      background-color: #6082b6;
+      border: 3px solid black;
+      border-radius: 10px;
+    }
+    .metrics {
+      padding-top: 5px;
+      padding-bottom: 5px;
+      border: 2px solid black;
+      border-radius: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 5px;
+      table {
+        width: 100%;
+        table-layout: fixed;
+      }
+      th {
+        width: 50%;
+        text-align: left;
+      }
+    }
+  }*/

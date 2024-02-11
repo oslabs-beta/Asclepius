@@ -1,8 +1,8 @@
-import React from 'react';
-import NodeMap from '../components/NodeMap.jsx';
-import Prompt from '../components/Prompt.jsx';
-import { useSelector } from 'react-redux';
-import NodeMapHeader from '../components/NodeMapHeader.jsx';
+import React from "react";
+import NodeMap from "../components/NodeMap.jsx";
+import Prompt from "../components/Prompt.jsx";
+import { useSelector } from "react-redux";
+import NodeMapHeader from "../components/NodeMapHeader.jsx";
 
 function NodeMapContainer() {
   //useSelector to listen for boolean state (do we have data?)
@@ -23,7 +23,7 @@ function NodeMapContainer() {
   //     { id: 9, name: 'Node 9' },
   //     { id: 10, name: 'Node 10' },
   //     { id: 11, name: 'Node 11' },
-  //     { id: 12, name: 'Node 12' }, 
+  //     { id: 12, name: 'Node 12' },
   //     { id: 13, name: 'Node 13' },
   //     { id: 14, name: 'Node 14' },
   //     { id: 15, name: 'Node 15' },
@@ -50,8 +50,8 @@ function NodeMapContainer() {
   // ];
 
   return (
-    <div id='NodeMapContainer'>
-      {stateData === '' ? (
+    <div id="NodeMapContainer">
+      {stateData === "" ? (
         <Prompt />
       ) : (
         <>

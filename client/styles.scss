@@ -23,6 +23,7 @@ $surface-mixed-600: #919194;
 
 body {
   margin: 0;
+  font-family: "Comfortaa", sans-serif;
 }
 #AppContainer {
   display: grid;
@@ -49,12 +50,6 @@ body {
   grid-template-areas: "map charts cost";
   background: $surface-mixed-300;
   padding-left: 40px;
-  border-style: solid;
-  border-left: 0;
-  border-right: 0;
-  border-top: 0;
-  border-width: 10px;
-  border-image: linear-gradient(45deg, $surface-mixed-300, $surface-mixed-100) 1; /*what is this?? dive in to gradient direction*/
 
   #map {
     grid-area: map;
@@ -74,19 +69,31 @@ body {
 }
 
 #SideBarContainer {
+  display: grid;
   grid-area: sidebar;
   background: $surface-mixed-300;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    "logo"
+    "sidebar"
+    "sidebar"
+    "sidebar"
+    "sidebar"
+    "sidebar"
+    "sidebar"
+    "sidebar";
   #logocontainer {
+    grid-area: logo;
     margin: 5px;
     padding-left: 10px;
     padding-right: 10px;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
     border-bottom: 2px solid white;
     border-right: 2px solid white;
     border-radius: 10px;
-    padding-bottom: 25px;
     box-shadow: 2px 2px 3px white;
     background-color: $primary-300;
     #asclepiusLogo {
@@ -94,25 +101,23 @@ body {
       height: 4rem;
       background-color: transparent;
       border: none;
-      margin-left: 5px;
-      margin-top: 5px;
+    }
+    #asclepiusText {
+      font-family: "Comfortaa", sans-serif;
+      padding-top: 10px;
+      padding-left: 10px;
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: white;
     }
   }
-  #asclepiusText {
-    font-family: "Comfortaa", sans-serif;
-    font-size: 2.2rem;
-    font-weight: 700;
-    color: white;
-    display: flex;
-    justify-content: space-between;
-    align-items: space-between;
-    margin-top: 20px;
-    margin-right: 13px;
-    padding-right: 10px;
+  #sideBar {
+    grid-area: sidebar;
   }
 }
 
 #NodeMapContainer {
+  color: white;
   grid-area: main;
   display: flex;
   justify-content: center;
@@ -218,43 +223,40 @@ body {
   margin: 20px;
 }
 
-#buttonSpan {
+form {
+  border: 5px solid $primary-100;
+  border-radius: 10px;
+  padding: 10px;
+  color: white;
   display: flex;
-  justify-content: space-between;
-  gap: 30px;
-}
-
-label {
-  color: $primary-100;
+  flex-direction: column;
+  background-color: $surface-mixed-300;
+  img {
+    background-color: $primary-100;
+    border: 2px solid black;
+    border-radius: 50%;
+  }
 }
 
 input[type="text"],
 input[type="password"] {
   border: 2px solid black;
   color: $primary-100;
-  display: block;
-  justify-content: auto;
   margin-top: 20px;
   margin-bottom: 20px;
   margin-left: 70px;
-}
-
-button[type="submit"] {
-  border: 2px solid $primary-100;
-  color: $primary-100;
-  display: block;
-  justify-content: auto;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  margin-left: 70px;
-  #button[type="submit"]:hover {
-    color: #fff;
-    background-color: $primary-100;
-  }
 }
 
 #localButton {
   margin-left: 70px;
+}
+
+#buttonSpan {
+  display: flex;
+  flex-direction: row;
+  button {
+    margin: 5px;
+  }
 }
 
 /*#Sidebarsection {

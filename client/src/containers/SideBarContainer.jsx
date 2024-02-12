@@ -1,19 +1,19 @@
-import React from 'react';
-import AsclepiusLogo from './AsclepiusLogo.png';
-import { useSelector } from 'react-redux';
-import Sidebarsection from '../components/Sidebarsection.jsx';
+import React from "react";
+import AsclepiusLogo from "./AsclepiusLogo.png";
+import { useSelector } from "react-redux";
+import Sidebarsection from "../components/Sidebarsection.jsx";
 
 function SideBarContainer() {
   const sidebarDatabool = useSelector(
     (state) => Object.keys(state.node.sidebarData).length > 0
   );
   return (
-    <div id='SideBarContainer'>
-      <div id='logocontainer'>
-        <img id='asclepiusLogo' src={AsclepiusLogo} alt='Asclepius logo' />
-        <div id='asclepiusText'>Asclepius</div>
+    <div id="SideBarContainer">
+      <div id="logocontainer">
+        <img id="asclepiusLogo" src={AsclepiusLogo} alt="Asclepius logo" />
+        <div id="asclepiusText">Asclepius</div>
       </div>
-      <div>{sidebarDatabool ? <Sidebarsection /> : null}</div>
+      <div id="sideBar">{sidebarDatabool ? <Sidebarsection /> : null}</div>
     </div>
   );
 }

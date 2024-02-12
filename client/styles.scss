@@ -1,6 +1,25 @@
 @import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=Play:wght@400;700&display=swap");
-$primarydark: #6082b6;
-$primarylight: rgb(123, 145, 197);
+
+$primary-100: #7b91c5;
+$primary-200: #8a9dcb;
+$primary-300: #99a8d2;
+$primary-400: #a7b4d8;
+$primary-500: #b6c0df;
+$primary-600: #c4cde5;
+/** SCSS DARK THEME SURFACE COLORS */
+$surface-100: #121212;
+$surface-200: #282828;
+$surface-300: #3f3f3f;
+$surface-400: #575757;
+$surface-500: #717171;
+$surface-600: #8b8b8b;
+/** SCSS DARK THEME MIXED SURFACE COLORS */
+$surface-mixed-100: #1c1d21;
+$surface-mixed-200: #313236;
+$surface-mixed-300: #47484c;
+$surface-mixed-400: #5f5f63;
+$surface-mixed-500: #77787b;
+$surface-mixed-600: #919194;
 
 body {
   margin: 0;
@@ -28,38 +47,39 @@ body {
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr;
   grid-template-areas: "map charts cost";
-  background: #6082b6;
+  background: $surface-mixed-300;
   padding-left: 40px;
   border-style: solid;
   border-left: 0;
   border-right: 0;
   border-top: 0;
   border-width: 10px;
-  border-image: linear-gradient(45deg, $primarydark, $primarylight) 1; /*what is this?? dive in to gradient direction*/
+  border-image: linear-gradient(45deg, $surface-mixed-300, $surface-mixed-100) 1; /*what is this?? dive in to gradient direction*/
 
   #map {
     grid-area: map;
-    background: rgb(123, 145, 197);
+    background: $primary-300;
     border-radius: 10px;
   }
   #charts {
     grid-area: charts;
-    background: rgb(123, 145, 197);
+    background: $primary-300;
     border-radius: 10px;
   }
   #cost {
     grid-area: cost;
-    background: rgb(123, 145, 197);
+    background: $primary-300;
     border-radius: 10px;
   }
 }
 
 #SideBarContainer {
   grid-area: sidebar;
-  background: $primarydark;
+  background: $surface-mixed-300;
   #logocontainer {
     margin: 5px;
     padding-left: 10px;
+    padding-right: 10px;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
@@ -68,6 +88,7 @@ body {
     border-radius: 10px;
     padding-bottom: 25px;
     box-shadow: 2px 2px 3px white;
+    background-color: $primary-300;
     #asclepiusLogo {
       width: 4rem;
       height: 4rem;
@@ -96,13 +117,13 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: $primarylight;
+  background: $surface-mixed-100;
   border-style: solid;
   border-width: 10px;
   border-top: 0;
   border-bottom: 0;
   border-right: 0;
-  border-image: linear-gradient(0deg, $primarylight, $primarydark) 1;
+  border-image: linear-gradient(0deg, $surface-mixed-300, $surface-mixed-100) 1;
   #NodeMapHeaderDiv {
     justify-self: flex-start;
     max-height: 200px;
@@ -115,7 +136,7 @@ body {
     font-size: 30px;
     font-weight: 550;
     color: #fff;
-    background: $primarydark;
+    background: $surface-mixed-300;
   }
   #innerNodeMapContainer {
     flex: 0.9;
@@ -139,11 +160,11 @@ body {
       display: flex;
       justify-content: center;
       .node {
-        stroke: $primarydark;
+        stroke: $primary-100;
         stroke-width: 2px;
       }
       .link {
-        stroke: #7f8c8d;
+        stroke: $primary-300;
         stroke-width: 2px;
       }
     }
@@ -159,10 +180,9 @@ body {
   display: flex;
   justify-content: center;
   appearance: none;
-  background-color: transparent;
+  background-color: $primary-300;
   border: 2px solid white;
   border-radius: 15px;
-  box-sizing: border-box;
   box-shadow: 2px 2px 1px white;
   color: white;
   cursor: pointer;
@@ -184,13 +204,12 @@ body {
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
-  width: 75%;
   will-change: transform;
 }
 .newButton:hover,
 .renderButton:hover {
   color: #fff;
-  background-color: #1a1a1a;
+  background-color: $surface-mixed-300;
   box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
   transform: translateY(-2px);
 }
@@ -206,13 +225,13 @@ body {
 }
 
 label {
-  color: $primarydark;
+  color: $primary-100;
 }
 
 input[type="text"],
 input[type="password"] {
   border: 2px solid black;
-  color: $primarydark;
+  color: $primary-100;
   display: block;
   justify-content: auto;
   margin-top: 20px;
@@ -221,8 +240,8 @@ input[type="password"] {
 }
 
 button[type="submit"] {
-  border: 2px solid $primarydark;
-  color: $primarydark;
+  border: 2px solid $primary-100;
+  color: $primary-100;
   display: block;
   justify-content: auto;
   margin-top: 20px;
@@ -230,7 +249,7 @@ button[type="submit"] {
   margin-left: 70px;
   #button[type="submit"]:hover {
     color: #fff;
-    background-color: $primarydark;
+    background-color: $primary-100;
   }
 }
 

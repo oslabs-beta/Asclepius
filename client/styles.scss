@@ -1,4 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=Play:wght@400;700&display=swap");
+$primarydark: #6082b6;
+$primarylight: rgb(123, 145, 197);
+
 body {
   margin: 0;
 }
@@ -26,34 +29,37 @@ body {
   grid-template-rows: 1fr;
   grid-template-areas: "map charts cost";
   background: #6082b6;
+  padding-left: 40px;
+  border-style: solid;
+  border-left: 0;
+  border-right: 0;
+  border-top: 0;
+  border-width: 10px;
+  border-image: linear-gradient(45deg, $primarydark, $primarylight) 1; /*what is this?? dive in to gradient direction*/
+
   #map {
     grid-area: map;
-    background: inherit;
+    background: rgb(123, 145, 197);
     border-radius: 10px;
   }
   #charts {
     grid-area: charts;
-    background: inherit;
+    background: rgb(123, 145, 197);
     border-radius: 10px;
   }
   #cost {
     grid-area: cost;
-    background: inherit;
+    background: rgb(123, 145, 197);
     border-radius: 10px;
   }
 }
 
 #SideBarContainer {
   grid-area: sidebar;
-  background: #6082b6;
-  border-style: solid;
-  border-width: 10px;
-  border-left: 0px;
-  border-top: 0px;
-  border-bottom: 10px;
-  border-image: linear-gradient(90deg, rgb(123, 145, 197), #6082b6) 1; /*what is this?? dive in to gradient direction*/
+  background: $primarydark;
   #logocontainer {
     margin: 5px;
+    padding-left: 10px;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
@@ -61,7 +67,7 @@ body {
     border-right: 2px solid white;
     border-radius: 10px;
     padding-bottom: 25px;
-    box-shadow: 2px 2px 4px white;
+    box-shadow: 2px 2px 3px white;
     #asclepiusLogo {
       width: 4rem;
       height: 4rem;
@@ -81,6 +87,7 @@ body {
     align-items: space-between;
     margin-top: 20px;
     margin-right: 13px;
+    padding-right: 10px;
   }
 }
 
@@ -89,7 +96,13 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: rgb(123, 145, 197);
+  background: $primarylight;
+  border-style: solid;
+  border-width: 10px;
+  border-top: 0;
+  border-bottom: 0;
+  border-right: 0;
+  border-image: linear-gradient(0deg, $primarylight, $primarydark) 1;
   #NodeMapHeaderDiv {
     justify-self: flex-start;
     max-height: 200px;
@@ -102,7 +115,7 @@ body {
     font-size: 30px;
     font-weight: 550;
     color: #fff;
-    background: #6082b6;
+    background: $primarydark;
   }
   #innerNodeMapContainer {
     flex: 0.9;
@@ -111,7 +124,6 @@ body {
     border: none;
     border-radius: 10px;
     justify-self: flex-end;
-    /* background-image: url('https://images.rawpixel.com/image_social_landscape/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIyLTA1L3B4MTM2NjcxMC1pbWFnZS1rd3Z4eGVxcC5qcGc.jpg'); */
     background-size: cover;
     background-repeat: no-repeat;
     background-color: #dddddd;
@@ -127,7 +139,7 @@ body {
       display: flex;
       justify-content: center;
       .node {
-        stroke: #2980b9;
+        stroke: $primarydark;
         stroke-width: 2px;
       }
       .link {
@@ -142,46 +154,17 @@ body {
   margin-bottom: 5px;
 }
 
-#ClusterConnect {
-  height: 100px;
-  background-color: rgba(154, 205, 50, 0.7);
-  border: 1px solid black;
-  border-radius: 10px;
-  padding: 2px;
-  align-items: center;
-}
-
-#asclepius {
-  font-weight: bold;
-  font-size: 24px;
-  color: rgb(68, 134, 68);
-  text-align: center;
-  margin-bottom: 10px;
-}
-
-#button {
-  background-color: #4caf50;
-  border: none;
-  color: white;
-  padding: 10px 20px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer;
-  border-radius: 4px;
-}
-
-.newButton {
+.newButton,
+.renderButton {
   display: flex;
   justify-content: center;
   appearance: none;
   background-color: transparent;
-  border: 2px solid #1a1a1a;
+  border: 2px solid white;
   border-radius: 15px;
   box-sizing: border-box;
-  color: #3b3b3b;
+  box-shadow: 2px 2px 1px white;
+  color: white;
   cursor: pointer;
   display: inline-block;
   font-family: Roobert, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica,
@@ -203,38 +186,17 @@ body {
   touch-action: manipulation;
   width: 75%;
   will-change: transform;
-  .newButton:disabled {
-    pointer-events: none;
-  }
-  .newButton:hover {
-    color: #fff;
-    background-color: #1a1a1a;
-    box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
-    transform: translateY(-2px);
-  }
-  .newButton:active {
-    box-shadow: none;
-    transform: translateY(0);
-  }
+}
+.newButton:hover,
+.renderButton:hover {
+  color: #fff;
+  background-color: #1a1a1a;
+  box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+  transform: translateY(-2px);
 }
 
 .renderButton {
-  border: 2px solid white;
-  color: white;
-  margin: 30px;
-}
-
-#renderButton {
-  border: 2px solid white;
-  color: white;
-  display: block;
-  justify-content: auto;
-  margin-top: 20px;
-  margin-left: 70px;
-  #renderButton:hover {
-    color: #fff;
-    background-color: #6082b6;
-  }
+  margin: 20px;
 }
 
 #buttonSpan {
@@ -244,13 +206,13 @@ body {
 }
 
 label {
-  color: #6082b6;
+  color: $primarydark;
 }
 
 input[type="text"],
 input[type="password"] {
   border: 2px solid black;
-  color: #6082b6;
+  color: $primarydark;
   display: block;
   justify-content: auto;
   margin-top: 20px;
@@ -259,8 +221,8 @@ input[type="password"] {
 }
 
 button[type="submit"] {
-  border: 2px solid #6082b6;
-  color: #6082b6;
+  border: 2px solid $primarydark;
+  color: $primarydark;
   display: block;
   justify-content: auto;
   margin-top: 20px;
@@ -268,7 +230,7 @@ button[type="submit"] {
   margin-left: 70px;
   #button[type="submit"]:hover {
     color: #fff;
-    background-color: #6082b6;
+    background-color: $primarydark;
   }
 }
 

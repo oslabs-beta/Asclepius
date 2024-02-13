@@ -5,7 +5,7 @@ function Sidebarsection() {
   // const data = useSelector((state) => state.node.sidebarData);
 
   const data = {
-    name: "demoAKS",
+    name: "Node1",
     cpuPercentage: "28",
     cpuCores: "4",
     memPercentage: "50",
@@ -15,6 +15,8 @@ function Sidebarsection() {
   return (
     <div id="sideBar">
       <div id="hidden"></div>
+      <div id="cluster">Cluster Name: DemoAKS</div>
+      <hr></hr>
       <div id="small">
         <table>
           <thead>
@@ -77,7 +79,7 @@ function Sidebarsection() {
       <div id="big">
         <div>Pods:</div>
         <div>
-          <ul>
+          <ul id="list">
             {data.pods.map((pod, index) => (
               <li key={index}>{pod}</li>
             ))}

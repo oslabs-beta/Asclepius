@@ -15,7 +15,6 @@ import LocalInst from "./LocalInst.jsx";
 import AzCLIInst from "./AzCLIInst.jsx";
 import AwsForm from "./AwsForm.jsx";
 
-
 function ConnectCluster() {
   const dispatch = useDispatch();
   const show = useSelector((state) => state.user.showPrompt);
@@ -145,7 +144,7 @@ function ConnectCluster() {
       ) : null}
       {awsForm ? <AwsForm /> : null}
       {local ? (
-        <div>
+        <div id="instructions">
           <LocalInst />
         </div>
       ) : null}

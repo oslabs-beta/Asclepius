@@ -99,7 +99,9 @@ const AwsForm = () => {
         <form onSubmit={awsAuth}>
           <label>Cluster Name:</label>
           <input type="text" name="clusterName" className="inputBox"></input>
-          <button type="submit">Authenticate AWS Config</button>
+          <button type="submit" className="renderButton">
+            Authenticate AWS Config
+          </button>
         </form>
       ) : null}
       {chooseForm ? (
@@ -158,7 +160,9 @@ const AwsForm = () => {
               <img src={passwordImage} style={{ width: "20px" }} alt="Show" />
             </button>
           </span>
-          <button type="submit">Configure AWS CLI</button>
+          <button type="submit" className="renderButton">
+            Configure AWS CLI
+          </button>
         </form>
       ) : null}
       {<p>{message}</p>}

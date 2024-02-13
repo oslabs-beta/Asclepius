@@ -119,18 +119,56 @@ body {
       height: 20%;
     }
     #small {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+      align-items: center;
       background: $primary-100;
       height: 7%;
-      margin: 25px;
-      border: 3px solid white;
+      margin: 15px;
+      padding: 5px;
       border-radius: 30px;
+      border: 2px solid $surface-mixed-500;
+      box-shadow: white 0px 2px;
+    }
+    #cpu {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+      align-items: center;
+      background: $primary-100;
+      height: 7%;
+      margin: 15px;
+      padding: 5px;
+      border: 2px solid $surface-mixed-500;
+      border-radius: 30px;
+      box-shadow: white 0px 2px;
+    }
+    #mem {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 5px;
+      padding-left: 25px;
+      background: $primary-100;
+      height: 7%;
+      margin: 15px;
+      border: 2px solid $surface-mixed-500;
+      border-radius: 30px;
+      box-shadow: white 0px 2px;
     }
     #big {
       background: $primary-100;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-evenly;
       height: 20%;
       margin: 25px;
-      border: 3px solid white;
+      padding: 5px;
+      border: 2px solid $surface-mixed-500;
       border-radius: 30px;
+      box-shadow: white 0px 2px;
     }
   }
 }
@@ -273,40 +311,3 @@ input[type="password"] {
     margin: 5px;
   }
 }
-
-/*#Sidebarsection {
-    color: white;
-    background-color: #6082b6;
-    padding: 2px;
-    border: 1px #000000;
-    font-family: "Play", sans-serif;
-    #sidebarName {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: 5px;
-      margin-top: 5px;
-      background-color: #6082b6;
-      border: 3px solid black;
-      border-radius: 10px;
-    }
-    .metrics {
-      padding-top: 5px;
-      padding-bottom: 5px;
-      border: 2px solid black;
-      border-radius: 10px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-top: 5px;
-      table {
-        width: 100%;
-        table-layout: fixed;
-      }
-      th {
-        width: 50%;
-        text-align: left;
-      }
-    }
-  }*/

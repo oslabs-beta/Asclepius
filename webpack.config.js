@@ -6,11 +6,13 @@ module.exports = {
   output: {
     path: path.join(__dirname, "/dist"),
     filename: "bundle.js",
+    publicPath: "/",
+    clean: true,
   },
 
   plugins: [
     new HTMLWebpackPlugin({
-      template: "./client/index.html",
+      template: path.resolve(__dirname, "./client/index.html"),
     }),
   ],
 
@@ -34,8 +36,7 @@ module.exports = {
         },
       },
       {
-        test: /.(css|scss)$/,
-        exclude: /node_modules/,
+        test: /\.scss$/,
         use: ["style-loader", "css-loader", "sass-loader"],
       },
       {
@@ -49,6 +50,13 @@ module.exports = {
     ],
   },
   devServer: {
+    static: {
+      directory: path.resolve(__dirname, "build"),
+    },
     port: 8080,
+    historyApiFallback: true,
+    proxy: {
+      "/": "http://localhost:3000",
+    },
   },
 };

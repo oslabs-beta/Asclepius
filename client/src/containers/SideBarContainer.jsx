@@ -14,13 +14,7 @@ function SideBarContainer() {
         <img id="asclepiusLogo" src={AsclepiusLogo} alt="Asclepius logo" />
         <div id="asclepiusText">Asclepius</div>
       </div>
-      <div id="sideBar">
-        <div id="hidden"></div>
-        <div id="small"></div>
-        <div id="small"></div>
-        <div id="small"></div>
-        <div id="big"></div>
-      </div>
+      <Sidebarsection />
     </div>
   );
 }

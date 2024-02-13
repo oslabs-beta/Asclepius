@@ -24,6 +24,7 @@ $surface-mixed-600: #919194;
 body {
   margin: 0;
   font-family: "Comfortaa", sans-serif;
+  background-color: $surface-mixed-400;
 }
 #AppContainer {
   display: grid;
@@ -48,22 +49,22 @@ body {
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr;
   grid-template-areas: "map charts cost";
-  background: $surface-mixed-300;
+  background: $surface-mixed-400;
   padding-left: 40px;
 
   #map {
     grid-area: map;
-    background: $primary-300;
+    background: $primary-100;
     border-radius: 10px;
   }
   #charts {
     grid-area: charts;
-    background: $primary-300;
+    background: $primary-100;
     border-radius: 10px;
   }
   #cost {
     grid-area: cost;
-    background: $primary-300;
+    background: $primary-100;
     border-radius: 10px;
   }
 }
@@ -71,7 +72,7 @@ body {
 #SideBarContainer {
   display: grid;
   grid-area: sidebar;
-  background: $surface-mixed-300;
+  background: $surface-mixed-400;
   grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-template-columns: 1fr;
   grid-template-areas:
@@ -91,16 +92,14 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    border-bottom: 2px solid white;
-    border-right: 2px solid white;
-    border-radius: 10px;
-    box-shadow: 2px 2px 3px white;
-    background-color: $primary-300;
+
     #asclepiusLogo {
       width: 4rem;
       height: 4rem;
       background-color: transparent;
-      border: none;
+      border: 2px solid white;
+      border-radius: 20px;
+      padding: 5px;
     }
     #asclepiusText {
       font-family: "Comfortaa", sans-serif;
@@ -113,6 +112,26 @@ body {
   }
   #sideBar {
     grid-area: sidebar;
+    display: flex;
+    flex-direction: column;
+    #hidden {
+      visibility: hidden;
+      height: 20%;
+    }
+    #small {
+      background: $primary-100;
+      height: 7%;
+      margin: 25px;
+      border: 3px solid white;
+      border-radius: 30px;
+    }
+    #big {
+      background: $primary-100;
+      height: 20%;
+      margin: 25px;
+      border: 3px solid white;
+      border-radius: 30px;
+    }
   }
 }
 
@@ -122,13 +141,9 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: $surface-mixed-100;
-  border-style: solid;
-  border-width: 10px;
-  border-top: 0;
-  border-bottom: 0;
-  border-right: 0;
-  border-image: linear-gradient(0deg, $surface-mixed-300, $surface-mixed-100) 1;
+  background: $surface-mixed-200;
+  border-top: 10px solid $surface-mixed-200;
+  border-radius: 20px 0 0 0;
   #NodeMapHeaderDiv {
     justify-self: flex-start;
     max-height: 200px;
@@ -188,7 +203,7 @@ body {
   background-color: $primary-300;
   border: 2px solid white;
   border-radius: 15px;
-  box-shadow: 2px 2px 1px white;
+  box-shadow: white 0 2px 3px;
   color: white;
   cursor: pointer;
   display: inline-block;

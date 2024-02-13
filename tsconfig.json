@@ -1,0 +1,16 @@
+{
+    "compilerOptions": {
+        "target": "ES2018",
+        "module": "CommonJS",
+        "outDir": "./dist",
+        "rootDir": "./server", //specifices the root directory of the TS source files
+        "esModuleInterop": true, //allows compatibility with modules that use 'export ='
+        "declaration": true,
+        "sourceMap": true,
+        "moduleResolution": "node",
+        "types": ["node", "express"],
+        "lib": ["es2018"],
+    },
+    "include":["server/**/*.ts"],
+    "exclude": ["node_modules"] //no need to compile or look at node modules
+}

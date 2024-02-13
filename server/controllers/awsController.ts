@@ -82,4 +82,4 @@ const awsController = {
   },
 };
 
-module.exports = awsController;
+export = awsController;

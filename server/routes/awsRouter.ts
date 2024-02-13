@@ -1,14 +1,14 @@
-const express = require("express");
-const awsRouter = express.Router();
+import express, { Router, Request, Response } from "express";
+import * as awsController from "../controllers/awsController";
 
-const awsController = require("../controllers/awsController.js");
+const awsRouter: Router = express.Router();
 
 awsRouter.post(
   "/",
   awsController.isAWSCLIInstalled,
   awsController.awsConfigure,
   awsController.awsMetrics,
-  (req, res) => {
+  (req: Request, res: Response) => {
     if (res.locals.awsInstalled === true) {
       console.log("hello");
       res.status(200).send("success");
@@ -19,10 +19,10 @@ awsRouter.post(
   }
 );
 
-//should come with req.body {name: demoAKS resource-group: aksRG}
-awsRouter.post("/auth", awsController.awsAuthenticate, (req, res) => {
+// should come with req.body {name: demoAKS resource-group: aksRG}
+awsRouter.post("/auth", awsController.awsAuthenticate, (req: Request, res: Response) => {
   console.log("auth leaves backend");
   res.status(200).send("success");
 });
-// dataController.getName,
-module.exports = awsRouter;
+
+export = awsRouter;

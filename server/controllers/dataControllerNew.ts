@@ -1,9 +1,39 @@
 import { spawn, spawnSync, SpawnSyncReturns } from "child_process";
-import os from "os";
 import { Request, Response, NextFunction } from "express";
 import { Data, NodeData } from "../types";
+const k8s = require("@kubernetes/client-node");
 
-const dataController = {
+const dataControllerNew = {
+  main: async (req: Request, res: Response, next: NextFunction) => {
+    const kc = new k8s.KubeConfig();
+    kc.loadFromDefault();
+
+    const k8sApi = kc.makeApiClient(k8s.CoreV1Api);
+    try {
+      const podsRes = await k8sApi.listNode("default");
+      const result = [];
+      console.log(podsRes.body);
+      podsRes.response.body.items.forEach((el) => {
+        result.push({
+          name: el.metadata.name,
+          uid: el.metadata.uid,
+          creationTimestamp: el.metadata.creationTimestamp,
+          capacity: {
+            cpuCapacity: el.status.capacity.cpu,
+            memoryCapacity: el.status.capacity.memory,
+            podsCapacity: el.status.capacity.pods,
+          },
+          conditions: el.status.conditions[4],
+          totalImages: el.status.images.length,
+        });
+      });
+      console.log(result);
+    } catch (err) {
+      console.error(err);
+    }
+    return next();
+  },
+
   kubectlInstall: (req: Request, res: Response, next: NextFunction) => {
     const version: SpawnSyncReturns<string> = spawnSync(
       "kubectl",
@@ -13,6 +43,7 @@ const dataController = {
         shell: true,
       }
     );
+    console.log("version:", version);
     const client = version.output[1].split(" ");
     if (client[0] !== "Client") {
       res.locals.kubeInstalled = false;
@@ -23,6 +54,7 @@ const dataController = {
   },
 
   getName: (req: Request, res: Response, next: NextFunction) => {
+    console.log("getting name");
     const data: Data = { clusterName: "" };
     const name: SpawnSyncReturns<string> = spawnSync(
       "kubectl",
@@ -34,6 +66,7 @@ const dataController = {
 
     data.clusterName = name.stdout.split("\n")[0];
     res.locals.data = data;
+    console.log("should be name", res.locals.data);
     return next();
   },
 
@@ -42,6 +75,7 @@ const dataController = {
       return next();
     }
     const nodeArr: NodeData[] = [];
+    console.log("getting data");
     const data: SpawnSyncReturns<string> = spawnSync(
       "kubectl",
       ["top", "nodes"],
@@ -51,15 +85,18 @@ const dataController = {
     );
     let dataArr: string[] = data.stdout.split("\n");
     dataArr = dataArr.slice(1, -1);
+    console.log(dataArr);
     dataArr.forEach((el) => {
       const regex = /^(\S+)\s+(\S+)\s+(\S+)\s+(\S+)\s+(\S+)\s*$/;
       const matches = el.match(regex);
+      console.log("matches", matches);
       const resultArray = matches ? matches.slice(1) : [];
       let color = "";
       let cpu: number | string = resultArray[2].slice(0, -1);
       cpu = Number(cpu);
       let mem: number | string = resultArray[4].slice(0, -1);
       mem = Number(mem);
+      console.log("cpu:", cpu, "mem", mem);
       if (mem > 70 || cpu > 70) {
         color = "red";
       } else if (mem > 50 || cpu > 50) {
@@ -86,6 +123,8 @@ const dataController = {
       return next();
     }
     const nodeData: NodeData[] = res.locals.data.nodes;
+    console.log("nodeData array", nodeData);
+    console.log("getting pods");
     nodeData.forEach((el) => {
       const nodeName = el.name;
       const podsData: SpawnSyncReturns<string> = spawnSync(
@@ -95,13 +134,17 @@ const dataController = {
           encoding: "utf-8",
         }
       );
+      console.log("terminal output", podsData);
       let podNames = podsData.stdout.match(/^\S+/gm);
       if (podNames) podNames.shift();
       el.pods = podNames || [];
+      console.log("each node", el);
     });
+    console.log(nodeData);
     res.locals.data.nodes = nodeData;
+    console.log(res.locals.data.nodes);
     return next();
   },
 };
 
-export = dataController;
+export = dataControllerNew;

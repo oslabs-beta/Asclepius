@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import * as d3 from "d3";
 import { setData, setSidebarData } from "../redux/slices/nodeSlice.js";
 import NodeMapHeader from "./NodeMapHeader.jsx";
+import image from "../assets/k8sicon.png";
 
 function NodeMap() {
   const dispatch = useDispatch();
@@ -71,7 +72,7 @@ function NodeMap() {
     color: node.color,
   }));
   console.log(nodes);
-  nodes.unshift({ id: 0, name: 'Master Node', color: 'grey' });
+  nodes.unshift({ id: 0, name: "Master Node", color: "lightgrey" });
 
   const links = nodes
     .slice(1)
@@ -126,8 +127,7 @@ function NodeMap() {
       .attr("class", "node")
       .attr("r", scale)
       .style("stroke", "black")
-      // .attr("fill", (d) => getColorBasedOnNodeId(d.id))
-      .attr('fill', (d) => d.color)
+      .attr("fill", (d) => d.color)
       .on("click", function (event, d) {
         //call helper function
         //d.id should be a string node name
@@ -142,10 +142,15 @@ function NodeMap() {
       .attr("class", "label")
       .attr("dy", 4)
       .attr("text-anchor", "middle")
+      // .on("mouseover", function (d) {
+      //   d3.select(this).style("opacity", 1);
+      // })
+      // .on("mouseout", function (d) {
+      //   d3.select(this).style("opacity", 0);
+      // })
+      .style("opacity", 1)
       .style("font-family", "Play, sans-serif")
-      .style("font-size", () => {
-        return Math.min(maxFontSize, 10);
-      })
+      .style("font-size", 15)
       .text((d) => d.name);
 
     function getColorBasedOnNodeId(nodeId) {
@@ -169,11 +174,6 @@ function NodeMap() {
       }
     }
 
-    //       nodes.forEach((d, i) => {
-    //   const labelNode = label.nodes([i]);
-    //   d.label = labelNode;
-    // });
-
     function ticked() {
       link
         .attr("x1", (d) => d.source.x)
@@ -186,7 +186,9 @@ function NodeMap() {
       label.attr("x", (d) => d.x).attr("y", (d) => d.y);
       label.attr("transform", (d) => `rotate(70, ${d.x}, ${d.y})`);
     }
-  }, [nodes, links, dispatch]); //positions
+  }, []); //positions
+
+  // nodes, links, dispatch
 
   return (
     <div id="innerNodeMapContainer">

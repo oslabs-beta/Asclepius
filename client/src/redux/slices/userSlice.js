@@ -4,6 +4,7 @@ export const userSlice = createSlice({
   name: "user",
   //intial states should be what?
   initialState: {
+    page: "map",
     kubectl: true,
     showPrompt: false,
     cloudInfo: false,
@@ -15,17 +16,11 @@ export const userSlice = createSlice({
   },
 
   reducers: {
+    setPage: (state, action) => {
+      state.page = action.payload;
+    },
     kubectlSet: (state) => {
-      // if (!state.kubectl) {
-      //   state.kubectl = true;
-      // } else {
-      //   state.kubectl = false;
-      // }
-      // return state;
-
       const newState = { ...state };
-
-      // Toggle the value of kubectl
       newState.kubectl = !newState.kubectl;
 
       return newState;
@@ -60,7 +55,6 @@ export const userSlice = createSlice({
       } else state.aksCLI = true;
     },
     aws: (state) => {
-      console.log("auth hits state");
       if (state.awsForm === true) {
         state.awsForm = false;
       } else state.awsForm = true;
@@ -69,6 +63,7 @@ export const userSlice = createSlice({
 });
 
 export const {
+  setPage,
   kubectlSet,
   showPrompt,
   cloudInfo,

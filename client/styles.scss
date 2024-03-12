@@ -97,7 +97,7 @@ body {
       width: 4rem;
       height: 4rem;
       background-color: transparent;
-      border: 2px solid white;
+      border: 2px solid $primary-300;
       border-radius: 20px;
       padding: 5px;
     }
@@ -114,71 +114,79 @@ body {
     grid-area: sidebar;
     display: flex;
     flex-direction: column;
+    gap: 10px;
+    margin: 5px;
     #hidden {
       visibility: hidden;
       height: 20%;
-    }
-    hr {
-      width: 80%;
-      border: 1px solid white;
     }
     #cluster {
       color: white;
       font-size: larger;
       display: flex;
+      flex-direction: column;
+      gap: 5px;
       align-items: center;
       justify-content: center;
-      padding: 10px;
+      padding: 5px;
+      border-radius: 20px;
+      background-color: $primary-100;
+      border: 2px solid $surface-mixed-500;
+      box-shadow: $surface-mixed-300 0px 4px;
     }
     #small {
       display: flex;
       flex-direction: row;
       justify-content: space-evenly;
       align-items: center;
-      background: $primary-100;
-      margin: 15px;
+      background: #dddddd;
+      margin: 5px;
       padding: 5px;
       border-radius: 30px;
       border: 2px solid $surface-mixed-500;
-      box-shadow: white 0px 2px;
+      box-shadow: $surface-mixed-300 0px 4px;
     }
     #cpu {
       display: flex;
-      flex-direction: row;
+      flex-direction: column;
       justify-content: space-evenly;
       align-items: center;
-      background: $primary-100;
-      margin: 15px;
+      background: #dddddd;
+      margin: 5px;
       padding: 5px;
       border: 2px solid $surface-mixed-500;
       border-radius: 30px;
-      box-shadow: white 0px 2px;
+      box-shadow: $surface-mixed-300 0px 4px;
     }
     #mem {
       display: flex;
       flex-direction: column;
-      justify-content: center;
+      align-items: center;
       padding: 5px;
       padding-left: 25px;
-      background: $primary-100;
-      margin: 15px;
+      background: #dddddd;
+      margin: 5px;
       border: 2px solid $surface-mixed-500;
       border-radius: 30px;
-      box-shadow: white 0px 2px;
+      box-shadow: $surface-mixed-300 0px 4px;
     }
     #big {
-      background: $primary-100;
+      background: #dddddd;
       display: flex;
-      flex-direction: row;
+      flex-direction: column;
       align-items: center;
       justify-content: space-evenly;
-      margin: 25px;
+      margin: 5px;
       padding: 5px;
       border: 2px solid $surface-mixed-500;
       border-radius: 30px;
-      box-shadow: white 0px 2px;
+      box-shadow: $surface-mixed-300 0px 4px;
     }
   }
+}
+
+#newMap {
+  background-color: white;
 }
 
 #NodeMapContainer {
@@ -205,7 +213,7 @@ body {
     background: $surface-mixed-300;
   }
   #innerNodeMapContainer {
-    flex: 0.9;
+    flex: 1;
     height: 100%;
     width: 100%;
     border: none;
@@ -247,9 +255,9 @@ body {
   justify-content: center;
   appearance: none;
   background-color: $primary-300;
-  border: 2px solid white;
+  border: 2px solid $surface-mixed-300;
   border-radius: 15px;
-  box-shadow: white 0 2px 3px;
+  box-shadow: $surface-mixed-300 0px 4px;
   color: white;
   cursor: pointer;
   display: inline-block;
@@ -277,7 +285,7 @@ body {
   color: #fff;
   background-color: $surface-mixed-300;
   box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
-  transform: translateY(-2px);
+  transform: translateY(-3px);
 }
 
 .renderButton {

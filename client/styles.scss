@@ -46,51 +46,17 @@ body {
 #HeaderContainer {
   grid-area: header;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-rows: 1fr;
-  grid-template-areas: "map charts cost";
+  grid-template-areas: "logo map charts cost";
   background: $surface-mixed-400;
-  padding-left: 40px;
-
-  #map {
-    grid-area: map;
-    background: $primary-100;
-    border-radius: 10px;
-  }
-  #charts {
-    grid-area: charts;
-    background: $primary-100;
-    border-radius: 10px;
-  }
-  #cost {
-    grid-area: cost;
-    background: $primary-100;
-    border-radius: 10px;
-  }
-}
-
-#SideBarContainer {
-  display: grid;
-  grid-area: sidebar;
-  background: $surface-mixed-400;
-  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-  grid-template-columns: 1fr;
-  grid-template-areas:
-    "logo"
-    "sidebar"
-    "sidebar"
-    "sidebar"
-    "sidebar"
-    "sidebar"
-    "sidebar"
-    "sidebar";
   #logocontainer {
     grid-area: logo;
     margin: 5px;
     padding-left: 10px;
     padding-right: 10px;
     display: flex;
-    justify-content: center;
+    justify-content: start;
     align-items: center;
 
     #asclepiusLogo {
@@ -110,6 +76,62 @@ body {
       color: white;
     }
   }
+  #map {
+    grid-area: map;
+    background: $primary-100;
+    border-radius: 10px;
+  }
+  #charts {
+    grid-area: charts;
+    background: $primary-100;
+    border-radius: 10px;
+  }
+  #cost {
+    grid-area: cost;
+    background: $primary-100;
+    border-radius: 10px;
+  }
+}
+.sidebar {
+  background-color: blue;
+  padding: 0;
+  transition: transform 300ms ease-in;
+
+  &--hidden {
+    transform: translateX(-15rem);
+    transition: transform 300ms ease-out;
+  }
+}
+#SideBarContainer {
+  height: 100%;
+  width: 15%;
+  display: grid;
+  grid-area: sidebar;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 5fr 1fr;
+  background-color: $surface-mixed-400;
+  place-items: center;
+  grid-template-areas:
+    "sidebar move"
+    "sidebar move"
+    "sidebar move"
+    "sidebar move"
+    "sidebar move"
+    "sidebar move"
+    "sidebar move";
+    .arrow {
+      grid-area: move;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      #img {
+        height: 30px;
+      }
+    }
+    .arrow:hover {
+      cursor: pointer;
+    }
+    
   #sideBar {
     grid-area: sidebar;
     display: flex;
@@ -185,68 +207,101 @@ body {
   }
 }
 
-#newMap {
-  background-color: white;
-}
 
 #NodeMapContainer {
+  height: 100%;
+  width: 100%;
   color: white;
   grid-area: main;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: $surface-mixed-300;
+  background: #dddddd;
   border-top: 10px solid $surface-mixed-300;
-  border-radius: 20px 0 0 0;
-  #NodeMapHeaderDiv {
-    justify-self: flex-start;
-    max-height: 200px;
-    width: 80.4%;
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    font-family: "Play", sans-serif;
-    font-size: 30px;
-    font-weight: 550;
-    color: #fff;
-    background: $surface-mixed-300;
-  }
-  #innerNodeMapContainer {
-    flex: 1;
+  #content {
     height: 100%;
     width: 100%;
-    border: none;
-    border-radius: 10px;
-    justify-self: flex-end;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-color: #dddddd;
-    background-position: center;
     display: flex;
     justify-content: center;
     align-items: center;
-    #NodeMap {
+    #innerNodeMapContainer {
+      flex: 1;
+      height: 100%;
+      width: 100%;
+      border: none;
+      border-radius: 10px;
+      justify-self: flex-end;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-color: #dddddd;
+      background-position: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      #NodeMap {
+        border: 0px;
+        height: 90%;
+        width: 90%;
+        align-content: center;
+        display: flex;
+        justify-content: center;
+        .node {
+          stroke: $primary-100;
+          stroke-width: 2px;
+        }
+        .link {
+          stroke: $primary-300;
+          stroke-width: 2px;
+        }
+      }
+    }
+    .newMap {
+      flex: 1;
+      height: 100%;
+      width: 100%;
+      border: none;
+      border-radius: 10px;
+      justify-self: flex-end;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-color: #dddddd;
+      background-position: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       border: 0px;
       height: 90%;
       width: 90%;
       align-content: center;
       display: flex;
       justify-content: center;
-      .node {
-        stroke: $primary-100;
-        stroke-width: 2px;
-      }
-      .link {
-        stroke: $primary-300;
-        stroke-width: 2px;
-      }
     }
+    .cost {
+      flex: 1;
+      height: 100%;
+      width: 100%;
+      border: none;
+      border-radius: 10px;
+      justify-self: flex-end;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-color: #dddddd;
+      background-position: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 0px;
+      height: 90%;
+      width: 90%;
+      align-content: center;
+      display: flex;
+      justify-content: center;
+    }
+  #underline {
+    text-decoration: underline;
+    margin-bottom: 5px;
   }
-}
-#underline {
-  text-decoration: underline;
-  margin-bottom: 5px;
+  }
 }
 
 .newButton,
@@ -254,7 +309,7 @@ body {
   display: flex;
   justify-content: center;
   appearance: none;
-  background-color: $primary-300;
+  background-color: $primary-100;
   border: 2px solid $surface-mixed-300;
   border-radius: 15px;
   box-shadow: $surface-mixed-300 0px 4px;
@@ -283,7 +338,7 @@ body {
 .newButton:hover,
 .renderButton:hover {
   color: #fff;
-  background-color: $surface-mixed-300;
+  background-color: $surface-mixed-500;
   box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
   transform: translateY(-3px);
 }

@@ -1,20 +1,20 @@
-import React from "react";
-import AsclepiusLogo from "./AsclepiusLogo.png";
-import { useSelector } from "react-redux";
+import React, { useState } from "react";
 import Sidebarsection from "../components/Sidebarsection.jsx";
+import arrow from "../assets/arrow.png"
 
 function SideBarContainer() {
-  const sidebarDatabool = useSelector(
-    (state) => Object.keys(state.node.sidebarData).length > 0
-  );
-  //{sidebarDatabool ? <Sidebarsection /> : null}
+  const [isHidden, setHidden] = useState("sidebar--hidden")
+
+  const handleToggle = () => {
+    if (isHidden === "sidebar") {
+      setHidden("sidebar--hidden")
+    } else setHidden("sidebar")
+  }
+  
   return (
-    <div id="SideBarContainer">
-      <div id="logocontainer">
-        <img id="asclepiusLogo" src={AsclepiusLogo} alt="Asclepius logo" />
-        <div id="asclepiusText">Asclepius</div>
-      </div>
+    <div id="SideBarContainer" className={isHidden}>
       <Sidebarsection />
+      <div className="arrow" onClick={() => handleToggle()}><img id="img" src={arrow}></img></div>
     </div>
   );
 }

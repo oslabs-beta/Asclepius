@@ -19,7 +19,7 @@ dataRouter.get(
 
 dataRouter.get(
   "/nodes",
-  dataControllerNew.main,
+  // dataControllerNew.main,
   dataController.getName,
   dataController.getNodeData,
   dataController.getPodData,

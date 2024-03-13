@@ -19,7 +19,7 @@ const KubectlInst = () => {
           brew install kubectl<br /><br />
 
           <strong>Windows:</strong><br />
-          Download the kubectl executable from <a href="https://kubernetes.io/docs/tasks/tools/install-kubectl-windows/#install-kubectl-binary-using-curl">here</a> and add it to your system's PATH.<br />
+          Download the kubectl executable from <a target="_blank" href="https://kubernetes.io/docs/tasks/tools/install-kubectl-windows/#install-kubectl-binary-using-curl">here</a> and add it to your system's PATH.<br />
           Once you've installed kubectl, please click Reconnect Cluster.
         </code>
       </pre>

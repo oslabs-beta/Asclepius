@@ -1,11 +1,17 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { setPage } from "../redux/slices/userSlice";
+import AsclepiusLogo from "./AsclepiusLogo.png";
+
 
 function HeaderContainer() {
   const dispatch = useDispatch();
   return (
     <div id="HeaderContainer">
+      <div id="logocontainer">
+        <img id="asclepiusLogo" src={AsclepiusLogo} alt="Asclepius logo" />
+        <div id="asclepiusText">Asclepius</div>
+      </div>
       <button
         onClick={() => dispatch(setPage("map"))}
         id="map"

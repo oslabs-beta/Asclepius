@@ -10,7 +10,6 @@ function Sidebarsection() {
 
   return (
     <div id="sideBar">
-      <div id="hidden"></div>
       <div id="cluster">
         <div>Cluster Name:</div>
         <div>{name ? name : null}</div>{" "}

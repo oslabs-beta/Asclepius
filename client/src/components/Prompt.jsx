@@ -7,7 +7,6 @@ function Prompt() {
   const kubectl = useSelector((state) => {
     return state.user.kubectl;
   });
-  console.log("this is kubectl on prompt", kubectl);
   //prompt with connect cluster button
 
   //kubectl install info (will have a button to reset kubectl to true)

@@ -1,9 +1,10 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import aksCLIInfo from '../../redux/slices/userSlice.js'
+import { aksCLIInfo } from '../../redux/slices/userSlice.js'
 
 const AzCLIInst = () => {
   const dispatch = useDispatch()
+  
   return (
     <div>
       <h2>Install Azure CLI:</h2>

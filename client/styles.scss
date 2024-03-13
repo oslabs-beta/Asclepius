@@ -46,12 +46,36 @@ body {
 #HeaderContainer {
   grid-area: header;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-rows: 1fr;
-  grid-template-areas: "map charts cost";
+  grid-template-areas: "logo map charts cost";
   background: $surface-mixed-400;
-  padding-left: 40px;
+  #logocontainer {
+    grid-area: logo;
+    margin: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
 
+    #asclepiusLogo {
+      width: 4rem;
+      height: 4rem;
+      background-color: transparent;
+      border: 2px solid $primary-300;
+      border-radius: 20px;
+      padding: 5px;
+    }
+    #asclepiusText {
+      font-family: "Comfortaa", sans-serif;
+      padding-top: 10px;
+      padding-left: 10px;
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: white;
+    }
+  }
   #map {
     grid-area: map;
     background: $primary-100;
@@ -68,177 +92,216 @@ body {
     border-radius: 10px;
   }
 }
+.sidebar {
+  background-color: blue;
+  padding: 0;
+  transition: transform 300ms ease-in;
 
+  &--hidden {
+    transform: translateX(-15rem);
+    transition: transform 300ms ease-out;
+  }
+}
 #SideBarContainer {
+  height: 100%;
+  width: 15%;
   display: grid;
   grid-area: sidebar;
-  background: $surface-mixed-400;
-  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 5fr 1fr;
+  background-color: $surface-mixed-400;
+  place-items: center;
   grid-template-areas:
-    "logo"
-    "sidebar"
-    "sidebar"
-    "sidebar"
-    "sidebar"
-    "sidebar"
-    "sidebar"
-    "sidebar";
-  #logocontainer {
-    grid-area: logo;
-    margin: 5px;
-    padding-left: 10px;
-    padding-right: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    #asclepiusLogo {
-      width: 4rem;
-      height: 4rem;
-      background-color: transparent;
-      border: 2px solid white;
-      border-radius: 20px;
-      padding: 5px;
+    "sidebar move"
+    "sidebar move"
+    "sidebar move"
+    "sidebar move"
+    "sidebar move"
+    "sidebar move"
+    "sidebar move";
+    .arrow {
+      grid-area: move;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      #img {
+        height: 30px;
+      }
     }
-    #asclepiusText {
-      font-family: "Comfortaa", sans-serif;
-      padding-top: 10px;
-      padding-left: 10px;
-      font-size: 2.2rem;
-      font-weight: 700;
-      color: white;
+    .arrow:hover {
+      cursor: pointer;
     }
-  }
+    
   #sideBar {
     grid-area: sidebar;
     display: flex;
     flex-direction: column;
+    gap: 10px;
+    margin: 5px;
     #hidden {
       visibility: hidden;
       height: 20%;
-    }
-    hr {
-      width: 80%;
-      border: 1px solid white;
     }
     #cluster {
       color: white;
       font-size: larger;
       display: flex;
+      flex-direction: column;
+      gap: 5px;
       align-items: center;
       justify-content: center;
-      padding: 10px;
+      padding: 5px;
+      border-radius: 20px;
+      background-color: $primary-100;
+      border: 2px solid $surface-mixed-500;
+      box-shadow: $surface-mixed-300 0px 4px;
     }
     #small {
       display: flex;
       flex-direction: row;
       justify-content: space-evenly;
       align-items: center;
-      background: $primary-100;
-      margin: 15px;
+      background: #dddddd;
+      margin: 5px;
       padding: 5px;
       border-radius: 30px;
       border: 2px solid $surface-mixed-500;
-      box-shadow: white 0px 2px;
+      box-shadow: $surface-mixed-300 0px 4px;
     }
     #cpu {
       display: flex;
-      flex-direction: row;
+      flex-direction: column;
       justify-content: space-evenly;
       align-items: center;
-      background: $primary-100;
-      margin: 15px;
+      background: #dddddd;
+      margin: 5px;
       padding: 5px;
       border: 2px solid $surface-mixed-500;
       border-radius: 30px;
-      box-shadow: white 0px 2px;
+      box-shadow: $surface-mixed-300 0px 4px;
     }
     #mem {
       display: flex;
       flex-direction: column;
-      justify-content: center;
+      align-items: center;
       padding: 5px;
       padding-left: 25px;
-      background: $primary-100;
-      margin: 15px;
+      background: #dddddd;
+      margin: 5px;
       border: 2px solid $surface-mixed-500;
       border-radius: 30px;
-      box-shadow: white 0px 2px;
+      box-shadow: $surface-mixed-300 0px 4px;
     }
     #big {
-      background: $primary-100;
+      background: #dddddd;
       display: flex;
-      flex-direction: row;
+      flex-direction: column;
       align-items: center;
       justify-content: space-evenly;
-      margin: 25px;
+      margin: 5px;
       padding: 5px;
       border: 2px solid $surface-mixed-500;
       border-radius: 30px;
-      box-shadow: white 0px 2px;
+      box-shadow: $surface-mixed-300 0px 4px;
     }
   }
 }
 
+
 #NodeMapContainer {
+  height: 100%;
+  width: 100%;
   color: white;
   grid-area: main;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: $surface-mixed-300;
+  background: #dddddd;
   border-top: 10px solid $surface-mixed-300;
-  border-radius: 20px 0 0 0;
-  #NodeMapHeaderDiv {
-    justify-self: flex-start;
-    max-height: 200px;
-    width: 80.4%;
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    font-family: "Play", sans-serif;
-    font-size: 30px;
-    font-weight: 550;
-    color: #fff;
-    background: $surface-mixed-300;
-  }
-  #innerNodeMapContainer {
-    flex: 0.9;
+  #content {
     height: 100%;
     width: 100%;
-    border: none;
-    border-radius: 10px;
-    justify-self: flex-end;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-color: #dddddd;
-    background-position: center;
     display: flex;
     justify-content: center;
     align-items: center;
-    #NodeMap {
+    #innerNodeMapContainer {
+      flex: 1;
+      height: 100%;
+      width: 100%;
+      border: none;
+      border-radius: 10px;
+      justify-self: flex-end;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-color: #dddddd;
+      background-position: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      #NodeMap {
+        border: 0px;
+        height: 90%;
+        width: 90%;
+        align-content: center;
+        display: flex;
+        justify-content: center;
+        .node {
+          stroke: $primary-100;
+          stroke-width: 2px;
+        }
+        .link {
+          stroke: $primary-300;
+          stroke-width: 2px;
+        }
+      }
+    }
+    .newMap {
+      flex: 1;
+      height: 100%;
+      width: 100%;
+      border: none;
+      border-radius: 10px;
+      justify-self: flex-end;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-color: #dddddd;
+      background-position: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       border: 0px;
       height: 90%;
       width: 90%;
       align-content: center;
       display: flex;
       justify-content: center;
-      .node {
-        stroke: $primary-100;
-        stroke-width: 2px;
-      }
-      .link {
-        stroke: $primary-300;
-        stroke-width: 2px;
-      }
     }
+    .cost {
+      flex: 1;
+      height: 100%;
+      width: 100%;
+      border: none;
+      border-radius: 10px;
+      justify-self: flex-end;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-color: #dddddd;
+      background-position: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 0px;
+      height: 90%;
+      width: 90%;
+      align-content: center;
+      display: flex;
+      justify-content: center;
+    }
+  #underline {
+    text-decoration: underline;
+    margin-bottom: 5px;
   }
-}
-#underline {
-  text-decoration: underline;
-  margin-bottom: 5px;
+  }
 }
 
 .newButton,
@@ -246,10 +309,10 @@ body {
   display: flex;
   justify-content: center;
   appearance: none;
-  background-color: $primary-300;
-  border: 2px solid white;
+  background-color: $primary-100;
+  border: 2px solid $surface-mixed-300;
   border-radius: 15px;
-  box-shadow: white 0 2px 3px;
+  box-shadow: $surface-mixed-300 0px 4px;
   color: white;
   cursor: pointer;
   display: inline-block;
@@ -275,9 +338,9 @@ body {
 .newButton:hover,
 .renderButton:hover {
   color: #fff;
-  background-color: $surface-mixed-300;
+  background-color: $surface-mixed-500;
   box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
-  transform: translateY(-2px);
+  transform: translateY(-3px);
 }
 
 .renderButton {

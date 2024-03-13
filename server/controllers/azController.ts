@@ -2,7 +2,11 @@ import { spawn, spawnSync } from "child_process";
 import { Request, Response, NextFunction } from "express";
 
 interface AzController {
-  isAzureCliInstalled: (req: Request, res: Response, next: NextFunction) => void;
+  isAzureCliInstalled: (
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ) => void;
   azLogin: (req: Request, res: Response, next: NextFunction) => void;
   azCredentials: (req: Request, res: Response, next: NextFunction) => void;
 }
@@ -13,7 +17,20 @@ const azController = {
       encoding: "utf-8",
       shell: true,
     });
+    console.log(result);
     if (result.stderr) {
+      let resultErr = result.stderr.split("");
+      //check if the first letter in output for stderr is capital E for Error
+      if (resultErr[0] === "W") {
+        const upgrade = spawnSync("az", ["upgrade", "--yes"], {
+          encoding: "utf-8",
+          shell: true,
+        });
+        console.log(upgrade);
+        if (!upgrade.stderr) {
+          return next();
+        }
+      }
       res.locals.azInstalled = false;
       return next();
     } else res.locals.azInstalled = true;
@@ -65,13 +82,13 @@ const azController = {
     //result.output[2] should be warning not error
     const code = result.output[2].split(" ");
     console.log("should be status", code[0]);
-    if (code[0] === "E") {
+    if (code[0] === "Error:") {
       console.log(
         "Error: Cluster name or resource group is incorrect. Please try again."
       );
       res.locals.formsuccess = false;
       return next();
-    } else if (code[0] === "W") {
+    } else if (code[0] === "WARNING:") {
       console.log("here");
       res.locals.formsuccess = true;
       return next();

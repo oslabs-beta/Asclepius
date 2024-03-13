@@ -2,28 +2,25 @@ import React from "react";
 import { useSelector } from "react-redux";
 
 function Sidebarsection() {
-  // const data = useSelector((state) => state.node.sidebarData);
+  const data = useSelector((state) => state.node.sidebarData);
+  const name = useSelector((state) => state.node.clusterName);
 
-  const data = {
-    name: "Node1",
-    cpuPercentage: "28",
-    cpuCores: "4",
-    memPercentage: "50",
-    memBytes: "99",
-    pods: ["pod1", "pod2", "pod3"],
-  };
+  let nodeName;
+  data.name ? (nodeName = data.name.split("-")) : null;
+
   return (
     <div id="sideBar">
-      <div id="hidden"></div>
-      <div id="cluster">Cluster Name: DemoAKS</div>
-      <hr></hr>
+      <div id="cluster">
+        <div>Cluster Name:</div>
+        <div>{name ? name : null}</div>{" "}
+      </div>
       <div id="small">
         <table>
           <thead>
             <tr>
               <th>Node Name:</th>
               <td></td>
-              <td>{data.name}</td>
+              <td>{nodeName ? nodeName[3] : null}</td>
             </tr>
           </thead>
         </table>
@@ -33,9 +30,9 @@ function Sidebarsection() {
           <table>
             <thead>
               <tr>
-                <th>CPU %:</th>
+                <th>CPU:</th>
                 <td></td>
-                <td> {data.cpuPercentage}%</td>
+                <td> {data ? data.cpuPercentage : null}</td>
               </tr>
             </thead>
           </table>
@@ -46,7 +43,7 @@ function Sidebarsection() {
               <tr>
                 <th>CPU Cores:</th>
                 <td></td>
-                <td>{data.cpuCores}</td>
+                <td>{data ? data.cpuCores : null}</td>
               </tr>
             </thead>
           </table>
@@ -57,9 +54,9 @@ function Sidebarsection() {
           <table>
             <thead>
               <tr>
-                <th>Memory %:</th>
+                <th>Memory:</th>
                 <td></td>
-                <td>{data.memPercentage}%</td>
+                <td>{data ? data.memPercentage : null}</td>
               </tr>
             </thead>
           </table>
@@ -70,7 +67,7 @@ function Sidebarsection() {
               <tr>
                 <th>Memory Bytes:</th>
                 <td></td>
-                <td>{data.memBytes}</td>
+                <td>{data ? data.memBytes : null}</td>
               </tr>
             </thead>
           </table>
@@ -80,9 +77,9 @@ function Sidebarsection() {
         <div>Pods:</div>
         <div>
           <ul id="list">
-            {data.pods.map((pod, index) => (
-              <li key={index}>{pod}</li>
-            ))}
+            {data.pods
+              ? data.pods.map((pod, index) => <li key={index}>{pod}</li>)
+              : null}
           </ul>
         </div>
       </div>

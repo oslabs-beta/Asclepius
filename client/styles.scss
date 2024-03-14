@@ -23,6 +23,8 @@ $surface-mixed-600: #919194;
 
 body {
   margin: 0;
+  height: 100%;
+  width: 100%;
   font-family: 'Comfortaa', sans-serif;
   background-color: $surface-mixed-400;
 }
@@ -31,7 +33,7 @@ body {
   grid-template-columns: auto 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-template-areas:
-    'sidebar header header header'
+    'header header header header'
     'sidebar main main main'
     'sidebar main main main'
     'sidebar main main main'
@@ -94,7 +96,6 @@ body {
 }
 .sidebar {
   height: 100%;
-  width: 20%;
   display: grid;
   transition: transform 300ms ease-in;
   grid-area: sidebar;

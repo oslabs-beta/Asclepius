@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=Play:wght@400;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=Play:wght@400;700&display=swap');
 
 $primary-100: #7b91c5;
 $primary-200: #8a9dcb;
@@ -23,7 +23,7 @@ $surface-mixed-600: #919194;
 
 body {
   margin: 0;
-  font-family: "Comfortaa", sans-serif;
+  font-family: 'Comfortaa', sans-serif;
   background-color: $surface-mixed-400;
 }
 #AppContainer {
@@ -31,14 +31,14 @@ body {
   grid-template-columns: auto 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-template-areas:
-    "sidebar header header header"
-    "sidebar main main main"
-    "sidebar main main main"
-    "sidebar main main main"
-    "sidebar main main main"
-    "sidebar main main main"
-    "sidebar main main main"
-    "sidebar main main main";
+    'sidebar header header header'
+    'sidebar main main main'
+    'sidebar main main main'
+    'sidebar main main main'
+    'sidebar main main main'
+    'sidebar main main main'
+    'sidebar main main main'
+    'sidebar main main main';
   height: 100vh;
   width: 100vw;
 }
@@ -48,7 +48,7 @@ body {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-rows: 1fr;
-  grid-template-areas: "logo map charts cost";
+  grid-template-areas: 'logo map charts cost';
   background: $surface-mixed-400;
   #logocontainer {
     grid-area: logo;
@@ -68,7 +68,7 @@ body {
       padding: 5px;
     }
     #asclepiusText {
-      font-family: "Comfortaa", sans-serif;
+      font-family: 'Comfortaa', sans-serif;
       padding-top: 10px;
       padding-left: 10px;
       font-size: 2.2rem;
@@ -104,40 +104,42 @@ body {
 }
 #SideBarContainer {
   height: 100%;
-  width: 15%;
+  width: 20%;
   display: grid;
   grid-area: sidebar;
   grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-template-columns: 5fr 1fr;
   background-color: $surface-mixed-400;
-  place-items: center;
+  align-items: start;
+  justify-items: center;
   grid-template-areas:
-    "sidebar move"
-    "sidebar move"
-    "sidebar move"
-    "sidebar move"
-    "sidebar move"
-    "sidebar move"
-    "sidebar move";
-    .arrow {
-      grid-area: move;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      #img {
-        height: 30px;
-      }
+    'sidebar move'
+    'sidebar move'
+    'sidebar move'
+    'sidebar move'
+    'sidebar move'
+    'sidebar move'
+    'sidebar move';
+  .arrow {
+    grid-area: move;
+    display: flex;
+    justify-self: center;
+    align-self: center;
+    #img {
+      height: 30px;
     }
-    .arrow:hover {
-      cursor: pointer;
-    }
-    
+  }
+  .arrow:hover {
+    cursor: pointer;
+  }
+
   #sideBar {
     grid-area: sidebar;
     display: flex;
     flex-direction: column;
     gap: 10px;
-    margin: 5px;
+    margin-top: 15px;
+    margin-left: 10px;
     #hidden {
       visibility: hidden;
       height: 20%;
@@ -156,6 +158,10 @@ body {
       border: 2px solid $surface-mixed-500;
       box-shadow: $surface-mixed-300 0px 4px;
     }
+    .connectedDataText {
+      color: black;
+    }
+
     #small {
       display: flex;
       flex-direction: row;
@@ -206,7 +212,6 @@ body {
     }
   }
 }
-
 
 #NodeMapContainer {
   height: 100%;
@@ -297,10 +302,10 @@ body {
       display: flex;
       justify-content: center;
     }
-  #underline {
-    text-decoration: underline;
-    margin-bottom: 5px;
-  }
+    #underline {
+      text-decoration: underline;
+      margin-bottom: 5px;
+    }
   }
 }
 
@@ -316,8 +321,8 @@ body {
   color: white;
   cursor: pointer;
   display: inline-block;
-  font-family: Roobert, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica,
-    Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-family: Roobert, -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica,
+    Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
   font-size: 16px;
   font-weight: 600;
   line-height: normal;
@@ -362,8 +367,8 @@ form {
   }
 }
 
-input[type="text"],
-input[type="password"] {
+input[type='text'],
+input[type='password'] {
   border: 2px solid black;
   color: $primary-100;
   margin-top: 20px;

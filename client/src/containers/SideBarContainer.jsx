@@ -10,9 +10,9 @@ function SideBarContainer() {
       setHidden("sidebar--hidden")
     } else setHidden("sidebar")
   }
-  
+  //id="SideBarContainer"
   return (
-    <div id="SideBarContainer" className={isHidden}>
+    <div  className={isHidden}>
       <Sidebarsection />
       <div className="arrow" onClick={() => handleToggle()}><img id="img" src={arrow}></img></div>
     </div>

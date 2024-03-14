@@ -12,7 +12,7 @@ function Sidebarsection() {
     <div id='sideBar'>
       <div id='cluster'>
         <div>Cluster Name:</div>
-        <div className='connectedDataText'>{name ? name : null}</div>{' '}
+        <div id="name" className='connectedDataText'>{name ? name : null}</div>{' '}
       </div>
       <div id='small'>
         <table>

@@ -3,18 +3,16 @@ import Sidebarsection from "../components/Sidebarsection.jsx";
 import arrow from "../assets/arrow.png"
 
 function SideBarContainer() {
-  const [isHidden, setHidden] = useState("sidebar--hidden")
 
   const handleToggle = () => {
-    if (isHidden === "sidebar") {
-      setHidden("sidebar--hidden")
-    } else setHidden("sidebar")
+    const sidebar = document.querySelector('.sidebar')
+    sidebar.classList.toggle('active')
   }
   //id="SideBarContainer"
   return (
-    <div  className={isHidden}>
+    <div  className="sidebar active">
       <Sidebarsection />
-      <div className="arrow" onClick={() => handleToggle()}><img id="img" src={arrow}></img></div>
+      <div className="arrow" onClick={handleToggle}><img id="img" src={arrow}></img></div>
     </div>
   );
 }

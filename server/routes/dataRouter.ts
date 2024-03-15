@@ -19,7 +19,6 @@ dataRouter.get(
 
 dataRouter.get(
   "/nodes",
-  dataControllerNew.main,
   dataController.getName,
   dataController.getNodeData,
   dataController.getPodData,
@@ -27,5 +26,12 @@ dataRouter.get(
     res.json(res.locals.data);
   }
 );
+
+dataRouter.get(
+  "/api",
+dataControllerNew.main,
+(req: Request, res: Response) => {
+  res.json(res.locals.chart);
+})
 
 export = dataRouter;

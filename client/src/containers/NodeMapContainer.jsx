@@ -22,7 +22,7 @@ function NodeMapContainer() {
         <Prompt />
       ) : (
         <div id="content">
-        <SideBarContainer />
+        {page === "map" ? <SideBarContainer /> : null}
         {page === "map" ? <NodeMap /> : null}
         {page === "charts" ? <Chart /> : null}
         {page === "cost" ? <Cost /> : null}

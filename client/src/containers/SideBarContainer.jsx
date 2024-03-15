@@ -10,7 +10,7 @@ function SideBarContainer() {
   }
   //id="SideBarContainer"
   return (
-    <div  className="sidebar">
+    <div  className="sidebar active">
       <Sidebarsection />
       <div className="arrow" onClick={handleToggle}><img id="img" src={arrow}></img></div>
     </div>

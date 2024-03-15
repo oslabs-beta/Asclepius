@@ -46,6 +46,7 @@ const Chart = () => {
 
 
   return (
+    <div className="chartContainer">
     <div className="chart">
       {/* Dropdown */}
       <select className="select" value={selectedNode || ''} onChange={handleNodeChange}>
@@ -64,7 +65,7 @@ const Chart = () => {
       {selectedNode && (
         <div className="node-details">
           <div className="name">
-          <h2>Node: {selectedNode.name}</h2>
+          <h2>{selectedNode.name}</h2>
           <ul>
             <li>UID: {selectedNode.uid}</li>
             <li>Creation Timestamp: {selectedNode.creationTimestamp}</li>
@@ -73,7 +74,7 @@ const Chart = () => {
           </ul>
           </div>
           <div className="capacity">
-            <h3>Node Resource Capacity</h3>
+            <h3>Resource Capacity</h3>
             <ul>
               <li>Memory: {selectedNode.capacity.memoryCapacity}</li>
               <li>CPU: {selectedNode.capacity.cpuCapacity}</li>
@@ -81,26 +82,28 @@ const Chart = () => {
             </ul>
           </div>
           <div className="allocatable">
-          <h3>Node Resource Available</h3>
+          <h3>Resource Available</h3>
           <ul>
               <li>Memory: {selectedNode.allocatable.memoryAvailable}</li>
               <li>CPU: {selectedNode.allocatable.cpuAvailable}</li>
               <li>Pods: {selectedNode.allocatable.podsAvailable}</li>
             </ul>
           </div>
-          <div className="conditions-grid"> 
-            {selectedNode.conditions.map((condition) => (
-              <ConditionCard key={condition.type /* Or a unique identifier if available */} condition={condition} />
-            ))}
-          </div>
         </div>
       )}
     </div>
+    <div>
+    {selectedNode && <div className="conditions-grid"> 
+    {selectedNode.conditions.map((condition) => (
+      <ConditionCard key={condition.type /* Or a unique identifier if available */} condition={condition} />
+    ))}
+  </div>}
+  </div>
+  </div>
   );
 };
 
-const ConditionCard = ({ condition }) => {
-  const [isExpanded, setIsExpanded] = useState(false);
+const ConditionCard = ({ condition}) => {
   const getHealthColor = (conditionStatus) => {
     // Adjust this to your specific color scheme 
     if (condition.type === 'Ready') {
@@ -112,13 +115,14 @@ const ConditionCard = ({ condition }) => {
       default: return 'gray'; // Unknown status
     }
   }
-
+  const setActive = (event) => {
+    event.target.classList.toggle('active')
+  }
   return (
-    <div className="condition-card" style={{ backgroundColor: getHealthColor(condition.status) }}>
-      <div onClick={() => setIsExpanded(!isExpanded)}>
-        {isExpanded ? condition.message : condition.type} 
+    <div className="condition-card" onClick={setActive} value={condition.type} style={{ backgroundColor: getHealthColor(condition.status) }}>
+      <div >
+        {condition.type} 
       </div>
-      {isExpanded && (
         <ul>
           <li>Status: {condition.status}</li>
           <li>lastHeartbeatTime: {condition.lastHeartbeatTime}</li>
@@ -126,7 +130,6 @@ const ConditionCard = ({ condition }) => {
           <li>reason: {condition.reason}</li>
           <li>message: {condition.message}</li>
         </ul>
-      )}
     </div>
   );
 };

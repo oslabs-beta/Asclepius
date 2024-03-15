@@ -9,7 +9,7 @@ function Sidebarsection() {
   data.name ? (nodeName = data.name.split('-')) : null;
 
   return (
-    <div id='sideBar'>
+    <div id='info'>
       <div id='cluster'>
         <div>Cluster Name:</div>
         <div id="name" className='connectedDataText'>{name ? name : null}</div>{' '}

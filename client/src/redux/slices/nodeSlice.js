@@ -28,13 +28,11 @@ export const nodeSlice = createSlice({
       };
     },
     setSidebarData: (state, action) => {
-      console.log("action payload", action.payload);
       state.sidebarData = action.payload;
-      console.log("after dispatch sbData", state.sidebarData);
     },
   },
 });
 
-export const { setData, setSidebarData } = nodeSlice.actions;
+export const { setData, setSidebarData, setChart } = nodeSlice.actions;
 
 export default nodeSlice.reducer;

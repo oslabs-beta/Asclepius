@@ -13,7 +13,6 @@ const dataControllerNew = {
       const podsRes = await k8sApi.listNode("default");
       const result = [];
       console.log(podsRes.body);
-      console.log("metadata", podsRes.body.items[0].status)
       podsRes.response.body.items.forEach((el) => {
         result.push({
           name: el.metadata.name,
@@ -24,11 +23,18 @@ const dataControllerNew = {
             memoryCapacity: el.status.capacity.memory,
             podsCapacity: el.status.capacity.pods,
           },
-          conditions: el.status.conditions[4],
+          allocatable: {
+            cpuAvailable: el.status.allocatable.cpu,
+            memoryAvailable: el.status.allocatable.memory,
+            podsAvailable: el.status.allocatable.pods,
+          },
+          conditions: el.status.conditions,
           totalImages: el.status.images.length,
         });
       });
       console.log(result);
+      res.locals.chart = result
+
     } catch (err) {
       console.error(err);
     }

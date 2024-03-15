@@ -6,6 +6,7 @@ $primary-300: #99a8d2;
 $primary-400: #a7b4d8;
 $primary-500: #b6c0df;
 $primary-600: #c4cde5;
+$green: #51B673;
 /** SCSS DARK THEME SURFACE COLORS */
 $surface-100: #121212;
 $surface-200: #282828;
@@ -413,6 +414,7 @@ body {
       margin-bottom: 5px;
     }
   }
+  
 }
 
 .newButton,
@@ -500,6 +502,7 @@ input[type='password'] {
   margin: 20px;
   grid-template-columns: 1fr 1fr;
   place-content: center;
+  place-items: center;
 }
 .chart {
   height: 100%;
@@ -507,10 +510,9 @@ input[type='password'] {
   border: none;
   gap: 20px;
   border-radius: 10px;
-  place-content: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  place-items: center;
   .select {
     background-color: #dddddd;
     width: 20%;

@@ -107,11 +107,11 @@ const ConditionCard = ({ condition}) => {
   const getHealthColor = (conditionStatus) => {
     // Adjust this to your specific color scheme 
     if (condition.type === 'Ready') {
-      return 'green'
+      return '#51B673'
     }
     switch (conditionStatus.toLowerCase()) {
-      case 'true': return 'red';
-      case 'false': return 'green'; 
+      case 'true': return '#ee394a';
+      case 'false': return '#51B673'; 
       default: return 'gray'; // Unknown status
     }
   }
